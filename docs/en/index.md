@@ -28,54 +28,30 @@ features:
   - icon: 📦
     title: 20+ App Migration
     details: Universal import engine automatically recognizes Bitwarden, 1Password, GA, Aegis, and other formats.
-  - icon: 🔑
-    title: Zero-Knowledge
-    details: Core decryption keys are never uploaded. Even if the database is leaked, your privacy remains secure.
-  - icon: 🔐
-    title: Biometric Support
-    details: Deeply integrated FaceID and fingerprint recognition (WebAuthn) for perfect balance of safety and efficiency.
-  - icon: 🔄
-    title: Smart Sync
-    details: Multi-device conflict resolution with offline action offset optimization, ensuring millisecond-level alignment.
-  - icon: 👻
-    title: Ghost Mode
-    details: Instant 15px Gaussian blur when backgrounded. Sensitive codes are only revealed after 250ms long-press.
-  - icon: 🚑
-    title: Emergency Recovery
-    details: PDF Master Key backup ensures 100% asset retrieval even in extreme disaster scenarios.
   - icon: 🪣
     title: Multi-dimensional Backup
     details: Supports regular encrypted backups to S3, WebDAV, Telegram Bot, and Email.
   - icon: 📱
     title: Full Platform PWA
     details: Native App hand-feel, perfectly adapted to iOS, Android, and major desktop operating systems.
+  - icon: ❄️
+    title: Offline Mode
+    details: True Air-Gap architecture, supporting physical-level local decryption in uncertain network environments. 
   - icon: 🛡️
     title: Smart Shield
-    details: Automatically detects environment safety. Access is blocked if the environment is unhealthy to prevent tampering.
-  - icon: 🎮
-    title: Steam Guard Master
-    details: Deep adaptation for Steam URI and .maFile, supporting segmented display and anti-phishing validation.
-  - icon: 💡
-    title: Next Code Pre-read
-    details: Click to reveal the next period's dynamic code, ending the anxiety of last-second entries.
-  - icon: 🎨
-    title: Visual Chunking
-    details: 3+3 or 2+3 whitespace segmentation greatly improves eye recognition and manual entry efficiency.
-  - icon: 🔗
-    title: Web3 Authentication
-    details: Supports Ethereum wallet signature login for 100% self-hosted decentralized identity access.
-  - icon: 🎡
-    title: Mobile Hub Center
-    details: One-hand optimized bottom navigation with an ergonomic arc layout for core functions.
+    details: Automatically detects environment safety. Access is blocked if the environment is unhealthy to prevent tampering. 
   - icon: 🎟️
     title: Allowlist Gatekeeper
     details: Supports environment-level user admission rules, easily building invitation-based private instances.
-  - icon: ❄️
-    title: Physical Air-Gap
-    details: True offline architecture, supporting physical-level local decryption in uncertain network environments.
-  - icon: 📉
-    title: Minimalist Philosophy
-    details: Follows atomic design standards, removing all visual clutter to let the tool return to its security essence.
+  - icon: 🔐
+    title: Biometric Support
+    details: Deeply integrated FaceID and fingerprint recognition (WebAuthn) for perfect balance of safety and efficiency.
+  - icon: 🔄
+    title: Smart Sync
+    details: Multi-device conflict resolution with offline action offset optimization, ensuring millisecond-level alignment.
+  - icon: 🚑
+    title: Emergency Recovery
+    details: PDF Master Key backup ensures 100% asset retrieval even in extreme disaster scenarios.
 ---
 
 <style>

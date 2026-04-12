@@ -68,6 +68,9 @@ docker compose up -d
 
 environment:
   # 支持 base64: hex: 前缀
+  - NODEAUTH_LICENSE=base64:MjAyNjA0MJfTm9kZUF1dGhf...
+  
+  # 支持 base64: hex: 前缀
   - JWT_SECRET=base64:MjAyNjA0MDJfTm9kZUF1dGhf...
 
   # 支持 aes: base64: hex: 前缀, 推荐使用 aes: 前缀

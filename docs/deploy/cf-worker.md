@@ -36,6 +36,7 @@
 部署成功后，应用暂时还无法运行，您需要注入安全密钥：
 1.  进入项目控制面板，点击 **"设置" (Settings)** -> **"变量与机密" (Variables & Secrets)**。
 2.  点击 **"添加"**，依次填入以下必需项（建议参考 [环境变量指南](./env.md)）：
+  *   `NODEAUTH_LICENSE`：系统授权码，从[license.nodeauth.io](https://license.nodeauth.io)获取。
   *   `ENCRYPTION_KEY`：32位以上随机密钥。
   *   `JWT_SECRET`：32位以上随机JWT密钥。
   *   `OAUTH_ALLOWED_USERS`：你的邮箱@example.com

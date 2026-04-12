@@ -69,6 +69,8 @@ Storing plaintext secrets directly in `docker-compose.yml` increases the risk of
 # Example: Configuration fragment with multi-layer hardening
 environment:
   # L1 Obfuscation (Anchor)
+  - NODEAUTH_LICENSE=base64:MjAyNjA0MJfTm9kZUF1dGhf...
+  
   - JWT_SECRET=base64:MjAyNjA0MDJfTm9kZUF1dGhf...
 
   # L2 Application Layer Encryption

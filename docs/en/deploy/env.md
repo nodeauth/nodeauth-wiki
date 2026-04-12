@@ -8,8 +8,9 @@ These variables are the foundation of the system's operation and **must** be set
 
 | Variable | Required | Description & Recommendation |
 | :--- | :--- | :--- |
-| `ENCRYPTION_KEY` | ✅ | **Core:** Secret for database encryption. All 2FA seeds are encrypted before storage. **Do not change once set**. Minimum 32-bit random string required. |
-| `JWT_SECRET` | ✅ | **Login:** Used for JWT token signing. High-strength 64-bit random string recommended (**Base64/Hex obfuscation suggested**). |
+| `NODEAUTH_LICENSE` | ✅ | **License:** System license code. Apply at [license.nodeauth.io](https://license.nodeauth.io). |
+| `ENCRYPTION_KEY` | ✅ | **Core:** Secret for database encryption. All 2FA seeds are encrypted before storage. **Do not change once set**. Minimum 32-bit random string required. Obtain at [tools.nodeauth.io](https://tools.nodeauth.io). |
+| `JWT_SECRET` | ✅ | **Login:** Used for JWT token signing. High-strength 64-bit random string recommended. Obtain at [tools.nodeauth.io](https://tools.nodeauth.io). |
 
 > [!CAUTION]
 > **Warning**: Modifying `ENCRYPTION_KEY` will render all existing 2FA data unreadable. Ensure a full backup is completed before making any changes.
@@ -24,7 +25,7 @@ NodeAuth refuses public registration; you must preset the users allowed to enter
 
 | Variable | Required | Examples & Description |
 | :--- | :--- | :--- |
-| `OAUTH_ALLOWED_USERS` | ✅ | Emails or Telegram IDs allowed to login. Separate multiple users with **commas** `,`. E.g.: `admin@example.com,12345678` |
+| `OAUTH_ALLOWED_USERS` | ✅ | Emails, Telegram IDs, or Web3 wallet addresses allowed to login. Separate multiple users with **commas** `,`. E.g.: `admin@example.com,12345678,0xe0a156ce36****6a98` |
 
 ---
 
@@ -173,7 +174,7 @@ Depending on the nature of the variables, the system provides two levels of secu
 
 | Security Tier | Variables | Handling (Prefix) | Description |
 | :--- | :--- | :--- | :--- |
-| **⭐ Obfuscation** | `JWT_SECRET` | `base64:`, `hex:` | Root anchor for session signing. Supports basic encoding-level obfuscation. |
+| **⭐ Obfuscation** | `NODEAUTH_LICENSE`, `JWT_SECRET` | `base64:`, `hex:` | Root anchor for session signing. Supports basic encoding-level obfuscation. |
 | **🛡️ Encryption** | All other variables | `base64:`, `hex:`, `aes:` | All sensitive variables are protected with high-strength encryption. **`aes:`** is highly recommended. |
 
 ### 🛠️ Quick Start (3 Steps)
@@ -181,7 +182,8 @@ Depending on the nature of the variables, the system provides two levels of secu
 1. **Open Tool**: Visit the official **[NodeAuth Deploy Helper (tools.nodeauth.io)](https://tools.nodeauth.io)**.
 2. **Generate & Encrypt**:
    *   Generate a 64-bit random string for your `JWT_SECRET`.
-   *   Paste your secrets into the "AES Encryptor" box, provide your root key, and execute.
+   *   Obtain your `NODEAUTH_LICENSE` from [license.nodeauth.io](https://license.nodeauth.io).
+   *   Paste your secrets into the "AES Encryptor" box, provide your `Root Key (plaintext JWT_SECRET)` and `License (plaintext NODEAUTH_LICENSE)`, and execute encryption.
 3. **Apply to File**: Copy the entire generated lines (**including the `aes:` or `base64:` prefix**) and replace the values in your config file.
 
 **Example:**

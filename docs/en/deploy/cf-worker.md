@@ -36,6 +36,7 @@ This is the most convenient and fastest way to deploy. You don't need to purchas
 After a successful deployment, the app won't run yet. You need to inject security keys:
 1.  Enter the project dashboard, click **"Settings"** -> **"Variables & Secrets"**.
 2.  Click **"Add"** and enter the following required items (refer to the [Environment Variables Guide](./env) for details):
+  *   `NODEAUTH_LICENSE`: System license code, obtain from [license.nodeauth.io](https://license.nodeauth.io).
   *   `ENCRYPTION_KEY`: A random key of at least 32 characters.
   *   `JWT_SECRET`: A random JWT secret of at least 32 characters.
   *   `OAUTH_ALLOWED_USERS`: your-email@example.com

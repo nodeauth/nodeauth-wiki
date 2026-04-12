@@ -7,6 +7,7 @@ Security is the bottom line and the soul of NodeAuth's design. Through a compreh
 ## ❄️ 1. Full Database Cold Encryption (Cold Encryption)
 Unlike traditional applications that store secrets in plaintext, NodeAuth implements **full-database cold processing**:
 *   **Local AES-GCM Encapsulation**: All sensitive data exists in the local IndexedDB solely as encrypted BLOBs.
+*   **Core Logic Lock**: The system uses `NODEAUTH_LICENSE` to implement algorithmic "logic injection," ensuring the decryption chain is physically bound to your authorization identity, preventing decryption even if environment variables are leaked.
 *   **Hardware Salt Injection**: Uses device fingerprints derived from WebAuthn as encryption anchors (Device Salt). Even if the database file is stolen, it cannot be easily decrypted on a different device.
 *   **Non-Persisted Keys**: Core decryption keys only live in RAM and are immediately erased once the system logs out or the page is refreshed, preventing physical forensics.
 

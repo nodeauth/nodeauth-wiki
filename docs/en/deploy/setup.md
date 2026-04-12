@@ -7,9 +7,10 @@ After successful deployment, you need to follow these simple steps to activate a
 When you first access your deployed domain, NodeAuth will automatically activate the **Smart Shield** environment check system. To protect your data, if the environment configuration is risky, the system will **block access** and display the following check interface:
 
 ### 1. Core Security Check Items
+*   **System License (NODEAUTH_LICENSE)**: Detects if the license code is configured. You can obtain it from [license.nodeauth.io](https://license.nodeauth.io).
 *   **Core Encryption Key (ENCRYPTION_KEY)**: Detects if the key is empty or less than 32 characters. This is the "lifeblood" of the encrypted database; failure to meet the standard will block access.
 *   **Session Signing Key (JWT_SECRET)**: Detects the strength of the signing key. A weak key could allow attackers to forge identities.
-*   **Admission Allowlist (OAUTH_ALLOWED_USERS)**: Detects if allowed login emails are configured. If empty, no one will be able to enter the system.
+*   **Admission Allowlist (OAUTH_ALLOWED_USERS)**: Detects if allowed login emails, Telegram IDs, or Web3 wallet addresses are configured. Separate multiple values with commas.
 *   **Login Channel configuration**: Detects if at least one OAuth2 login method (e.g., GitHub, Google) is configured.
 
 ### 2. How to Fix?

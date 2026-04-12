@@ -20,7 +20,8 @@ It is recommended to follow these guides in order.
 
 ### 1. Essential Preparation
 This is the first step regardless of the deployment method chosen.
-*   **[Environment Variables Guide](./env)**: Detailed explanation of the 7 major OAuth platforms and core database keys.
+*   **[Environment Variables Guide](./env)**: Detailed explanation of License, 7 major OAuth platforms (including Telegram and Web3) and core database keys.
+*   **[Get License Code](https://license.nodeauth.io)**: Go to the licensing center to get your license code.
 
 ### 2. Managed Hosting (Cloudflare)
 *   **[Cloudflare Worker (Recommended)](./cf-worker)**: One-click deployment via Wrangler or web interface, using D1 database for high-performance storage.

@@ -8,8 +8,9 @@
 
 | 变量名 | 必填 | 作用与建议 |
 | :--- | :--- | :--- |
-| `ENCRYPTION_KEY` | ✅ | **核心：** 数据库加密密钥。所有的 2FA 种子在入库前都会用这个密钥加密。**设定后请勿更改**。要求 32 位以上随机码。 |
-| `JWT_SECRET` | ✅ | **登录：** 用于签发登录令牌。建议用 64 位随机码（**支持并建议使用 base64: 前缀进一步混淆屏蔽**）。 |
+| `NODEAUTH_LICENSE` | ✅ | **授权：** 系统授权码。可在 [license.nodeauth.io](https://license.nodeauth.io) 获取。 |
+| `ENCRYPTION_KEY` | ✅ | **核心：** 数据库加密密钥。所有的 2FA 种子在入库前都会用这个密钥加密。**设定后请勿更改**。要求 32 位以上随机码。可在 [tools .nodeauth.io](https://tools.nodeauth.io) 获取。 |
+| `JWT_SECRET` | ✅ | **登录：** 用于签发登录令牌。要求 32 位以上随机码。可在 [tools.nodeauth.io](https://tools.nodeauth.io) 获取。 |
 
 > [!CAUTION]
 > **警告**：修改 `ENCRYPTION_KEY` 会导致所有已存账号的验证码计算错误。在备份完成前，请勿随意变动。
@@ -22,7 +23,7 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 
 | 变量名 | 必填 | 示例与说明 |
 | :--- | :--- | :--- |
-| `OAUTH_ALLOWED_USERS` | ✅ | 允许登录的邮箱或 Telegram ID。多个用户请用**半角逗号** `,` 分开。如：`admin@example.com,12345678` |
+| `OAUTH_ALLOWED_USERS` | ✅ | 允许登录的邮箱、Telegram ID、Web3 钱包地址。多个用户请用**半角逗号** `,` 分开。如：`admin@example.com,12345678,0xe0a156ce36****6a98` |
 
 ---
 
@@ -171,15 +172,16 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 
 | 安全等级 | 支持变量 | 处理方式 (前缀) | 说明 |
 | :--- | :--- | :--- | :--- |
-| **⭐ 编码脱敏** | `JWT_SECRET` | `base64:`, `hex:` | 用于会话签名的核心锚点，支持基础的编码脱敏。 |
+| **⭐ 编码脱敏** | `NODEAUTH_LICENSE`, `JWT_SECRET` | `base64:`, `hex:` | 用于会话签名的核心锚点，支持基础的编码脱敏。 |
 | **🛡️ 加密保护** | 其余所有变量 | `base64:`, `hex:`, `aes:` | 所有的敏感变量均经过高强度加密保护。推荐使用 **`aes:`** 方式加密  |
 
 ### 🛠️ 快速上手 (三步搞定)
 
 1. **打开工具站**：访问 **[NodeAuth 部署助手 (tools.nodeauth.io)](https://tools.nodeauth.io)**。
 2. **生成与转换**：
-   *   先生成 64 位随机码作为 `JWT_SECRET`。
-   *   将你的其他环境变量信息粘贴进“AES 加密”框，填入主钥匙，点击执行。
+   *   生成 64 位随机码作为 `JWT_SECRET`。
+   *   通过[license.nodeauth.io](https://license.nodeauth.io)获取 `NODEAUTH_LICENSE`，
+   *   将你的其他环境变量信息粘贴进“AES 加密”框，填入`根密钥 (明文 JWT_SECRET)` 与 `授权码 (明文 NODEAUTH_LICENSE)`，点击执行加密。
 3. **粘贴回配置文件**：**关键点**：直接复制生成出的整行结果（必须包含 `aes:` 或 `base64:` `hex:` 前缀），原地替换回你的部署文件中即可。
 
 **示例展示：**
