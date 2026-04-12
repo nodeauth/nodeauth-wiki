@@ -31,12 +31,11 @@ jobs:
         run: npm ci
 
       - name: Build with VitePress
-        run: npm run docs:build
+        run: npm run build
 
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: nodeauth-wiki  # 请确保此名称与 Cloudflare Pages 中的项目名一致
-          directory: docs/.vitepress/dist
+          command: deploy

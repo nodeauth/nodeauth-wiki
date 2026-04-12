@@ -1,27 +1,20 @@
 {
-  "name": "wiki.nodeauth.io",
+  "name": "nodeauth-wiki",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "docs:dev": "npx vitepress dev docs --port 35173",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs --port 35173"
+    "dev": "npx vitepress dev docs --port 35173",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs --port 35173",
+    "deploy": "wrangler deploy"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nodeauth/nodeauth.github.io.git"
-  },
-  "keywords": [],
   "author": "nodeauth",
-  "license": "ISC",
+  "license": "AGPL-3.0",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/nodeauth/nodeauth.github.io/issues"
-  },
-  "homepage": "https://github.com/nodeauth/nodeauth.github.io#readme",
   "devDependencies": {
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "wrangler": "^4.75.0",
+    "@cloudflare/workers-types": "^4.20260411.1"
   },
   "overrides": {
     "esbuild": "0.27.5"
