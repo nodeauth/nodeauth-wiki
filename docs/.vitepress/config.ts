@@ -87,6 +87,8 @@ const zhThemeConfig = {
         {
             text: '💡 其他说明',
             items: [
+                { text: '零知识架构', link: '/misc/zero-knowledge' },
+                { text: '端对端加密', link: '/misc/e2ee' },
                 { text: '离线功能边界说明', link: '/misc/offline-limits' },
                 { text: '联系作者与路线图', link: '/misc/contacts' }
             ]
@@ -189,6 +191,8 @@ const enThemeConfig = {
         {
             text: '💡 Others',
             items: [
+                { text: 'Zero-Knowledge', link: '/en/misc/zero-knowledge' },
+                { text: 'End-to-End Encryption', link: '/en/misc/e2ee' },
                 { text: 'Offline Limits', link: '/en/misc/offline-limits' },
                 { text: 'Roadmap & Contact', link: '/en/misc/contacts' }
             ]
