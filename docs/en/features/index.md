@@ -23,23 +23,3 @@ NodeAuth is more than just a tool; it is the product of our relentless pursuit o
 *   **Seamless Migration**: Supports one-stop migration from 20+ mainstream apps like Bitwarden, GA, 1Password, etc.
 *   **Micro-motion Design**: Visual chunking, Next Code pre-reading, and smooth transition animations make every unlock graceful.
 > [➔ Explore Experience Details](./experience)
-
----
-
-## 📺 Visual Preview
-
-### 📱 Responsive Design & Dark Mode
-NodeAuth adapts seamlessly across different devices. The mobile version uses bottom navigation and perfectly adapts to system-level dark mode, protecting your eyes while maintaining a professional feel.
-<!-- [📸 UI Mockup Tip: Dark/Light mode visual comparison in PWA mode] -->
-
-### 💻 Immersive Desktop Experience
-On large screens, it adopts a classic "list-detail" two-column layout. The operation logic is no different from a native App, greatly improving management efficiency.
-<!-- [📸 UI Mockup Tip: Two-column management interface in a PC browser] -->
-
----
-
-## 💡 Why Choose NodeAuth?
-
-We believe security should not come at the cost of convenience. Through an advanced **WASM core** and **offline-first architecture**, NodeAuth provides an experience comparable to top-tier commercial software even in extreme environments where privacy is paramount.
-
-<!-- [📸 UI Mockup Tip: Abstract visual or concept poster showing "multi-device data flow/sync"] -->

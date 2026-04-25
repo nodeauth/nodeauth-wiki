@@ -18,7 +18,7 @@ hero:
 features:
   - icon: 🛡️
     title: Ultimate Security
-    details: AES-GCM-256 full database cold encryption, decryption keys stored only in local memory to ensure data sovereignty.
+    details: Adopts Zero-Knowledge architecture and End-to-End Encryption for absolute data sovereignty.
   - icon: ⚡
     title: Instant Startup
     details: 0.1s instant response based on PWA preloading technology, stable even in weak or offline environments.
@@ -36,7 +36,7 @@ features:
     details: Native App hand-feel, perfectly adapted to iOS, Android, and major desktop operating systems.
   - icon: ❄️
     title: Offline Mode
-    details: True Air-Gap architecture, supporting physical-level local decryption in uncertain network environments. 
+    details: True Air-Gap architecture, allowing physically isolated operations in offline mode to eliminate all network-based risks.
   - icon: 🛡️
     title: Smart Shield
     details: Automatically detects environment safety. Access is blocked if the environment is unhealthy to prevent tampering. 

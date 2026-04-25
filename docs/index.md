@@ -18,10 +18,10 @@ hero:
 features:
   - icon: 🛡️
     title: 极致安全
-    details: 采用 AES-GCM-256 全库冷加密，解密密钥仅存于本地内存，确保数据主权。
+    details: 采用零知识架构和端对端加密，实现真正的数据主权。
   - icon: ⚡
     title: 极速启动
-    details: 基于 PWA 预载技术实现 0.1s 瞬时响应，弱网甚至离线环境下依然稳如泰山。
+    details: 基于 PWA 预载技术实现 0.1s 瞬时响应，弱网甚至离线环境依然可用。
   - icon: 🌍
     title: 灵活部署
     details: 支持 Cloudflare Workers 零成本高可用部署及 Docker 私有化部署。
@@ -36,7 +36,7 @@ features:
     details: 原生 App 交互手感，完美适配 iOS、Android 及各大桌面操作系统。
   - icon: ❄️
     title: 离线模式
-    details: 真正的 Air-Gap 架构，支持在不确定的网络环境下实现物理级的本地解密。 
+    details: 支持在完全断网环境下实现物理隔离操作，从根源杜绝网络窥探。
   - icon: 🛡️
     title: Smart Shield
     details: 自动嗅探运行环境安全性，环境不健康绝不开锁，从源头阻断篡改风险。 
