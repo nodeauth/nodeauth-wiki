@@ -21,7 +21,7 @@ features:
     details: Adopts Zero-Knowledge architecture and End-to-End Encryption for absolute data sovereignty.
   - icon: ⚡
     title: Instant Startup
-    details: 0.1s instant response based on PWA preloading technology, stable even in weak or offline environments.
+    details: 0.1s instant response based on PWA preloading technology, available even in weak or offline environments.
   - icon: 🌍
     title: Flexible Deployment
     details: Supports zero-cost high-availability deployment on Cloudflare Workers and private Docker deployment.
@@ -36,7 +36,7 @@ features:
     details: Native App hand-feel, perfectly adapted to iOS, Android, and major desktop operating systems.
   - icon: ❄️
     title: Offline Mode
-    details: True Air-Gap architecture, allowing physically isolated operations in offline mode to eliminate all network-based risks.
+    details: Supports physically isolated operations in a completely offline environment to eliminate network prying from the source.
   - icon: 🛡️
     title: Smart Shield
     details: Automatically detects environment safety. Access is blocked if the environment is unhealthy to prevent tampering. 

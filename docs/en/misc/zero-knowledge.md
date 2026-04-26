@@ -1,15 +1,8 @@
-# Zero-Knowledge Vault Architecture
+# Zero-Knowledge Architecture (Zero-Knowledge)
 
-Since NodeAuth introduced the "Zero-Knowledge Vault" architecture, our security level has officially aligned with top-tier password managers like 1Password and Bitwarden. This article explains the traditional pain points and how we solved them using simple language.
+NodeAuth utilizes a "Zero-Knowledge" architecture, officially aligning its security standards with top-tier password managers like 1Password and Bitwarden.
 
-## 1. What was the previous issue? (The Pain Point)
-Before the refactoring, NodeAuth had a theoretical "trust blind spot."
-When you added a 2FA Secret on the frontend, the browser sent it **exactly as is (in plaintext)** over the network to the backend. Although the backend responsibly encrypted it with AES ("Server-Side Encryption" or SSE) before storing it in the SQLite database to prevent database theft.
-
-**But there was a fatal flaw:** The backend server itself could "see" these plaintexts! An admin could potentially dump the backend memory and access all users' core secrets.
-In the world of Bitwarden, even the server administrators cannot view passwords. This is known as **Zero-Knowledge**.
-
-## 2. How did we solve it? (Core Architectural Design)
+## Core Architectural Design
 
 To make NodeAuth completely blind (Zero-Knowledge), we created a highly sophisticated "double blind" mechanism:
 
@@ -20,14 +13,18 @@ The server receives this `nodeauth:` string. The server doesn't know what it con
 
 ### Move 2: Who acts as the "Master Password"? (Environment as Password)
 In Bitwarden, you memorize a "Master Password" to generate that key. But NodeAuth uses third-party accounts (OAuth) to log in, so you've never set a Master Password. What do we do?
+
 **Solution:**
+
 When your system starts and verifies your identity, the server securely distributes a unique "Device Salt" to your browser. Your browser combines its environmental lock in a secure black box (Web Crypto API) to calculate a **Masking Key** and stores it in the browser's core safe (Session/IndexedDB).
 This key is **never sent back to the server over the network**.
 Meaning: even if a hacker compromises the server, the `nodeauth:` ciphertext they get is useless because the decryption key resides only inside your personal browser!
 
 ### Move 3: Anti-Interception Secure Delivery (RSA Handshake)
 If the server distributes the "Device Salt" to the frontend over the network, what if a hacker intercepts it (Man-in-the-Middle)?
+
 **Solution:**
+
 We constructed an espionage-level handshake:
 1. Every time the browser starts, it generates a one-time "small silver lock" (RSA Public Key) and throws it to the server.
 2. The server puts the "salt" inside the lock, snaps it shut, and throws it back over the network.
@@ -35,7 +32,9 @@ We constructed an espionage-level handshake:
 
 ### Move 4: What is the server's job? (Matryoshka Encryption)
 Does the server's database encryption still matter then?
-**Solution: Russian Nesting Dolls (Matryoshka)!**
+
+**Solution: Matryoshka!**
+
 After the server receives your `nodeauth:` ciphertext, even though it can't read it, it still faithfully uses the original "database encryption key" (`ENCRYPTION_KEY`) to put **another layer of bulletproof vest** on it before writing it to the disk.
 
 When you need to view a 2FA code:
@@ -44,6 +43,6 @@ When you need to view a 2FA code:
 3. The frontend uses its own key to strip the inner vest and renders the jumping 6-digit confirmation code on your screen.
 
 ## Summary
-This is the essence of NodeAuth's Zero-Knowledge architecture refactoring: **By combining "Asymmetric Handshake + Frontend Masking," we transformed your "Current Browser Environment" into an invisible Bitwarden Master Password.**
+This is the essence of NodeAuth's Zero-Knowledge architecture: **By combining "Asymmetric Handshake + Frontend Masking," we transformed your "Current Browser Environment" into an invisible Bitwarden Master Password.**
 
 The final result: NodeAuth's backend has become a thoroughly "blind storage." It diligently protects your data and syncs it across devices, but from beginning to end, it has never even seen a glimpse of your 2FA verification codes—achieving core asset protection completely equivalent to that of commercial-grade password managers.
