@@ -8,7 +8,7 @@ Whether you are pursuing the extreme cost-performance of **Serverless deployment
 
 ## 💎 Design Philosophy: The Dual Pursuit
 
-NodeAuth is more than just a tool; it is the product of our relentless pursuit of **Ulitmate Security** and **Ultimate Experience**.
+NodeAuth is more than just a tool; it is the product of our relentless pursuit of **Ultimate Security** and **Ultimate Experience**.
 
 ### 🛡️ Ultimate Security
 **"The Unshakable Data Foundation"**
