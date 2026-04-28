@@ -117,7 +117,7 @@ Suitable for Synology, QNAP, Nutstore, or Alist users:
 *   **🛠️ Configuration Guide**:
     1. Visit [Dropbox App Console](https://www.dropbox.com/developers/apps) and select `Scoped access` -> `App folder`.
     2. Enter in `Redirect URIs`: `https://your-domain.com/api/backups/oauth/dropbox/callback`.
-    3. `Permissions` 勾选 `files.content.write`, `files.content.read`, `files.metadata.read`。
+    3. Under `Permissions`, check `files.content.write`, `files.content.read`, and `files.metadata.read`.
     4. **Configure Environment Variables**: Fill them into your deployment platform's "Environment Variables" or "Secrets" (refer to the [Env Guide](/deploy/env) for details):
         *   `OAUTH_DROPBOX_CLIENT_ID`
         *   `OAUTH_DROPBOX_CLIENT_SECRET`
@@ -160,4 +160,4 @@ Suitable for Synology, QNAP, Nutstore, or Alist users:
 ---
 
 > [!TIP]
-> **Off-site Disaster Retrieval**: If you download an encrypted backup file from the cloud (like Telegram or S3) but cannot access your NodeAuth instance, refer to the [Offline Decryption Guide](../recovery/index.md#advanced-manual-offline-decryption-decrypt_backup-js) for instructions on using scripts for offline data extraction.
+> **Off-site Disaster Retrieval**: If you download an encrypted backup file from the cloud (like Telegram or S3) but cannot access your NodeAuth instance, refer to the [Offline Decryption Guide](../recovery/index.md) for instructions on using scripts for offline data extraction.

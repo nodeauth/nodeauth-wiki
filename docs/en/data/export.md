@@ -38,6 +38,6 @@ Your data sovereignty belongs entirely to you. NodeAuth provides multiple flexib
 *   **Regular Export**: Whenever you add important 2FA accounts (especially those linked to high-value assets), be sure to manually perform an export and save it to a private external storage device.
 
 > [!TIP]
-> **Emergency Recovery**: If you have exported a JSON file but temporarily cannot access NodeAuth, you can use the project's built-in [Offline Decryption Script](../recovery/index.md#manual-offline-decryption-using-script) for offline extraction.
+> **Emergency Recovery**: If you have exported a JSON file but temporarily cannot access NodeAuth, you can use the project's built-in [Offline Decryption Script](../recovery/index.md) for offline extraction.
 
 <!-- [📸 UI Mockup Tip: Display export interface icons and the professional, secure look of the encryption password entry field] -->

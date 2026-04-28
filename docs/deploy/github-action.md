@@ -47,7 +47,7 @@
 | `ENCRYPTION_KEY` | 32 位以上随机密钥 |
 | `JWT_SECRET` | 32 位以上随机密钥 |
 | `OAUTH_ALLOWED_USERS` | 您的登录白名单邮箱 |
-| **三方登录机密 (示例)** | **详细获取请参考 [登录平台配置](./env.md#-登录平台配置-至少配置一个-支持多个)** |
+| **三方登录机密 (示例)** | **详细获取请参考 [登录平台配置](./env)** |
 | `OAUTH_GITHUB_CLIENT_ID` | 您申请的 GitHub Client ID |
 | `OAUTH_GITHUB_CLIENT_SECRET`| 您申请的 GitHub Client Secret |
 | `OAUTH_GITHUB_REDIRECT_URI` | `https://您的域名/oauth/callback` |
