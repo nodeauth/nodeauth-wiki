@@ -17,8 +17,6 @@ These variables are the foundation of the system's operation and **must** be set
 
 ---
 
----
-
 ## 🛡️ Admission Allowlist (Must Configure)
 
 NodeAuth refuses public registration; you must preset the users allowed to enter.

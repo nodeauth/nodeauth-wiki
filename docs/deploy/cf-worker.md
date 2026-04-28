@@ -7,14 +7,14 @@
 ## 🛠️ 部署步骤
 
 ### 1. 准备工作
-1.  **Fork** 本项目仓库到您的 GitHub 账号。
-2.  给本项目点一个 **Star** ⭐（这能帮您更方便地接收到后续更新提示）。
+1.  **Fork** [`nodeauth/nodeauth-worker`](https://github.com/nodeauth/nodeauth-worker) 仓库到您的 GitHub 账号。
+2.  给该项目点一个 **Star** ⭐（这能帮您更方便地接收到后续更新提示）。
 
 ### 2. 一键自动化部署
 1.  [点击部署按钮](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create)：
     [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create)
 2.  在弹出的页面中点击 **"Continue with GitHub"**。
-3.  授权 Cloudflare 读取您的仓库，并选择您刚刚 Fork 的 `nodeauth` 项目。
+3.  授权 Cloudflare 读取您的仓库，并选择您刚刚 Fork 的 `nodeauth-worker` 项目。
 
 <details>
 <summary>点击查看：授权指引示意图</summary>  

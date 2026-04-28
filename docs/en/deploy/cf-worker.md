@@ -7,14 +7,14 @@ This is the most convenient and fastest way to deploy. You don't need to purchas
 ## 🛠️ Deployment Steps
 
 ### 1. Preparation
-1.  **Fork** this repository to your GitHub account.
-2.  Give this project a **Star** ⭐ (this will help you stay notified about future updates).
+1.  **Fork** the [`nodeauth/nodeauth-worker`](https://github.com/nodeauth/nodeauth-worker) repository to your GitHub account.
+2.  Give the project a **Star** ⭐ (this will help you stay notified about future updates).
 
 ### 2. One-click Automated Deployment
 1.  [Click the Deploy Button](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create):
     [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create)
 2.  On the page that opens, click **"Continue with GitHub"**.
-3.  Authorize Cloudflare to read your repositories and select the `nodeauth` project you just forked.
+3.  Authorize Cloudflare to read your repositories and select the `nodeauth-worker` project you just forked.
 
 <details>
 <summary>Click to view: Authorization Guide Screenshot</summary>  
