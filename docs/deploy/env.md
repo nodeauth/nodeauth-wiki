@@ -9,7 +9,7 @@
 | 变量名 | 必填 | 作用与建议 |
 | :--- | :--- | :--- |
 | `NODEAUTH_LICENSE` | ✅ | **授权：** 系统授权码。可在 [license.nodeauth.io](https://license.nodeauth.io) 获取。 |
-| `ENCRYPTION_KEY` | ✅ | **核心：** 数据库加密密钥。所有的 2FA 种子在入库前都会用这个密钥加密。**设定后请勿更改**。要求 32 位以上随机码。可在 [tools .nodeauth.io](https://tools.nodeauth.io) 获取。 |
+| `ENCRYPTION_KEY` | ✅ | **核心：** 数据库加密密钥。所有的 2FA 种子在入库前都会用这个密钥加密。**设定后请勿更改**。要求 32 位以上随机码。可在 [tools.nodeauth.io](https://tools.nodeauth.io) 获取。 |
 | `JWT_SECRET` | ✅ | **登录：** 用于签发登录令牌。要求 32 位以上随机码。可在 [tools.nodeauth.io](https://tools.nodeauth.io) 获取。 |
 
 > [!CAUTION]
@@ -182,7 +182,7 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
    *   生成 64 位随机码作为 `JWT_SECRET`。
    *   通过[license.nodeauth.io](https://license.nodeauth.io)获取 `NODEAUTH_LICENSE`，
    *   将你的其他环境变量信息粘贴进“AES 加密”框，填入`根密钥 (明文 JWT_SECRET)` 与 `授权码 (明文 NODEAUTH_LICENSE)`，点击执行加密。
-3. **粘贴回配置文件**：**关键点**：直接复制生成出的整行结果（必须包含 `aes:` 或 `base64:` `hex:` 前缀），原地替换回你的部署文件中即可。
+3. **粘贴回配置文件**：**关键点**：直接复制生成出的整行结果（必须包含 `aes:`、`base64:` 或 `hex:` 前缀），原地替换回您的部署文件中即可。
 
 **示例展示：**
 ```yaml

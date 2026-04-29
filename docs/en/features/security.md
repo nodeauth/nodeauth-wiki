@@ -55,7 +55,7 @@ Data security lies not only in encryption but also in **redundancy**:
 ## 🔑 8. Modern Identity Protection (Passkey / WebAuthn)
 We abandon fragile traditional passwords in favor of hardware-based security standards:
 *   **Passkey Hardware Protection**: Supports physical keys (e.g., YubiKey) or biometric authentication to defend against phishing at the source.
-*   **Modern OAuth2 Login**: Pre-configured for major platforms like GitHub, Google, Microsoft, Telegram, Cloudflare Access, Gitee, and NodeLoc. Beyond convenience, it ensures only invited users can gain access via the `OAUTH_ALLOWED_USERS` allowlist.
+*   **Modern OAuth2 Login**: Pre-configured for major platforms like GitHub, Google, Telegram, Cloudflare Access, Gitee, and NodeLoc. Beyond convenience, it ensures only invited users can gain access via the `OAUTH_ALLOWED_USERS` allowlist.
 *   **Web3 Wallet Login**: Supports interactive signature verification with mainstream blockchain wallets like Ethereum for 100% self-hosted authentication.
 
 ---
@@ -67,7 +67,7 @@ Even in uncertain network environments, NodeAuth provides a physically isolated 
 
 ---
 
-## 📡 10. Intelligent Health Check & Sniffing (Health Shield)
+## 📡 10. Intelligent Health Check & Sniffing (Smart Shield)
 Before unlocking, the system performs a deep environment audit:
 *   **Environment Sniffing**: Automatically scans the WASM core, code chunks, and critical anchor points at startup.
 *   **Blocked Unlock**: If environment detection is incomplete or risks of abnormal tampering are found, the system refuses to unlock and provides repair instructions—ensuring "no unlock if the environment is unhealthy."

@@ -55,7 +55,7 @@ NodeAuth 遵循“不触碰、不窥探、不持有”的核心原则。通过�
 ## 🔑 8. 现代身份认证防护 (Passkey / WebAuthn)
 我们摒弃了脆弱的传统密码，转而拥抱基于硬件的安全标准：
 *   **Passkey 硬件防护**：支持物理密钥（如 YubiKey）或生物识别认证，从源头防御钓鱼攻击。
-*   **现代 OAuth2 协议登录**：预设了 GitHub、Google、Microsoft、Telegram、Cloudflare Access、Gitee、NodeLoc 等主流品牌适配，不仅便捷，更通过 `OAUTH_ALLOWED_USERS` 准入白名单制度保障只有受邀用户方可访问。
+*   **现代 OAuth2 协议登录**：预设了 GitHub、Google、Telegram、Cloudflare Access、Gitee、NodeLoc 等主流品牌适配，不仅便捷，更通过 `OAUTH_ALLOWED_USERS` 准入白名单制度保障只有受邀用户方可访问。
 *   **Web3 钱包登录**：支持以太坊等主流区块链钱包进行交互式签名验证，实现 100% 自托管认证。
 
 ---
@@ -67,7 +67,7 @@ NodeAuth 遵循“不触碰、不窥探、不持有”的核心原则。通过�
 
 ---
 
-## 📡 10. 智能健康检查与嗅探 (Health Shield)
+## 📡 10. 智能健康检查与嗅探 (Smart Shield)
 在解锁前，系统会进行一次深度的环境审计：
 *   **环境嗅探**：应用启动时会自动扫描 WASM 核心、分包代码及关键锚点位。
 *   **阻断解锁**：若发现环境检测不完整或存在异常篡改风险，系统将拒绝解锁并提示修复路径，保障“环境不健康，绝不开锁”。
