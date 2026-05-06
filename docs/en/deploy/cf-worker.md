@@ -35,7 +35,11 @@ This is the most convenient and fastest way to deploy. You don't need to purchas
 ### 3. Configure Core Variables
 After a successful deployment, the app won't run yet. You need to inject security keys:
 1.  Enter the project dashboard, click **"Settings"** -> **"Variables & Secrets"**.
-2.  Click **"Add"** and enter the following required items (refer to the [Environment Variables Guide](./env) for details):
+2.  Click **"Add"**, select the type as **"Secret"**, and enter the following required items ([Environment Variables Guide](./env.md)):
+
+> [!CAUTION]
+> **Warning**: Be sure to select the `Secret` type. Otherwise, your configured environment variables may be lost when the project is updated.
+
   *   `NODEAUTH_LICENSE`: System license code, obtain from [license.nodeauth.io](https://license.nodeauth.io).
   *   `ENCRYPTION_KEY`: A random key of at least 32 characters.
   *   `JWT_SECRET`: A random JWT secret of at least 32 characters.
