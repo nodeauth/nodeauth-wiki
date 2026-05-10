@@ -8,8 +8,8 @@ const zhThemeConfig = {
         { text: '🛠️ 部署教程', link: '/deploy/index' },
         { text: '📱 PWA指南', link: '/pwa/' },
         { text: '📥 数据迁移', link: '/data/import' },
-        { text: '🧩 浏览器扩展', link: '/extension/architecture' },
-        { text: '☁️ 云端备份', link: '/data/backup' }
+        { text: '☁️ 云端备份', link: '/data/backup' },
+        { text: '🧩 浏览器扩展', link: '/extension/usage' }
     ],
 
     sidebar: [
@@ -122,8 +122,8 @@ const enThemeConfig = {
         { text: '🛠️ Deployment', link: '/en/deploy/index' },
         { text: '📱 PWA', link: '/en/pwa/' },
         { text: '📥 Migration', link: '/en/data/import' },
-        { text: '🧩 Extension', link: '/en/extension/architecture' },
-        { text: '☁️ Backup', link: '/en/data/backup' }
+        { text: '☁️ Backup', link: '/en/data/backup' },
+        { text: '🧩 Extension', link: '/en/extension/usage' }
     ],
     sidebar: [
         {
@@ -231,6 +231,35 @@ export default defineConfig({
     head: [
         ['link', { rel: 'icon', href: '/favicon.svg' }]
     ],
+    themeConfig: {
+        search: {
+            provider: 'local',
+            options: {
+                locales: {
+                    root: {
+                        translations: {
+                            button: { buttonText: '搜索文档', buttonAriaLabel: '搜索文档' },
+                            modal: {
+                                noResultsText: '无法找到相关结果',
+                                resetButtonTitle: '清除查询条件',
+                                footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' }
+                            }
+                        }
+                    },
+                    en: {
+                        translations: {
+                            button: { buttonText: 'Search Docs', buttonAriaLabel: 'Search Docs' },
+                            modal: {
+                                noResultsText: 'No results for',
+                                resetButtonTitle: 'Reset search',
+                                footer: { selectText: 'to select', navigateText: 'to navigate', closeText: 'to close' }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
     locales: {
         root: {
             label: '简体中文',
