@@ -8,6 +8,7 @@ const zhThemeConfig = {
         { text: '🛠️ 部署教程', link: '/deploy/index' },
         { text: '📱 PWA指南', link: '/pwa/' },
         { text: '📥 数据迁移', link: '/data/import' },
+        { text: '🧩 浏览器扩展', link: '/extension/architecture' },
         { text: '☁️ 云端备份', link: '/data/backup' }
     ],
 
@@ -35,6 +36,14 @@ const zhThemeConfig = {
         {
             text: '📱 PWA 安装指南',
             link: '/pwa/'
+        },
+        {
+            text: '🧩 浏览器扩展',
+            items: [
+                { text: '安装使用', link: '/extension/usage' },
+                { text: '安全架构', link: '/extension/architecture' },
+                { text: '隐私政策', link: '/extension/privacy' }
+            ]
         },
         {
             text: '📥 数据迁移',
@@ -113,6 +122,7 @@ const enThemeConfig = {
         { text: '🛠️ Deployment', link: '/en/deploy/index' },
         { text: '📱 PWA', link: '/en/pwa/' },
         { text: '📥 Migration', link: '/en/data/import' },
+        { text: '🧩 Extension', link: '/en/extension/architecture' },
         { text: '☁️ Backup', link: '/en/data/backup' }
     ],
     sidebar: [
@@ -139,6 +149,14 @@ const enThemeConfig = {
         {
             text: '📱 PWA Installation',
             link: '/en/pwa/'
+        },
+        {
+            text: '🧩 Browser Extension',
+            items: [
+                { text: 'Installation & Usage', link: '/en/extension/usage' },
+                { text: 'Security Architecture', link: '/en/extension/architecture' },
+                { text: 'Privacy Policy', link: '/en/extension/privacy' }
+            ]
         },
         {
             text: '📥 Migration',

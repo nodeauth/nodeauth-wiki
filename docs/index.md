@@ -49,10 +49,9 @@ features:
   - icon: 🔄
     title: 智能同步
     details: 离线动作抵消优化与多端冲突自动判定，确保全球设备数据毫秒级对齐。
-  - icon: 🚑
-    title: 应急恢复包
-    details: 提供 PDF 版 Master Key 备份，确保在极端灾难下也能 100% 找回资产。
-
+  - icon: 🧩
+    title: 浏览器扩展
+    details: 深度集成 Chrome/Edge，支持零知识加密握手，实现真正的物理隔离级安全授权。
 ---
 
 <style>
