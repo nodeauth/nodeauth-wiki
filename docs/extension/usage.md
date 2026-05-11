@@ -4,13 +4,22 @@
 
 ## 1. 安装扩展程序
 
-由于目前扩展程序正在 Chrome 商店审核中，建议您通过以下方式手动安装：
+您可以通过以下两种方式安装 NodeAuth 扩展：
 
-1.  前往 [NodeAuth 扩展仓库 Release 页面](https://github.com/nodeauth/nodeauth-browser-extension/releases) 下载最新的 `.crx` 或 `.zip` 文件。
+### 推荐方式：Chrome 应用商店（官方）
+
+这是最安全、最便捷的安装方式，支持自动更新与云端验证。
+
+*   👉 **[前往 Chrome 应用商店安装](https://chromewebstore.google.com/detail/nodeauth/ejknfokfdojopelcbidgchnopeapnjgd)**
+
+### 备选方式：手动安装（GitHub）
+
+如果您无法访问 Chrome 商店，可以从源代码仓库手动加载：
+
+1.  前往 [NodeAuth 扩展仓库 Release 页面](https://github.com/nodeauth/nodeauth-browser-extension/releases) 下载最新的 `.zip` 文件。
 2.  在 Chrome 浏览器地址栏输入 `chrome://extensions/` 并回车。
 3.  打开右上角的 **“开发者模式”**。
-4.  **如果是 .zip 文件**：解压后点击“加载已解压的扩展程序”，选择 `dist` 目录。
-5.  **如果是 .crx 文件**：直接将其拖入扩展程序页面即可安装。
+4.  将下载的 `.zip` 文件解压，点击“加载已解压的扩展程序”，选择解压后的目录。
 
 ## 2. 授权与配对
 

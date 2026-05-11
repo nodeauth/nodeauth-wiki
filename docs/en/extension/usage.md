@@ -4,13 +4,22 @@ This guide will walk you through the installation, pairing, and daily use of the
 
 ## 1. Installation
 
-While the extension is undergoing review in the Chrome Web Store, we recommend manual installation:
+You can install the NodeAuth extension via two methods:
 
-1.  Go to the [NodeAuth Extension Releases](https://github.com/nodeauth/nodeauth-browser-extension/releases) and download the latest `.crx` or `.zip` file.
+### Recommended: Chrome Web Store (Official)
+
+This is the most secure and convenient way to install, supporting automatic updates and cloud verification.
+
+*   👉 **[Install from Chrome Web Store](https://chromewebstore.google.com/detail/nodeauth/ejknfokfdojopelcbidgchnopeapnjgd)**
+
+### Alternative: Manual Installation (GitHub)
+
+If you cannot access the Chrome Web Store, you can load it manually from the source repository:
+
+1.  Go to the [NodeAuth Extension Releases](https://github.com/nodeauth/nodeauth-browser-extension/releases) and download the latest `.zip` file.
 2.  Open `chrome://extensions/` in your browser.
 3.  Enable **"Developer mode"** in the top right corner.
-4.  **For .zip**: Extract it and click "Load unpacked," then select the `dist` directory.
-5.  **For .crx**: Drag and drop the file onto the extensions page to install.
+4.  Extract the downloaded `.zip` file, click "Load unpacked," and select the extracted directory.
 
 ## 2. Authorization & Pairing
 
