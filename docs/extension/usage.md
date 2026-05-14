@@ -4,22 +4,35 @@
 
 ## 1. 安装扩展程序
 
-您可以通过以下两种方式安装 NodeAuth 扩展：
+您可以通过以下方式安装 NodeAuth 扩展：
 
-### 推荐方式：Chrome 应用商店（官方）
+### 推荐方式：官方商店安装
 
-这是最安全、最便捷的安装方式，支持自动更新与云端验证。
+这是最便捷的安装方式，支持自动更新与云端验证。
 
-*   👉 **[前往 Chrome 应用商店安装](https://chromewebstore.google.com/detail/nodeauth/ejknfokfdojopelcbidgchnopeapnjgd)**
+*   👉 **[Chrome 应用商店](https://chromewebstore.google.com/detail/nodeauth/ejknfokfdojopelcbidgchnopeapnjgd)** (适用于 Chrome 浏览器)
+*   👉 **[Firefox 附加组件商店](https://addons.mozilla.org/zh-CN/firefox/addon/nodeauth/)** (适用于 Firefox 浏览器)
 
 ### 备选方式：手动安装（GitHub）
 
-如果您无法访问 Chrome 商店，可以从源代码仓库手动加载：
+如果您无法访问浏览器扩展商店，可以从源代码仓库手动加载：
+
+#### Chrome / Edge：
+
+1.  前往 [NodeAuth 扩展仓库 Release 页面](https://github.com/nodeauth/nodeauth-browser-extension/releases) 下载最新的 `.zip` 文件并解压。
+2.  在地址栏输入 `chrome://extensions/` 并回车。
+3.  打开右上角的 **“开发者模式”**。
+4.  点击“加载已解压的扩展程序”，选择解压后的目录。
+
+#### Firefox：
 
 1.  前往 [NodeAuth 扩展仓库 Release 页面](https://github.com/nodeauth/nodeauth-browser-extension/releases) 下载最新的 `.zip` 文件。
-2.  在 Chrome 浏览器地址栏输入 `chrome://extensions/` 并回车。
-3.  打开右上角的 **“开发者模式”**。
-4.  将下载的 `.zip` 文件解压，点击“加载已解压的扩展程序”，选择解压后的目录。
+2.  在地址栏输入 `about:debugging` 并回车。
+3.  点击左侧的 **“此 Firefox”** (This Firefox)。
+4.  点击 **“临时载入附加组件...”**，选择下载的 `.zip` 文件。
+
+> [!NOTE]
+> 由于 Firefox 稳定版要求强制签名，手动加载的扩展在浏览器重启后会失效。如需永久使用，请优先使用官方商店安装。
 
 ## 2. 授权与配对
 

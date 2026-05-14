@@ -4,29 +4,42 @@ This guide will walk you through the installation, pairing, and daily use of the
 
 ## 1. Installation
 
-You can install the NodeAuth extension via two methods:
+You can install the NodeAuth extension via the following methods:
 
-### Recommended: Chrome Web Store (Official)
+### Recommended: Official Stores
 
-This is the most secure and convenient way to install, supporting automatic updates and cloud verification.
+This is the most convenient way to install, supporting automatic updates and cloud verification.
 
-*   👉 **[Install from Chrome Web Store](https://chromewebstore.google.com/detail/nodeauth/ejknfokfdojopelcbidgchnopeapnjgd)**
+*   👉 **[Chrome Web Store](https://chromewebstore.google.com/detail/nodeauth/ejknfokfdojopelcbidgchnopeapnjgd)** (for Chrome browser)
+*   👉 **[Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/nodeauth/)** (for Firefox browser)
 
 ### Alternative: Manual Installation (GitHub)
 
-If you cannot access the Chrome Web Store, you can load it manually from the source repository:
+If you cannot access the official extension stores, you can load it manually from the source repository:
 
-1.  Go to the [NodeAuth Extension Releases](https://github.com/nodeauth/nodeauth-browser-extension/releases) and download the latest `.zip` file.
+#### Chrome / Edge:
+
+1.  Go to the [NodeAuth Extension Releases](https://github.com/nodeauth/nodeauth-browser-extension/releases) and download the latest `.zip` file and extract it.
 2.  Open `chrome://extensions/` in your browser.
 3.  Enable **"Developer mode"** in the top right corner.
-4.  Extract the downloaded `.zip` file, click "Load unpacked," and select the extracted directory.
+4.  Click **"Load unpacked"** and select the extracted directory.
+
+#### Firefox:
+
+1.  Download the latest `.zip` file from the [NodeAuth Extension Releases](https://github.com/nodeauth/nodeauth-browser-extension/releases) page.
+2.  Open `about:debugging` in your browser.
+3.  Click **"This Firefox"** on the left sidebar.
+4.  Click **"Load Temporary Add-on..."** and select the downloaded `.zip` file.
+
+> [!NOTE]
+> Due to signature requirements in Firefox stable, manually loaded extensions will expire when the browser restarts. For permanent use, please install from the official store.
 
 ## 2. Authorization & Pairing
 
 After installation, you must establish a secure connection between the extension and your NodeAuth PWA instance:
 
 1.  **Open PWA**: Log in to your NodeAuth PWA (e.g., `https://auth.example.com`).
-2.  **Go to Settings**: Navigate to **"Settings"** -> **"Devices"**.
+2.  **Go to Settings**: Navigate to **"Settings"** -> **"Device Management"**.
 3.  **Authorize**: Click the **"Authorize Extension"** button.
 4.  **Complete Handshake**: A confirmation page will appear. Once confirmed, the extension will automatically receive your encrypted vault seeds via a secure tunnel.
 
@@ -42,7 +55,7 @@ For security, the extension features an independent local locking mechanism:
 
 *   **View Tokens**: Click the NodeAuth icon in your toolbar and enter your PIN to view your 2FA tokens.
 *   **Quick Search**: Filter your accounts instantly by typing keywords.
-*   **Device Management**: If you lose a computer where the extension is installed, you can revoke its access remotely from the "Devices" section in the PWA.
+*   **Device Management**: If you lose a computer where the extension is installed, you can revoke its access remotely from the "Device Management" section in the PWA.
 
 ---
 
