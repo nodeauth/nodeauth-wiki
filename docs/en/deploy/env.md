@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Environment Variables Configuration In-depth Guide. Details the specific configuration workflows for core security keys essential for system operation (License, Encryption Key, JWT), user admission allowlists (OIDC/OAuth), and 7 major login platforms (GitHub, Google, Telegram, etc.). Includes database engine setups and advanced security hardening (AES encryption desensitization) solutions to ensure your deployment is robust and compliant."
+---
 # Environment Variables Guide
 
 Regardless of the deployment method you choose, you need to configure the following core environment variables. These variables directly determine the system's security and functional availability.

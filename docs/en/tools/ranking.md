@@ -1,3 +1,6 @@
+---
+description: "2FA Authenticator App Ecosystem In-depth Review and Ranking. The NodeAuth team objectively analyzes the pros and cons of mainstream authenticators (such as Google Authenticator, Microsoft Authenticator, Aegis, 2FAS) for you, providing professional selection advice from dimensions like security, backup capabilities, and cross-platform support."
+---
 # 2FA App Ecosystem Ranking
 
 When choosing a 2FA tool, security, openness, and data sovereignty are the three major criteria. Below is a horizontal comparison reference compiled by NodeAuth for your information.

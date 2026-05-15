@@ -1,3 +1,6 @@
+---
+description: "NodeAuth 云端自动备份设置指南。详细解析如何配置 SMTP 邮件自发、Telegram Bot 实时备份、S3/R2 云存储以及 GitHub 私有仓库等多元化备份通道。深度涵盖 Google Drive、OneDrive、Dropbox 及百度网盘的 OAuth 安全授权流程，配合 AES-GCM 二重加密与 version_timestamp 冲突解决策略，为您构建坚不可摧的异地容灾防线。"
+---
 # 云端自动备份设置
 
 实现异地冗余备份是防止极端风险的最后一道防线。NodeAuth 支持多通道自动同步，确保您的 2FA 资产在任何情况下都能“一键回血”。

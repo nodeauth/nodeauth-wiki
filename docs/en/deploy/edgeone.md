@@ -1,3 +1,6 @@
+---
+description: "Tencent Cloud EdgeOne Edge Function Deployment NodeAuth Tutorial. Details how to utilize the Tencent Cloud edge computing platform to host the 2FA system, covering key steps like edge function creation, code injection, environment variable configuration, and route binding. Provides you with another high-performance serverless deployment option outside of Cloudflare."
+---
 # Tencent Cloud EdgeOne Deployment Tutorial
 
 Tencent Cloud EdgeOne is an edge computing platform. Since NodeAuth follows standard Serverless Worker specifications, it can be easily deployed as EdgeOne edge functions.

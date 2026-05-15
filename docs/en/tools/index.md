@@ -1,3 +1,6 @@
+---
+description: "NodeAuth TOTP Core Toolkit Overview. Integrates a variety of practical security tools, including a high-strength random password generator, OTPAuth protocol parsing, QR code parsing and generation, etc. Provides a one-stop 2FA technical support environment, fully assisting your digital security management."
+---
 # TOTP Core Toolbox
 
 NodeAuth provides a powerful geek toolbox for TOTP algorithm simulation, secret format conversion, and time offset debugging.

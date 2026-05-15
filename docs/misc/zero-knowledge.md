@@ -1,3 +1,6 @@
+---
+description: "NodeAuth 零知识 (Zero-Knowledge) 架构底层原理科普。通俗易懂地解析“不触碰、不窥探、不持有”的设计哲学，深入探讨主密码如何通过 PBKDF2 派生并实现数据的本地解密，揭示为何即便服务器沦陷您的 2FA 资产也依然绝对安全。"
+---
 # 零知识架构 (Zero-Knowledge)
 
 NodeAuth 采用“零知识（Zero-Knowledge）”架构，安全级别正式对齐了 1Password / Bitwarden 等顶级密码管理器的标准。

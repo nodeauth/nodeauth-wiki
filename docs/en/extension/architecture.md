@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Browser Extension Security Architecture In-depth Analysis. Uncovers the \"Zero-Knowledge Encrypted Handshake\" and \"Physically Isolated Authorization\" mechanisms, detailing how the extension communicates asymmetrically with the PWA side. This ensures that the core 2FA keys remain under controlled, encrypted sandbox protection even within the browser environment."
+---
 # 🧩 Security Architecture
 
 The NodeAuth browser extension is more than just an add-on; it is a **standalone, physically isolated security device**. It uses a mechanism called "DOM Pre-emption & Encrypted Tunnel Routing" to ensure that your Master Key is never exposed during transmission.

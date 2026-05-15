@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Core Features Overview. Deep dive into this cross-platform, high-availability, and fully open-source 2FA/TOTP management system. Explore its Zero-Knowledge architecture, End-to-End Encryption, and serverless deployment architecture, experiencing the next-generation digital identity authentication solution that truly returns data sovereignty to you."
+---
 # Project Introduction
 
 NodeAuth is a **high-security**, **lightweight**, and **cross-platform** 2FA/TOTP management tool.

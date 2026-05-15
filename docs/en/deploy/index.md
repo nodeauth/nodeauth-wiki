@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Deployment Solutions Comprehensive Guide. Covers three mainstream solutions: zero-cost hosting on Cloudflare Workers, private Docker deployment, and automated deployment via GitHub Actions. Provides a one-stop operation manual from environment variable configuration and license code acquisition to system initialization and version maintenance."
+---
 # Deployment Options
 
 NodeAuth uses a modern architecture that supports highly flexible deployment solutions. You can choose Cloudflare's free tier for zero-cost hosting or use Docker in your private cloud (NAS/Home Server) for complete data sovereignty.

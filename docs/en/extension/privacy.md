@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Browser Extension Privacy Policy. Solemnly promises \"Zero Logs, Zero Collection, Zero Uploads\". Details the purposes of required extension permissions (like storage, alarms, etc.) and explains how we protect your usage footprint through localized processing and end-to-end encryption technology, building a true privacy defense line."
+---
 # NodeAuth Extension Privacy Policy
 **Last Updated: May 10, 2026**
 

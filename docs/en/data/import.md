@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Multi-Platform Data Migration Guide. Powered by a built-in universal import engine, it supports automatic recognition and one-stop parsing of export formats from over 20 mainstream 2FA tools (Google Authenticator, Microsoft Authenticator, 2FAS, Aegis) and password managers (Bitwarden, 1Password). Details the GA multi-page QR code merge and Steam Guard (.maFile) import processes, ensuring a migration that is zero-knowledge, localized, and painlessly deduplicated."
+---
 # Data Import (Migration Guide)
 
 NodeAuth features a powerful **Universal Import Engine** capable of automatically identifying and parsing export formats from over 20 mainstream 2FA apps and password managers. Simply drag and drop your file for a painless migration.

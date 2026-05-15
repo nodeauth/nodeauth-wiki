@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Efficient Management Advanced Guide. Explores how to use site-wide search, smart sorting (by frequency, by letter), and deep classification features to quickly locate target tokens. Introduces Next Code pre-reading technology and optimized numeric segmented display, significantly improving interaction efficiency in high-frequency use scenarios."
+---
 # Vault Management (Sorting, Categories & Search)
 
 When your account count reaches dozens or even hundreds, efficient management tools become particularly important.

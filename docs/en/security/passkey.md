@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Passkey Configuration Guide. Provides hardware-level identity authentication based on FIDO2 and WebAuthn standards. Details how to register physical Security Keys or biometric credentials, and explores how PRF extension technology enables encryption keys to be derived within the secure enclave without ever landing on disk, defending against phishing and XSS attacks at the root for true seamless security."
+---
 # Passkeys
 
 Passkeys provide hardware-level authentication based on the FIDO2 standard. They allow you to unlock your NodeAuth account using biometrics (fingerprint, face recognition) or physical Security Keys.

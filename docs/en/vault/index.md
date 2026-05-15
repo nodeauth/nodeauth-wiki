@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Account Management Basic Manual. Covers core operations of adding, deleting, modifying, and querying 2FA tokens, and introduces how to add accounts by scanning QR codes or manually entering keys. It details account metadata editing, classification management, and automatic icon association features, helping you build an orderly digital identity vault."
+---
 # Vault Management (Basic Operations)
 
 The core of NodeAuth is managing your Two-Factor Authentication (2FA) accounts. All operations are executed in a **fully encrypted** environment.

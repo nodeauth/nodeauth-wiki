@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Offline Mode Feature Guide. An Air-Gap physically isolated environment designed for high-security needs. Introduces how to achieve pure local sandbox operation through mandatory API blocking and network state spoofing, ensuring 2FA dynamic codes remain robustly available in completely disconnected environments to fundamentally eliminate data leakage risks."
+---
 # Offline Mode
 
 Offline Mode is a "physical isolation" feature designed for geeks with extreme security requirements.

@@ -1,3 +1,6 @@
+---
+description: "Cloudflare Worker 部署 NodeAuth 详细教程。手把手教您如何通过 Fork 仓库、一键自动化部署，以及配置核心环境变量（License、加密密钥、OAuth 登录等）实现零成本、零维护的 2FA/TOTP 管理系统。包含自定义域名绑定等进阶设置指南。"
+---
 # Cloudflare Worker 部署教程 (推荐)
 
 这是最省心、最快捷的部署方式。您完全不需要购买服务器，由 Cloudflare 全球加速网络免费为您托管，真正实现**零成本、零维护**。

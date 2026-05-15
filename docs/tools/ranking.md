@@ -1,3 +1,6 @@
+---
+description: "2FA Authenticator 应用生态深度测评与排行榜。NodeAuth 团队为您客观分析主流验证器（如 Google Authenticator, Microsoft Authenticator, Aegis, 2FAS）的优缺点，从安全性、备份能力、跨平台支持等维度提供专业选型建议。"
+---
 # 2FA APP 生态排行榜
 
 在选择 2FA 工具时，安全性、开放度和数据主权是三大衡量标准。以下是 NodeAuth 为您整理的行业横向对比参考。

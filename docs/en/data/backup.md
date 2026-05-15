@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Cloud Automatic Backup Setup Guide. Details how to configure diversified backup channels such as automated SMTP emails, Telegram Bot real-time backups, S3/R2 cloud storage, and GitHub private repositories. Deeply covers the OAuth secure authorization workflows for Google Drive, OneDrive, Dropbox, and Baidu Netdisk. Paired with AES-GCM double encryption and version_timestamp conflict resolution strategies, it builds an indestructible offsite disaster recovery defense."
+---
 # Automatic Cloud Backup
 
 Off-site redundant backup is the last line of defense against extreme risks. NodeAuth supports multi-channel automatic synchronization, ensuring your 2FA assets can be recovered with one click in any situation.

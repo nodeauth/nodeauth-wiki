@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Auxiliary Security Tools Collection. Provides features including high-entropy random character generation, Base32 encoding conversion, and QR code compliance detection. Designed to provide clean, track-free localized algorithmic support for security experts and geek users, preventing sensitive information leakage on untrusted websites."
+---
 # Utility Tools
 
 In addition to the core TOTP functionality, NodeAuth also features built-in utility tools to improve geek efficiency.

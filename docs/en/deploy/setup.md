@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Project Initialization and Activation Tutorial. Guides you through the Smart Shield intelligent self-check system to eliminate environment variable risks and complete your first login. Focuses on how to generate and verify the \"Emergency Recovery Kit (PDF)\" to ensure secure offline storage of the core encryption key, and walks through preliminary security setups like enabling PIN locks and Ghost Mode."
+---
 # Initial Setup Guide
 
 After successful deployment, you need to follow these simple steps to activate and protect your NodeAuth instance.

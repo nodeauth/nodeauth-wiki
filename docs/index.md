@@ -1,5 +1,6 @@
 ---
 layout: home
+description: "NodeAuth 官方文档 - 跨平台开源 2FA/TOTP 身份验证器，支持 Cloudflare Worker 部署、数据加密备份与多端同步。"
 
 hero:
   name: NodeAuth

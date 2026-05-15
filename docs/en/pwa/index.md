@@ -1,3 +1,6 @@
+---
+description: "NodeAuth PWA (Progressive Web App) Installation Guide. Details how to add NodeAuth to the home screen or install it as a standalone application on iOS (Safari), Android (Chrome), and desktop (Windows/macOS/Linux). Enjoy an immersive full-screen native app experience, zero-perception white screen startup, and offline instant load capabilities."
+---
 # PWA Installation Guide
 
 NodeAuth is a **Progressive Web App (PWA)**. Once installed, it appears on your phone's home screen or your computer's taskbar just like a native app, providing a better full-screen experience and superior offline capabilities.

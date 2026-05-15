@@ -1,3 +1,6 @@
+---
+description: "腾讯云 EdgeOne 边缘函数部署 NodeAuth 教程。详细介绍如何利用腾讯云边缘计算平台托管 2FA 系统，涵盖边缘函数创建、代码注入、环境变量配置及路由绑定等关键步骤，为您提供 Cloudflare 之外的又一高性能 Serverless 部署选项。"
+---
 # Tencent Cloud EdgeOne 部署教程
 
 Tencent Cloud EdgeOne 是腾讯云提供的边缘计算平台。由于 NodeAuth 遵循标准的 Serverless Worker 规范，它可以轻松部署到 EdgeOne 边缘函数中。

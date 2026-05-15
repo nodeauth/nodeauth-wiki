@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Secure Lock Feature Guide. Introduces how to build application-level access control through a 6-digit PIN code and biometric (fingerprint, face) recognition. Covers high-strength 100,000-iteration PBKDF2 hash validation, auto-lock delay strategies, and a \"Nuclear Self-Destruct\" local cache wiping mechanism for forgotten PINs, comprehensively protecting your 2FA data from physical prying."
+---
 # Security Lock
 
 Security Lock is NodeAuth's "app-level gatekeeper," preventing others from snooping on your data if your phone is left unlocked.

@@ -1,3 +1,6 @@
+---
+description: "NodeAuth GitHub Action 自动化部署教程。面向开发者提供的高级部署方案，支持通过 GitHub Secrets 安全管理 API 令牌与数据库 ID。实现代码提交即自动同步至 Cloudflare Workers 与 D1 数据库，提供全透明的部署日志与版本追溯能力。"
+---
 # GitHub Action 自动化部署 (开发者推荐)
 
 如果您希望拥有更高的控制权、版本追溯能力，或者需要更精确地管理 Cloudflare D1 数据库，GitHub Action 是最稳健的选择。

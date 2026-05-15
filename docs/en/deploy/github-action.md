@@ -1,3 +1,6 @@
+---
+description: "NodeAuth GitHub Actions Automated Deployment Tutorial. An advanced deployment solution for developers, supporting secure management of API tokens and database IDs via GitHub Secrets. Achieves automatic synchronization to Cloudflare Workers and the D1 database upon code commit, providing fully transparent deployment logs and version traceability."
+---
 # GitHub Action Automated Deployment (Recommended for Developers)
 
 If you want higher control, version traceability, or need to manage the Cloudflare D1 database more precisely, GitHub Action is the most robust choice.

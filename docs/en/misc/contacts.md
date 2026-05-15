@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Official Team Contact Information and Project Roadmap. Get the latest version update news, submit bugs, or suggest feature improvements. Welcome to join our global geek community via channels like Telegram and GitHub to co-build the most secure open-source 2FA ecosystem."
+---
 # Contact & Roadmap
 
 The growth of NodeAuth is inseparable from the feedback and support of our community users.

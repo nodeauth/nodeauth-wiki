@@ -1,3 +1,6 @@
+---
+description: "NodeAuth PWA (渐进式 Web 应用) 安装指南。详细介绍如何在 iOS (Safari)、Android (Chrome) 以及桌面端 (Windows/macOS/Linux) 将 NodeAuth 添加到主屏幕或作为独立应用安装。享受沉浸式的全屏原生应用体验、白屏零感知启动与离线秒开能力。"
+---
 # PWA 安装指南
 
 NodeAuth 是一个**渐进式 Web 应用 (PWA)**。安装后，它可以像原生 App 一样出现在您的手机桌面或电脑任务栏中，并获得更好的全屏体验和离线能力。

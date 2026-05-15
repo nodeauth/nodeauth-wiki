@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Offline Function Boundaries and Physical Isolation Instructions. Clarifies the availability of core app features in a completely disconnected environment (Airplane Mode) and explores which operations (such as syncing, OAuth login) require network support. Provides clear behavioral guidance for using 2FA tokens in extreme environments."
+---
 # Offline Feature Boundaries
 
 NodeAuth's offline-first architecture is powerful, but as a web application, some functions cannot be performed in a completely disconnected environment. Please be aware of these limitations.

@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Manual Data Export Guide. Provides a highly secure, fully localized data export solution supporting NodeAuth Encrypted JSON, 2FAS, Aegis, and other third-party compatible formats. Specially highlights the \"HTML Offline Interactive Page\" feature, helping you view all dynamic codes offline through a single file without a network connection in extreme disconnect or server unreachable scenarios, ensuring data sovereignty and access continuity."
+---
 # Manual Data Export
 
 Your data sovereignty belongs entirely to you. NodeAuth provides multiple flexible and secure export methods, ensuring you can perform physically isolated cold backups locally or migrate seamlessly to other platforms. All encryption processes are completed locally in your browser; your core Secrets never leave your device in plaintext.

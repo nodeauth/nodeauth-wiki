@@ -1,3 +1,6 @@
+---
+description: "NodeAuth End-to-End Encryption (E2EE) Implementation Standard. Details the application of the high-strength AES-GCM encryption algorithm throughout the entire lifecycle of data transmission and storage. Introduces how data is physically encrypted before leaving the browser, ensuring it always exists in ciphertext across any insecure channels to meet commercial-grade security standards."
+---
 # End-to-End Encryption (E2EE)
 
 NodeAuth implements standard **End-to-End Encryption (E2EE)** for its core identity assets (2FA secrets). To ensure users understand how their data flows, we've broken down the cryptographic principles of this architecture:

@@ -1,3 +1,6 @@
+---
+description: "NodeAuth 全平台数据搬家指南。凭借内置的万用导入引擎，支持自动识别并一站式解析超过 20 种主流 2FA 工具（Google Authenticator, Microsoft Authenticator, 2FAS, Aegis）及密码管理器（Bitwarden, 1Password）的导出格式。详细讲解 GA 分页扫码合并与 Steam 令牌 (.maFile) 导入流程，确保迁移过程零知识、本地化且无痛去重。"
+---
 # 全平台数据导入（搬家指南）
 
 NodeAuth 拥有强大的 **万用导入引擎**，能够自动识别并解析超过 20 种主流 2FA 应用和密码管理器的导出格式。只需将文件轻轻一拖，即可完成无痛迁移。

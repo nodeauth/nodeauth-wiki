@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Zero-Knowledge Architecture Underlying Principle Popularization. Explains the design philosophy of \"No Touch, No Peek, No Hold\" in an easy-to-understand way. Deeply explores how the master password is derived via PBKDF2 to achieve local data decryption, revealing why your 2FA assets remain absolutely secure even if the server is compromised."
+---
 # Zero-Knowledge Architecture (Zero-Knowledge)
 
 NodeAuth utilizes a "Zero-Knowledge" architecture, officially aligning its security standards with top-tier password managers like 1Password and Bitwarden.

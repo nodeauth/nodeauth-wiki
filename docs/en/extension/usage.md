@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Browser Extension Installation and Usage Guide. Deeply integrates with Chrome and Edge browsers, supports zero-knowledge encrypted handshake protocols, and achieves physically isolated communication with PWA applications. Introduces how to use the extension for one-click autofill of dynamic codes, greatly enhancing the secure login experience on the desktop."
+---
 # 🧩 Installation & Usage
 
 This guide will walk you through the installation, pairing, and daily use of the NodeAuth browser extension.

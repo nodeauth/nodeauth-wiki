@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Docker Private Deployment Guide. Designed specifically for users pursuing absolute data control, supporting SQLite, MySQL, and PostgreSQL database engines. Covers advanced security practices from permission locking and directory preparation to docker-compose template configuration, environment variable encryption hardening, and reverse proxies, helping you build a physically isolated 2FA center on a NAS or private server."
+---
 # Docker On-premise Deployment
 
 Docker deployment is a solution tailored for geeks, NAS users, and corporate environments seeking **absolute control over their data**. It allows you to store all 2FA data on your own physical hard drives, ensuring normal use via PWA even in offline or local network environments.

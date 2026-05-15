@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Device and Session Management Guide. Provides transparent real-time session auditing with automatic multi-platform device recognition and IP privacy desensitization display. Introduces how to execute remote secure logout to physically invalidate abnormal tokens, and how the unique Device Salt achieves hardware-level isolation for decryption environments on each endpoint, ensuring your account access is always controlled."
+---
 # Device Management
 
 NodeAuth provides transparent session auditing, allowing you to stay in control of who logged into your system, at what time, and on which device.

@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Ghost Mode Detailed Explanation. Achieves an instant 15px Gaussian blur overlay upon background switching by monitoring browser visibility, effectively preventing task manager snapshot leaks. Combined with the \"Privacy Long Press to View\" mechanism and operation desensitization prompts, it provides a physical-level privacy barrier for your 2FA dynamic codes in public social scenarios like subways and elevators."
+---
 # Ghost Mode
 
 Ghost Mode is designed to protect your data privacy in physical social settings, preventing snooping or accidental screen leaks via screen previews.

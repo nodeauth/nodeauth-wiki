@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Ultimate Security Architecture Detailed Explanation. Deeply explores Zero-Knowledge architecture, End-to-End Encryption (E2EE), and full-database cold encryption mechanisms. Covers core security technologies like hardware salt injection, biometric admission control, Ghost Mode, and Air-Gap offline isolation, building an insurmountable digital identity defense line for you."
+---
 # Ultimate Security: All-around Privacy Defense
 
 Security is the bottom line and the soul of NodeAuth's design. Through a comprehensive "end-to-end encryption" and "all-scenario protection" system, we build an unshakable fortress for your digital identity.

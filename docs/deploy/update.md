@@ -1,3 +1,6 @@
+---
+description: "NodeAuth 系统更新与维护指南。详细介绍 Cloudflare Worker 用户如何通过 GitHub Action 同步代码实现自动更新，以及 Docker 用户如何通过镜像拉取完成无缝升级。提供数据备份建议与日志监控方法，确保您的 2FA 系统长期稳定、安全运行。"
+---
 # 更新与维护指南
 
 定期更新 NodeAuth 可以让您获得最新的安全补丁和功能改进。

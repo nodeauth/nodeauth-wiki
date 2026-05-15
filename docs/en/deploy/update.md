@@ -1,3 +1,6 @@
+---
+description: "NodeAuth System Update and Maintenance Guide. Details how Cloudflare Worker users can achieve automatic updates by syncing code via GitHub Actions, and how Docker users can complete seamless upgrades by pulling images. Provides data backup advice and log monitoring methods to ensure your 2FA system operates stably and securely over the long term."
+---
 # Update & Maintenance Guide
 
 Regularly updating NodeAuth ensures you receive the latest security patches and functional improvements.

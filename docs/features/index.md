@@ -1,3 +1,6 @@
+---
+description: "NodeAuth 项目全方位介绍。涵盖其作为高安全、轻量级、跨平台 2FA/TOTP 工具的核心优势，包括 Serverless 与 Docker 灵活部署方案，以及深度集成的安全架构与丝滑的 PWA 交互体验。"
+---
 # 项目介绍
 
 NodeAuth 是一款**高安全**、**轻量级**、**跨平台**的二步验证 (2FA/TOTP) 管理工具。

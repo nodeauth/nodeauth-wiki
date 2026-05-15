@@ -1,3 +1,6 @@
+---
+description: "NodeAuth 部署方案全攻略。涵盖 Cloudflare Worker 零成本托管、Docker 私有化部署以及 GitHub Action 自动化部署三大主流方案。为您提供从环境变量配置、授权码获取到系统初始化与版本维护的一站式操作手册。"
+---
 # 部署方案（三选一） 
 
 NodeAuth 采用前后端分离的现代化架构，支持极其灵活的部署方案。您可以选择白嫖 Cloudflare 的免费额度实现零成本托管，也可以在私有云（NAS/自有服务器）中通过 Docker 实现完全的数据主权。

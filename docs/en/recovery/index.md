@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Emergency Recovery and Disaster Salvation Guide. Through a disaster recovery decision matrix, it guides you on how to use the Recovery Kit PDF, encrypted backup files, and offline decryption scripts to achieve 100% asset retrieval in extreme scenarios such as server damage or database leaks. It focuses on the three major recovery paths, including environment-level perfect resurrection and offline manual reading, providing you with the ultimate digital survival guarantee."
+---
 # Emergency Recovery & Disaster Survival
 
 In extreme disaster scenarios (such as complete server failure, accidental database leaks, or deployment platform bans), NodeAuth provides you with a multi-layered asset protection umbrella. Please choose the most appropriate recovery path based on your current "survival resources."

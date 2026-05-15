@@ -1,5 +1,6 @@
 ---
 layout: home
+description: "NodeAuth Official Wiki - Open-source, cross-platform 2FA/TOTP authenticator. Supports Cloudflare Worker deployment, encrypted backups, and multi-device sync."
 
 hero:
   name: NodeAuth

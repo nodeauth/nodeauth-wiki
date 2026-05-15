@@ -1,3 +1,6 @@
+---
+description: "Cloudflare Worker Deployment NodeAuth Detailed Tutorial. A step-by-step guide on how to achieve a zero-cost, zero-maintenance 2FA/TOTP management system by forking the repository, using one-click automated deployment, and configuring core environment variables (License, Encryption Key, OAuth Login, etc.). Includes advanced setup guides like custom domain binding."
+---
 # Cloudflare Worker Deployment (Recommended)
 
 This is the most convenient and fastest way to deploy. You don't need to purchase a server, as Cloudflare's global acceleration network will host it for free, truly achieving **zero cost and zero maintenance**.

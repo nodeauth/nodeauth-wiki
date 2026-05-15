@@ -1,3 +1,6 @@
+---
+description: "NodeAuth 通行密钥 (Passkey) 配置指南。基于 FIDO2 与 WebAuthn 标准，为您提供硬件级的身份认证。详细介绍如何注册物理 Security Key 或生物识别凭证，探讨 PRF 扩展技术如何实现加密密钥在安全芯片内派生而不落地，从根源防御钓鱼与 XSS 攻击，实现真正的无感安全。"
+---
 # 通行密钥
 
 通行密钥是 FIDO2 标准下的硬件级认证。它通过生物识别（指纹、面容）或物理 Security Key 解锁您的 NodeAuth 账号。

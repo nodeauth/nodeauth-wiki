@@ -1,3 +1,6 @@
+---
+description: "NodeAuth Personalization and Interface Appearance Customization. Supports smooth switching between dark/light modes and provides multiple theme colors and interactive animation configurations. Introduces how to adjust layout modes (list/grid) and verification code segmentation styles to create an exclusive security management interface that best fits your intuition."
+---
 # Personalization
 
 NodeAuth supports deep visual customization, ensuring that your security tools are also an aesthetic pleasure.
