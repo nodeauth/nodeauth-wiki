@@ -14,7 +14,8 @@ description: "NodeAuth 浏览器扩展安装与使用指南。深度集成 Chrom
 这是最便捷的安装方式，支持自动更新与云端验证。
 
 *   👉 **[Chrome 应用商店](https://chromewebstore.google.com/detail/nodeauth/ejknfokfdojopelcbidgchnopeapnjgd)** (适用于 Chrome 浏览器)
-*   👉 **[Firefox 附加组件商店](https://addons.mozilla.org/zh-CN/firefox/addon/nodeauth/)** (适用于 Firefox 浏览器)
+*   👉 **[Edge 扩展商店](https://microsoftedge.microsoft.com/addons/detail/bclpbakllopgjhelikbhccpjkgbmfpgd)** (适用于 Edge 浏览器)
+*   👉 **[Firefox 扩展商店](https://addons.mozilla.org/zh-CN/firefox/addon/nodeauth/)** (适用于 Firefox 浏览器)
 
 ### 备选方式：手动安装（GitHub）
 

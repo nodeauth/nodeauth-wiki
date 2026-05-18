@@ -14,6 +14,7 @@ You can install the NodeAuth extension via the following methods:
 This is the most convenient way to install, supporting automatic updates and cloud verification.
 
 *   👉 **[Chrome Web Store](https://chromewebstore.google.com/detail/nodeauth/ejknfokfdojopelcbidgchnopeapnjgd)** (for Chrome browser)
+*   👉 **[Edge Add-ons Store](https://microsoftedge.microsoft.com/addons/detail/bclpbakllopgjhelikbhccpjkgbmfpgd)** (for Edge browser)
 *   👉 **[Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/nodeauth/)** (for Firefox browser)
 
 ### Alternative: Manual Installation (GitHub)
