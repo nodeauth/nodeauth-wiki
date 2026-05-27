@@ -7,6 +7,14 @@ description: "Cloudflare Worker 部署 NodeAuth 详细教程。手把手教您�
 
 ---
 
+## 📋 部署前置条件
+- **授权码**：启动系统必须，请前往 [授权中心](https://license.nodeauth.io) 获取。
+- **GitHub 账号**：用于 Fork 代码及一键部署授权。
+- **Cloudflare 账号**：用于提供 Worker 运行环境。
+- **CF 托管域名 (可选)**：若想绑定自定义域名须提前在 CF 托管 (若无则分配 `*.workers.dev`)。
+
+---
+
 ## 🛠️ 部署步骤
 
 ### 1. 准备工作
@@ -45,13 +53,13 @@ description: "Cloudflare Worker 部署 NodeAuth 详细教程。手把手教您�
 > **警告**： 务必选择 `密钥` 类型，否则会在部署项目更新时，出现已配置环境变量丢失情况。
 
   *   `NODEAUTH_LICENSE`：系统授权码，从[license.nodeauth.io](https://license.nodeauth.io)获取。
-  *   `ENCRYPTION_KEY`：32位以上随机密钥。
-  *   `JWT_SECRET`：32位以上随机JWT密钥。
-  *   `OAUTH_ALLOWED_USERS`：你的邮箱@example.com
+  *   `ENCRYPTION_KEY`：32位以上随机密钥，从[tools.nodeauth.io](https://tools.nodeauth.io)获取。
+  *   `JWT_SECRET`：32位以上随机JWT密钥，从[tools.nodeauth.io](https://tools.nodeauth.io)获取。
+  *   `OAUTH_ALLOWED_USERS`：登录白名单，如：your@example.com
 
 
 3.  **别忘了登录渠道**：如果您想用 GitHub 登录，还需添加
-  *   `OAUTH_GITHUB_CLIENT_ID`：你的CLIENT_ID
+  *   `OAUTH_GITHUB_CLIENT_ID`：您的CLIENT_ID
   *   `OAUTH_GITHUB_CLIENT_SECRET`：你的CLIENT_SECRET
   *   `OAUTH_GITHUB_REDIRECT_URI`：你的回调地址
 

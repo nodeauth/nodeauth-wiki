@@ -8,10 +8,7 @@ Regularly updating NodeAuth ensures you receive the latest security patches and 
 ---
 
 ## ☁️ Cloudflare Worker Update
-1. **Automatic Update**: If you have configured GitHub Action, simply execute `Sync Fork` in your forked repository. GitHub will automatically trigger the deployment.
-2. **Manual Update**:
-    *   Execute `git pull` locally to synchronize the latest code.
-    *   Run `npm run deploy` to republish.
+If you have configured GitHub Action, simply execute `Sync Fork` in your forked repository. GitHub will automatically trigger the deployment.
 
 ## 🐳 Docker Update
 If you use Docker for deployment, updating is very simple:

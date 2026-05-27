@@ -9,22 +9,28 @@ NodeAuth features a powerful **Universal Import Engine** capable of automaticall
 
 ## 📂 Supported Import Sources & Formats
 
-### 1. 2FA Mobile Apps
+### 1. System Backups & Spreadsheets
 | Source Platform | Supported Formats | Notes |
 | :--- | :--- | :--- |
-| **Google Authenticator** | QR Codes (.png / .jpg) | Supports multi-page batch scanning |
+| **NodeAuth System Backup** | .json | Fully compatible with Encrypted and Plaintext formats |
+| **Spreadsheets** | .csv | Password and key tables structured according to standard templates |
+
+### 2. 2FA Mobile Apps
+| Source Platform | Supported Formats | Notes |
+| :--- | :--- | :--- |
+| **Google Authenticator** | QR Codes (.png / .jpg) | Supports bulk import of QR code images |
 | **Microsoft Authenticator** | PhoneFactor | Requires root to export internal DB files |
-| **2FAS** | .2fas | Supports encrypted formats (password required) |
+| **2FAS** | .2fas | Supports encrypted formats |
 | **Aegis** | .json / .txt | Supports AES encrypted formats |
 | **Bitwarden Auth** | .json / .csv | Aligned with official Bitwarden specs |
 | **Proton Auth** | .json | Bulk account import |
 | **Ente Auth** | .txt | Plaintext export recognition |
 | **LastPass Auth** | .json | Full account metadata migration |
 
-### 2. Password Managers (Desktop/Cloud)
+### 3. Password Managers (Desktop/Cloud)
 | Source Platform | Supported Formats |
 | :--- | :--- |
-| **Bitwarden** | .json / .csv (Supports encrypted JSON) |
+| **Bitwarden** | .json / .csv |
 | **1Password** | .1pux / .csv |
 | **Proton Pass** | .pgp / .csv |
 | **iCloud Keychain** | .csv |
@@ -32,20 +38,22 @@ NodeAuth features a powerful **Universal Import Engine** capable of automaticall
 | **NordPass / Keeper / Roboform** | .csv |
 | **Dashlane** | .csv |
 
-### 3. Universal & Special Formats
-*   **Steam Guard**: Supports **.maFile** (JSON exported by SDA), Steam URI (`steam://`), and OTPAuth URIs.
-*   **Generic JSON/CSV**: Follows standard `otpauth://` protocols or tables with a `secret` field.
+### 4. Proprietary Tokens
+*   **Steam Guard**: Supports **.maFile** / **.txt** (exported by SDA), Steam URI (`steam://`), and OTPAuth URIs.
+*   **Blizzard Authenticator**: Provides a dedicated Restore Portal to directly take over via Serial and Restore Code.
+
+### 5. Generic Export Formats
 *   **OTPAuth URI Lists**: Supports `.txt` files with one `otpauth://` link per line.
 
 ---
 
-## 📖 Key Migration Guides
+## 📖 Special Platform Migration Guides
 
 ### 🗺️ Google Authenticator (GA) Migration
 Since GA does not support direct file export, follow these steps:
 1.  In the GA app on your phone, tap "Transfer accounts" -> "**Export accounts**".
 2.  In the NodeAuth import interface, scan the generated QR codes.
-3.  **Multi-page Handling**: If you have many accounts, GA will show multiple pages (1/3, 2/3...). NodeAuth supports **continuous scan caching**; simply scan all pages and merge with one click.
+3.  **Multi-page Handling**: If you have many accounts, GA will show multiple pages (1/3, 2/3...). NodeAuth supports bulk uploading of QR code images.
 
 ### 🗺️ Microsoft Authenticator Migration
 For Android users with root access, you can export and upload the database files from:
@@ -54,8 +62,14 @@ For Android users with root access, you can export and upload the database files
 
 ### 🗺️ Steam Guard Migration
 If you use **Steam Desktop Authenticator (SDA)**:
-1.  Locate your `.maFile` files (found in SDA's `maFiles` directory).
+1.  Locate your `.maFile` or `.txt` files (usually found in SDA's `maFiles` directory).
 2.  Drag these files directly into the NodeAuth import area. The system will automatically extract the Steam shared secrets and generate codes.
+
+### 🗺️ Blizzard Authenticator Migration
+Due to the special nature of the Blizzard Authenticator, it does not support direct file exports:
+1.  In the NodeAuth import interface, click **Blizzard Restore Portal**.
+2.  Enter the **14-character Serial** and **10-character Restore Code** recorded from the official website or an old device.
+3.  The system will automatically connect and take over your Blizzard token.
 
 ---
 

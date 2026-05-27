@@ -228,6 +228,9 @@ const enThemeConfig = {
 export default defineConfig({
     title: "NodeAuth Wiki",
     description: "NodeAuth 官方文档 - 跨平台开源 2FA/TOTP 身份验证器，支持 Cloudflare Worker 部署、数据加密备份与多端同步。",
+    rewrites: {
+        'cn/(.*)': '(.*)'
+    },
     lastUpdated: true,
     cleanUrls: true,
     sitemap: {
@@ -286,13 +289,13 @@ export default defineConfig({
 
         const fs = await import('node:fs')
         const path = await import('node:path')
-        
+
         try {
             const docPath = path.resolve(process.cwd(), 'docs', pageData.relativePath)
             const content = fs.readFileSync(docPath, 'utf-8')
-            
+
             const mainContent = content.replace(/^---[\s\S]+?---\n*/, '')
-            
+
             const plainText = mainContent
                 .replace(/<style[\s\S]*?<\/style>/gi, '') // 移除样式块
                 .replace(/<script[\s\S]*?<\/script>/gi, '') // 移除脚本块
@@ -305,7 +308,7 @@ export default defineConfig({
                 .replace(/[\\`*_~#]/g, '') // 移除格式符号
                 .replace(/\s+/g, ' ') // 合并空格
                 .trim()
-            
+
             const desc = plainText.slice(0, 150) + (plainText.length > 150 ? '...' : '')
             if (desc && desc.length > 20) {
                 pageData.description = desc
@@ -328,11 +331,12 @@ export default defineConfig({
             head.push(['link', { rel: 'alternate', hreflang: 'zh-CN', href: `${hostname}/${zhPath}` }])
             head.push(['link', { rel: 'alternate', hreflang: 'en', href: `${hostname}/${cleanPath}` }])
             head.push(['link', { rel: 'alternate', hreflang: 'x-default', href: `${hostname}/${cleanPath}` }])
-        } else {
-            const enPath = `en/${cleanPath}`
+        } else if (relativePath.startsWith('cn/')) {
+            const rootPath = cleanPath.slice(3) // 去除 'cn/'
+            const enPath = `en/${rootPath}`
             head.push(['link', { rel: 'alternate', hreflang: 'en', href: `${hostname}/${enPath}` }])
-            head.push(['link', { rel: 'alternate', hreflang: 'zh-CN', href: `${hostname}/${cleanPath}` }])
-            head.push(['link', { rel: 'alternate', hreflang: 'x-default', href: `${hostname}/${cleanPath}` }])
+            head.push(['link', { rel: 'alternate', hreflang: 'zh-CN', href: `${hostname}/${rootPath}` }])
+            head.push(['link', { rel: 'alternate', hreflang: 'x-default', href: `${hostname}/${rootPath}` }])
         }
 
         return head

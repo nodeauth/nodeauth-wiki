@@ -7,13 +7,17 @@ NodeAuth uses a modern architecture that supports highly flexible deployment sol
 
 ---
 
+> [!CAUTION]
+> **Universal Prerequisites**
+> A `License Code` is required to deploy the NodeAuth system. **Deployment cannot be completed without a valid license code.** Please visit the [License Center](https://license.nodeauth.io) to obtain your license code before proceeding.
+
 ## 🛠️ Choose Your Path
 
-| Scenario | Recommended | Advantages | Difficulty |
-| :--- | :--- | :--- | :--- |
-| **Beginners / Zero-Cost** | [Cloudflare Worker](./cf-worker) | 0 cost, global acceleration, maintenance-free | ⭐ |
-| **Data Sovereignty / LAN** | [Docker Deployment](./docker) | Physical isolation, works offline | ⭐⭐ |
-| **Automation / CI** | [GitHub Action](./github-action) | Auto-sync, version tracking | ⭐⭐⭐ |
+| Scenario | Recommended | Advantages | Required Resources | Difficulty |
+| :--- | :--- | :--- | :--- | :--- |
+| **Beginners / Zero-Cost** | [Cloudflare Worker](./cf-worker) | 0 cost, global edge acceleration, maintenance-free | • GitHub Account<br>• Cloudflare Account<br>• CF Hosted Domain (Optional, defaults to `*.workers.dev`) | ⭐ |
+| **Automation / CI** | [GitHub Action](./github-action) | Push-to-deploy, supports advanced routing params | • GitHub Account<br>• Cloudflare Account<br>• CF Hosted Domain (Optional, defaults to `*.workers.dev`) | ⭐⭐ |
+| **Data Sovereignty / LAN** | [Docker Deployment](./docker) | Physical isolation, offline LAN support, supports 3 major SQL DBs | • VPS or NAS<br>• Docker Environment<br>• Custom Domain (Optional, LAN IP supported) | ⭐⭐⭐ |
 
 ---
 
@@ -23,12 +27,12 @@ It is recommended to follow these guides in order.
 
 ### 1. Essential Preparation
 This is the first step regardless of the deployment method chosen.
-*   **[Environment Variables Guide](./env)**: Detailed explanation of License, 7 major OAuth platforms (including Telegram and Web3) and core database keys.
 *   **[Get License Code](https://license.nodeauth.io)**: Go to the licensing center to get your license code.
+*   **[Environment Variables Guide](./env)**: Detailed explanation of License, 7 major OAuth platforms (including Telegram and Web3) and core database keys.
 
 ### 2. Managed Hosting (Cloudflare)
 *   **[Cloudflare Worker (Recommended)](./cf-worker)**: One-click deployment via Wrangler or web interface, using D1 database for high-performance storage.
-*   **[GitHub Action Automation](./github-action)**: Recommended for developers. Every time you commit code, GitHub will automatically complete the deployment and sync the database.
+*   **[GitHub Action Automation](./github-action)**: Recommended for developers. Push to deploy automatically, with flexible configuration of Worker name, custom domain routing, and other advanced parameters via Secrets.
 
 ### 3. Private Hosting (Docker)
 Suitable for NAS, small servers, VPS, or K8s environments.

@@ -7,6 +7,14 @@ This is the most convenient and fastest way to deploy. You don't need to purchas
 
 ---
 
+## 📋 Deployment Prerequisites
+- **License Code**: Required to start the system, obtain it from the [License Center](https://license.nodeauth.io).
+- **GitHub Account**: Used to Fork the code and authorize one-click deployment.
+- **Cloudflare Account**: Provides the Worker runtime environment.
+- **CF Hosted Domain (Optional)**: If you want to bind a custom domain, it must be hosted on CF (otherwise, `*.workers.dev` is assigned).
+
+---
+
 ## 🛠️ Deployment Steps
 
 ### 1. Preparation
@@ -44,9 +52,9 @@ After a successful deployment, the app won't run yet. You need to inject securit
 > **Warning**: Be sure to select the `Secret` type. Otherwise, your configured environment variables may be lost when the project is updated.
 
   *   `NODEAUTH_LICENSE`: System license code, obtain from [license.nodeauth.io](https://license.nodeauth.io).
-  *   `ENCRYPTION_KEY`: A random key of at least 32 characters.
-  *   `JWT_SECRET`: A random JWT secret of at least 32 characters.
-  *   `OAUTH_ALLOWED_USERS`: your-email@example.com
+  *   `ENCRYPTION_KEY`: A random key of at least 32 characters, obtain from [tools.nodeauth.io](https://tools.nodeauth.io).
+  *   `JWT_SECRET`: A random JWT secret of at least 32 characters, obtain from [tools.nodeauth.io](https://tools.nodeauth.io).
+  *   `OAUTH_ALLOWED_USERS`: Allowed login list, e.g., your@example.com
 
 3.  **Don't forget the login channels**: If you want to use GitHub login, you also need to add:
   *   `OAUTH_GITHUB_CLIENT_ID`: Your CLIENT_ID

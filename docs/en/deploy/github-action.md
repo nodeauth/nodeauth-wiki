@@ -3,7 +3,15 @@ description: "NodeAuth GitHub Actions Automated Deployment Tutorial. An advanced
 ---
 # GitHub Action Automated Deployment (Recommended for Developers)
 
-If you want higher control, version traceability, or need to manage the Cloudflare D1 database more precisely, GitHub Action is the most robust choice.
+If you want higher control, version traceability, or need to manage the Cloudflare Worker configuration more precisely, GitHub Action is the most robust choice.
+
+---
+
+## 📋 Deployment Prerequisites
+- **License Code**: Required to start the system, obtain it from the [License Center](https://license.nodeauth.io).
+- **GitHub Account**: Used for hosting source code and running Action CI.
+- **Cloudflare Account**: Provides the Worker runtime environment and generates API tokens.
+- **CF Hosted Domain (Optional)**: If you want to bind a custom domain, it must be hosted on CF (otherwise, `*.workers.dev` is assigned).
 
 ---
 
@@ -47,9 +55,10 @@ This is the most critical step; never write your core keys directly into your co
 | `CLOUDFLARE_ACCOUNT_ID` | The Account ID displayed on the right side of the Cloudflare Workers dashboard |
 | `CLOUDFLARE_D1_DATABASE_ID` | The ID of the `nodeauth-db` you just created |
 | `CLOUDFLARE_D1_DATABASE_NAME` | `nodeauth-db` |
-| `ENCRYPTION_KEY` | A random key of at least 32 characters |
-| `JWT_SECRET` | A random key of at least 32 characters |
-| `OAUTH_ALLOWED_USERS` | Your allowed login email addresses |
+| `NODEAUTH_LICENSE` | System license code, obtain from [license.nodeauth.io](https://license.nodeauth.io). |
+| `ENCRYPTION_KEY` | A random key of at least 32 characters, obtain from [tools.nodeauth.io](https://tools.nodeauth.io). |
+| `JWT_SECRET` | A random key of at least 32 characters, obtain from [tools.nodeauth.io](https://tools.nodeauth.io). |
+| `OAUTH_ALLOWED_USERS` | Allowed login list, e.g., your@example.com |
 | **OAuth Secrets (Example)** | **Refer to [Login Platform Configuration](./env) for details** |
 | `OAUTH_GITHUB_CLIENT_ID` | Your GitHub Client ID |
 | `OAUTH_GITHUB_CLIENT_SECRET` | Your GitHub Client Secret |
@@ -59,6 +68,19 @@ This is the most critical step; never write your core keys directly into your co
 <summary>Click to view: Secrets Configuration Example</summary>  
 <img width="600" alt="Secrets Configuration Example" src="/deploy/ef907021-303d-4fd5-ba3e-913e8b0014a5.png" />
 </details>
+
+---
+
+## ⚙️ Advanced Custom Parameters (Optional)
+
+Through the built-in AST auto-modification mechanism, in addition to the required credentials, you can further customize your Cloudflare Worker deployment by adding the following optional Secrets:
+
+| Secret Name | Description | Example Value |
+| :--- | :--- | :--- |
+| `CLOUDFLARE_WORKERS_NAME` | Custom name for the Worker deployed on Cloudflare (default is `nodeauth-worker`). | `my-2fa-server` |
+| `CLOUDFLARE_WORKERS_ROUTES` | Bind a custom domain. Format: `request_path,domain_suffix` (use semicolon `;` to separate multiple routes). This requires your domain DNS to be managed by Cloudflare. | `2fa.example.com/*,example.com` |
+| `CLOUDFLARE_WORKERS_DEV` | Whether to enable Cloudflare's default `*.workers.dev` domain. If you bind a custom domain and want to completely block access via the original domain, set this to `false`. | `false` |
+| `CLOUDFLARE_WORKERS_PREVIEW_URLS` | Whether to enable URLs generated for preview branches, typically used for secondary development. | `true` |
 
 ### 4. Trigger Deployment
 *   **Initial Deployment**: Click **"Actions"** at the top of the project, select the `Deploy to Cloudflare Workers` workflow, and click **"Run workflow"**.

@@ -6,10 +6,7 @@ description: "NodeAuth 系统更新与维护指南。详细介绍 Cloudflare Wor
 定期更新 NodeAuth 可以让您获得最新的安全补丁和功能改进。
 
 ## ☁️ Cloudflare Worker 用户更新
-1. **自动更新**：如果您配置了 GitHub Action，直接在您的 Fork 仓库执行 `Sync Fork`，GitHub 会自动触发部署。
-2. **手动更新**：
-    *   在本地执行 `git pull` 同步最新代码。
-    *   运行 `npm run deploy` 重新发布。
+直接在您的 Fork 仓库执行 `Sync Fork`，GitHub 会自动触发部署。
 
 ## 🐳 Docker 用户更新
 如果您使用 Docker 部署，更新非常简单：
