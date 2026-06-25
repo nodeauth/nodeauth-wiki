@@ -105,7 +105,7 @@ While Telegram doesn't require a `REDIRECT_URI` variable, you need to bind the d
    *   `OAUTH_GITEE_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
 
 ### 6. NodeLoc Community
-1. Visit [NodeLoc OAuth Settings](https://nodeloc.com/account/oauth-apps) and create an application.
+1. Visit [NodeLoc OAuth Settings](https://www.nodeloc.com/oauth-provider/applications) and create an application.
 2. **Redirect URI**: `https://your-domain.com/oauth/callback`
 3. **Fill in Environment Variables**:
    *   `OAUTH_NODELOC_CLIENT_ID`

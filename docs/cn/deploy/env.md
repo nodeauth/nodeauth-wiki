@@ -105,7 +105,7 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
    *   `OAUTH_GITEE_REDIRECT_URI`: `https://您的域名/oauth/callback`
 
 ### 6. NodeLoc 社区
-1. 访问 [NodeLoc OAuth 设置](https://nodeloc.com/account/oauth-apps) 创建应用。
+1. 访问 [NodeLoc OAuth 设置](https://www.nodeloc.com/oauth-provider/applications) 创建应用。
 2. **Redirect URI**: `https://您的域名/oauth/callback`
 3. **填入环境变量**：
    *   `OAUTH_NODELOC_CLIENT_ID`
