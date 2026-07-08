@@ -140,18 +140,43 @@ If you have already configured Google login, some variables can be reused, but t
 If you use Cloudflare Workers deployment, the system will automatically use the D1 database, and **no configuration** of the following variables is necessary.
 
 If you are deploying on Docker or your own server:
-*   **Default using SQLite**: Simply mount the `/app/data` directory; no configuration of the following variables is needed.
-*   **Using MySQL / PostgreSQL**: You **must** fully complete all the following connection information (`DB_HOST` to `DB_NAME`).
+*   **Default using SQLite**: Simply mount the `/app/data` directory; no database connection configuration is needed.
+*   **Using MySQL / PostgreSQL / LibSQL / D1**: Please configure `DB_ENGINE`, followed by either **Method 1** or **Method 2** below.
 
-| Variable | Required (non-SQLite) | Default | Description |
+| Basic Variable | Required | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `DB_ENGINE` | ✅ | `sqlite` | Database Type: supports `sqlite`, `mysql`, `postgresql`. |
-| `DB_HOST` | ✅ | - | Database Server Address. Supports local `localhost`, Docker service name `mysql-db`, as well as **remote domains** (e.g.: `aws-1.pooler.supabase.com`) or **public IPs**. |
-| `DB_PORT` | ✅ | - | Database Port. MySQL default is `3306`, PostgreSQL default is `5432`. |
+| `DB_ENGINE` | ✅ | `sqlite` | Database Type: supports `sqlite`, `mysql`, `postgresql`, `libsql`, `d1`. |
+
+#### Method 1: Full Connection String (⭐ Highly Recommended)
+The simplest modern configuration method. Just one line of standard connection URL connects your database, ideal for Turso, Supabase, or external cloud databases.
+
+| Variable | Required | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `DB_URL` | ✅ | - | **Standard connection string**. e.g., `mysql://user:pass@host:3306/dbname` or `postgresql://...`. |
+| `DB_TOKEN` | On-demand | - | **Cloud database auth token**. Required only when connecting to `libsql` (e.g., Turso) or `d1` (Cloudflare D1 Proxy) which require token authentication. |
+| `DB_SSL` | ❌ | `false` | Whether to enable SSL connection (recommended as `true` when connecting to remote cloud databases). |
+
+#### Method 2: Traditional Separate Parameters (Alternative)
+If you prefer traditional separate parameter configuration (e.g., connecting to a database within Docker internal networks), fill in the fields below (if `DB_URL` above is provided, all parameters in this section are automatically ignored).
+
+| Variable | Required | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `DB_HOST` | ✅ | - | Database server address. Supports local `localhost`, Docker service name (e.g., `mysql-db`), remote domain, or IP. |
+| `DB_PORT` | ✅ | - | Database port. MySQL default is `3306`, PostgreSQL default is `5432`. |
 | `DB_USER` | ✅ | - | Database username. |
 | `DB_PASSWORD` | ✅ | - | Database password. |
 | `DB_NAME` | ✅ | - | Specific database name. |
-| `DB_SSL` | ❌ | `false` | Whether to enable SSL connection (recommended as `true` when connecting to remote cloud databases like Supabase). |
+| `DB_SSL` | ❌ | `false` | Whether to enable SSL connection. |
+
+---
+
+## 🌐 Tunnel Configuration (Optional)
+
+When deploying via Docker and wishing to securely expose services via Cloudflare Tunnel without opening inbound ports, we recommend configuring this variable:
+
+| Variable | Default | Description |
+| :--- | :--- | :--- |
+| `CLOUDFLARE_TUNNEL_TOKEN` | - | Official Cloudflare Tunnel Token. Once configured, the container will automatically launch the built-in `cloudflared` daemon upon startup without exposing any host inbound ports. We recommend encrypting it with `aes:`, `base64:`, or `hex:` prefixes. |
 
 ---
 
@@ -175,8 +200,8 @@ Depending on the nature of the variables, the system provides two levels of secu
 
 | Security Tier | Variables | Handling (Prefix) | Description |
 | :--- | :--- | :--- | :--- |
-| **⭐ Obfuscation** | `NODEAUTH_LICENSE`, `JWT_SECRET` | `base64:`, `hex:` | Root anchor for session signing. Supports basic encoding-level obfuscation. |
-| **🛡️ Encryption** | All other variables | `base64:`, `hex:`, `aes:` | All sensitive variables are protected with high-strength encryption. **`aes:`** is highly recommended. |
+| **⭐ Obfuscation** | `NODEAUTH_LICENSE`, `JWT_SECRET` | `base64:`, `hex:` | Root anchor for session signing. Supports basic encoding and hex obfuscation. |
+| **🛡️ Encryption** | All other sensitive variables | `base64:`, `hex:`, `aes:` | Includes database passwords (`DB_PASSWORD`, `DB_TOKEN`, `DB_URL`), access allowlists (`OAUTH_ALLOWED_USERS`), tunnel credentials (`CLOUDFLARE_TUNNEL_TOKEN`), and third-party OAuth credentials (`OAUTH_*`). Highly recommend using **`aes:`** for robust encryption. |
 
 ### 🛠️ Quick Start (3 Steps)
 

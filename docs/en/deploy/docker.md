@@ -60,6 +60,31 @@ sudo chown -R 1000:1000 data
 *   [PostgreSQL Local Container](https://github.com/nodeauth/nodeauth-worker/blob/main/docker-compose-postgresql-local.yml)
 *   [PostgreSQL Remote Connection](https://github.com/nodeauth/nodeauth-worker/blob/main/docker-compose-postgresql-remote.yml)
 
+<details>
+<summary>Click to view: Detailed Storage Options</summary>
+
+#### Option A: Minimalist (SQLite)
+**Target Audience**: Individual users, NAS users, seeking an "all-in-one" solution.
+*   **Advantages**: No separate database container required. All data is stored in a single `data/nodeauth.db` file.
+*   **Configuration**: Simply mount the `/app/data` directory; no `DB_HOST` variables needed.
+*   **Edge & Distributed Support**: By setting `DB_ENGINE` to `libsql` (e.g., Turso) or `d1` (Cloudflare D1 Proxy) alongside `DB_URL` and `DB_TOKEN`, you can seamlessly connect to cloud-distributed SQLite derivatives.
+
+#### Option B: Classic (MySQL)
+**Target Audience**: Users with existing MySQL environments or requiring structured database management.
+*   **Support**: Supports linking with local MySQL containers or connecting to remote RDS/cloud databases.
+*   **Configuration Requirements** (Choose one):
+    *   **Method 1 [Preferred]**: Use the full `DB_URL` connection string (e.g., `mysql://user:password@host:port/dbname`).
+    *   **Method 2 [Alternative]**: When `DB_URL` is omitted, configure `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME` individually.
+
+#### Option C: Advanced (PostgreSQL)
+**Target Audience**: Users seeking top performance or using external Postgres services like Supabase.
+*   **Support**: Perfectly adapts to Supabase remote connections (setting `DB_SSL=true` is recommended).
+*   **Configuration Requirements** (Choose one):
+    *   **Method 1 [Preferred]**: Use the full `DB_URL` connection string (e.g., `postgresql://user:password@host:port/dbname`).
+    *   **Method 2 [Alternative]**: When `DB_URL` is omitted, configure PG-specific `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME` individually.
+
+</details>
+
 ### 2. Configure Environment Variables
 Please refer to the detailed [Environment Variables Guide](./env) to correctly modify the variables in your `docker-compose.yml`.
 
@@ -80,9 +105,12 @@ Below are two mainstream reverse proxy solutions. Choose one:
 
 ---
 
-### Option 1: Cloudflare Tunnel (Zero Port Exposure, Recommended)
+### Option 1: Cloudflare Tunnel Built-in Zero-Port Tunnel (Highly Recommended)
 
 Cloudflare Tunnel securely exposes your local service to the internet via outbound connections (without opening any inbound firewall ports), making it perfect for dynamic IPs or users who don't want to expose their server's true IP.
+
+> [!TIP]
+> **Native Cloud-Native Experience**: The NodeAuth container natively integrates the `cloudflared` client! You no longer need to maintain an extra external tunnel container or expose host ports. Simply configure an environment variable to launch the tunnel automatically in the background!
 
 **Prerequisite**: Your domain's DNS is managed by Cloudflare.
 
@@ -110,49 +138,36 @@ Go back to the Cloudflare Zero Trust Dashboard, under the **Public Hostname** ta
 | **Subdomain** | `2fa` (i.e., `2fa.yourdomain.com`) |
 | **Domain** | Your domain |
 | **Type** | `HTTP` |
-| **URL** | `nodeauth:3000` (Docker service name + port) |
+| **URL** | `localhost:3000` |
 
 <details>
 <summary>Click to view: Detailed visual guide</summary>
 <img height="400" src="/deploy/58771d96-5ad0-4e2d-9089-08ee513c42a7.png" />
 </details>
 
-**Step 3: Run cloudflared on Server**
+**Step 3: Configure and Run**
 
-The simplest way is to deploy `cloudflared` as a Docker container alongside NodeAuth in the same `docker-compose.yml`:
+*   Simply add your `CLOUDFLARE_TUNNEL_TOKEN` directly into the app container's environment variables. The container will automatically launch and maintain the encrypted tunnel in the background without exposing any host ports:
+    ```yaml
+    services:
+      nodeauth:
+        image: nodeauth/nodeauth-worker:latest
+        # Note: When using Tunnel, no ports need to be exposed. Comment out or delete the ports block.
+        # ports:
+        #   - "3000:3000"
+        volumes:
+          - ./data:/app/data
+        environment:
+          - NODEAUTH_LICENSE=your_license
+          - JWT_SECRET=your_jwt_secret
+          - ENCRYPTION_KEY=your_encryption_key
+          - OAUTH_ALLOWED_USERS=your_email@example.com
+          
+          # [One-Click Tunnel] Paste your Token copied from Cloudflare
+          - CLOUDFLARE_TUNNEL_TOKEN=eyJhIjoiN****WbVl6ayJ9
+    ```
 
-```yaml
-services:
-  nodeauth:
-    image: nodeauth/nodeauth-worker:latest
-    # Note: When using Tunnel, you don't need to expose ports. Remove the ports config.
-    environment:
-      - NODEAUTH_LICENSE=your_license
-      # ... other env vars
-    volumes:
-      - ./data:/app/data
-
-  # New Cloudflare Tunnel config
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run
-    environment:
-      # Paste the Token copied from Step 1 here
-      - TUNNEL_TOKEN=your_cloudflare_tunnel_token
-    depends_on:
-      - nodeauth
-    restart: always
-```
-
-Save and run:
-```bash
-docker compose up -d
-```
-
-Cloudflare will automatically issue a certificate and establish the tunnel. You can now access `https://2fa.yourdomain.com` without opening any firewall ports.
-
-> [!TIP]
-> With Cloudflare Tunnel, HTTPS is handled automatically by Cloudflare, and traffic between the container and Cloudflare is encrypted. This is the **most secure** reverse proxy method, highly recommended for home broadband or NAS users.
+Save and run `docker compose up -d`. Cloudflare will automatically issue an SSL certificate and establish an encrypted tunnel. You can now access `https://2fa.yourdomain.com` without opening any firewall inbound ports!
 
 ---
 

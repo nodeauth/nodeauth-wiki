@@ -46,16 +46,21 @@ sudo chown -R 1000:1000 data
 **适用人群**：个人用户、NAS 用户、希望“一包带走”的用户。
 *   **优点**：无需额外部署数据库容器，数据全部存在 `data/nodeauth.db` 一个文件里。
 *   **配置**：仅需挂载 `/app/data` 目录，无需填写任何 `DB_HOST` 变量。
+*   **边缘与分布式支持**：通过把 `DB_ENGINE` 设为 `libsql` (如 Turso) 或 `d1` (Cloudflare D1 Proxy)，配合 `DB_URL` 与 `DB_TOKEN`，即可轻松连接云端分布式 SQLite 衍生数据库。
 
 #### 方案 B：经典型 (MySQL)
 **适用人群**：已有 MySQL 环境、追求数据结构化管理的用户。
 *   **支持方式**：支持与本地 MySQL 容器联动，或连接远程 RDS/云数据库。
-*   **要求**：**必须**填写 `DB_HOST`, `DB_USER`, `DB_PASSWORD` 等完整连接变量。
+*   **配置要求** (二选一)：
+    *   **方式一 [优先]**：使用 `DB_URL` 完整连接字符串（如 `mysql://user:password@host:port/dbname`）。
+    *   **方式二 [备选]**：当未填写 `DB_URL` 时，使用 `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` 等参数单独配置。
 
 #### 方案 C：进阶型 (PostgreSQL)
 **适用人群**：追求极致性能或使用 Supabase 等外部 Postgres 服务。
 *   **支持方案**：完美适配 Supabase 远程连接（建议开启 `DB_SSL=true`）。
-*   **要求**：**必须**填写完整的 PG 连接信息。
+*   **配置要求** (二选一)：
+    *   **方式一 [优先]**：使用 `DB_URL` 完整连接字符串（如 `postgresql://user:password@host:port/dbname`）。
+    *   **方式二 [备选]**：当未填写 `DB_URL` 时，使用 PG 对应的 `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` 等参数单独配置。
 
 </details>
 
@@ -79,9 +84,12 @@ docker compose up -d
 
 ---
 
-### 方案一：Cloudflare Tunnel（零端口暴露，推荐）
+### 方案一：Cloudflare Tunnel 内置零端口穿透（强烈推荐）
 
 Cloudflare Tunnel 通过出站连接（无需开放任何入站端口）将您的本地服务安全暴露到公网，非常适合没有公网 IP 或不想暴露服务器真实 IP 的场景。
+
+> [!TIP]
+> **原生云原生体验**：NodeAuth 容器内部已**原生集成** `cloudflared` 内网穿透客户端！您不仅可以像传统做法一样部署独立的穿透容器，更可以通过配置一个简单环境变量实现一键自动开启隧道，无需在 Compose 文件中另外维护额外的服务容器！
 
 **前置条件**：您的域名已托管在 Cloudflare（DNS 由 Cloudflare 管理）。
 
@@ -89,7 +97,7 @@ Cloudflare Tunnel 通过出站连接（无需开放任何入站端口）将您�
 
 1. 登录 [Cloudflare Zero Trust 控制台](https://dash.cloudflare.com/?to=/:account/one/) → **网络** → **连接器** → **创建隧道**
 2. 选择 **Cloudflared** 类型
-3. 为 Tunnel 起一个名字，如  `nodeauth-worker`
+3. 为 Tunnel 起一个名字，如 `nodeauth-worker`
 4. 然后复制生成的 Token，格式如 `eyJhIjoiN****WbVl6ayJ9`
 
 <details>
@@ -109,50 +117,36 @@ Cloudflare Tunnel 通过出站连接（无需开放任何入站端口）将您�
 | **Subdomain** | `2fa`（即 `2fa.yourdomain.com`）|
 | **Domain** | 您的域名 |
 | **Type** | `HTTP` |
-| **URL** | `nodeauth:3000`（Docker 服务名 + 端口）|
+| **URL** | `localhost:3000`|
 
 <details>
 <summary>点击查看：详细步骤示意图</summary>
 <img height="400" src="/deploy/58771d96-5ad0-4e2d-9089-08ee513c42a7.png" />
 </details>
 
-**步骤三：在服务器上运行 cloudflared**
+**步骤三：配置并运行**
 
-最简单的方式是将 `cloudflared` 作为一个 Docker 容器部署，与 NodeAuth 放在同一个 `docker-compose.yml` 中：
+*   直接在应用容器的环境变量中填入 `CLOUDFLARE_TUNNEL_TOKEN`，容器将自动在后台守护并启动隧道，无需暴露宿主机端口：
+    ```yaml
+    services:
+      nodeauth:
+        image: nodeauth/nodeauth-worker:latest
+        # 注意：使用 Tunnel 时无需暴露端口，可注释或删除 ports 节点
+        # ports:
+        #   - "3000:3000"
+        volumes:
+          - ./data:/app/data
+        environment:
+          - NODEAUTH_LICENSE=your_license
+          - JWT_SECRET=your_jwt_secret
+          - ENCRYPTION_KEY=your_encryption_key
+          - OAUTH_ALLOWED_USERS=your_email@example.com
+          
+          # [一键开启穿透] 填入您从 Cloudflare 复制的 Tunnel Token
+          - CLOUDFLARE_TUNNEL_TOKEN=eyJhIjoiN****WbVl6ayJ9
+    ```
 
-```yaml
-services:
-  nodeauth:
-    image: nodeauth/nodeauth-worker:latest
-    # 注意：使用 Tunnel 时，无需对外暴露端口，删除 ports 配置
-    environment:
-      - NODEAUTH_LICENSE=your_license
-      # ... 其他环境变量
-    volumes:
-      - ./data:/app/data
-
-  # 以下为新增 Cloudflare Tunnel 配置
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run
-    environment:
-      # 将上一步复制的 Token 粘贴在这里
-      - TUNNEL_TOKEN=your_cloudflare_tunnel_token
-    depends_on:
-      - nodeauth
-    restart: always
-```
-
-保存后，执行
-
-```bash
-docker compose up -d
-```
-
-Cloudflare 会自动签发证书并建立隧道。访问 `https://2fa.yourdomain.com` 即可，全程无需开放任何防火墙端口。
-
-> [!TIP]
-> 使用 Cloudflare Tunnel 时，HTTPS 由 Cloudflare 自动处理，容器与 Cloudflare 之间的流量也是加密的。这是目前**安全性最高**的反代方案，强烈推荐家庭宽带或 NAS 用户使用。
+保存后，执行 `docker compose up -d` 即可。Cloudflare 会自动签发证书并建立加密隧道。访问 `https://2fa.yourdomain.com` 即可，全程无须开放任何防火墙入站端口。
 
 ---
 

@@ -124,18 +124,34 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 如果您使用 Cloudflare Workers 部署，系统会自动使用 D1 数据库，**无需配置**以下变量。
 
 如果您在 Docker 或自己的服务器上部署：
-*   **默认使用 SQLite**：仅需挂载 `/app/data` 目录，无需配置以下变量。
-*   **使用 MySQL / PostgreSQL**：**必须**完整填写以下所有连接信息 (`DB_HOST` 到 `DB_NAME`)。
+*   **默认使用 SQLite**：仅需挂载 `/app/data` 目录，无需配置以下数据库连接变量。
+*   **使用 MySQL / PostgreSQL / LibSQL / D1**：请配置 `DB_ENGINE`，并在其后选择**方式一**或**方式二**进行连接。
 
-| 变量名 | 必填 (非 SQLite) | 默认值 | 说明 |
+| 基础变量名 | 必填 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| `DB_ENGINE` | ✅ | `sqlite` | 数据库类型：支持 `sqlite`, `mysql`, `postgresql`。 |
-| `DB_HOST` | ✅ | - | 数据库服务器地址。支持本地 `localhost`、Docker 服务名 `mysql-db`，以及 **远程域名** (如：`aws-1.pooler.supabase.com`) 或 **公网 IP**。 |
+| `DB_ENGINE` | ✅ | `sqlite` | 数据库类型：支持 `sqlite`, `mysql`, `postgresql`, `libsql`, `d1`。 |
+
+#### 方式一：完整连接串配置（⭐ 强烈推荐首选）
+最简便的现代化配置方式，仅需一行标准连接 URL 即可打通，尤其适用于 Turso、Supabase 或各类云端数据库。
+
+| 变量名 | 必填 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| `DB_URL` | ✅ | - | **标准连接字符串**。例如 `mysql://user:pass@host:3306/dbname` 或 `postgresql://...`。 |
+| `DB_TOKEN` | 按需 | - | **云数据库鉴权令牌**。仅在连接 `libsql` (如 Turso) 或 `d1` (Cloudflare D1 Proxy) 等需要 Token 鉴定时填写。 |
+| `DB_SSL` | ❌ | `false` | 是否启用 SSL 连接（连接远程云数据库时建议设为 `true`）。 |
+
+#### 方式二：传统分立参数配置（备选）
+如果您偏好传统的独立字段配置（如连接 Docker 容器内部网络的数据库），也可使用以下参数分立填写（如已填写上方 `DB_URL`，则本小节参数全部自动忽略）。
+
+| 变量名 | 必填 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| `DB_HOST` | ✅ | - | 数据库服务器地址。支持本地 `localhost`、Docker 服务名（如 `mysql-db`）、远程域名或 IP。 |
 | `DB_PORT` | ✅ | - | 数据库端口。MySQL 默认为 `3306`，PostgreSQL 默认为 `5432`。 |
 | `DB_USER` | ✅ | - | 数据库用户名。 |
 | `DB_PASSWORD` | ✅ | - | 数据库密码。 |
 | `DB_NAME` | ✅ | - | 具体的数据库名称。 |
-| `DB_SSL` | ❌ | `false` | 是否启用 SSL 连接（连接远程云数据库如 Supabase 时建议设为 `true`）。 |
+| `DB_SSL` | ❌ | `false` | 是否启用 SSL 连接。 |
+
 
 ---
 
@@ -152,6 +168,16 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 | **Baidu** | `OAUTH_BAIDU_CLIENT_ID` | `OAUTH_BAIDU_CLIENT_SECRET` | `OAUTH_BAIDU_BACKUP_REDIRECT_URI` |
 
 *注：回调地址统一格式为 `https://您的域名/api/backups/oauth/[平台名]/callback`*
+
+---
+
+## 🌐 内网穿透配置 (可选)
+
+当通过 Docker 方式部署并希望利用内网穿透安全开放服务时，推荐配置此变量：
+
+| 变量名 | 默认值 | 说明 |
+| :--- | :--- | :--- |
+| `CLOUDFLARE_TUNNEL_TOKEN` | - | Cloudflare Tunnel 的官方安全连接 Token。填入后容器会在启动时自动唤起内置的 `cloudflared` 守护进程，无需对外暴露任何宿主机入站端口。建议通过 `aes:`, `base64:` 或 `hex:` 格式加密脱敏。 |
 
 ---
 
@@ -175,8 +201,8 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 
 | 安全等级 | 支持变量 | 处理方式 (前缀) | 说明 |
 | :--- | :--- | :--- | :--- |
-| **⭐ 编码脱敏** | `NODEAUTH_LICENSE`, `JWT_SECRET` | `base64:`, `hex:` | 用于会话签名的核心锚点，支持基础的编码脱敏。 |
-| **🛡️ 加密保护** | 其余所有变量 | `base64:`, `hex:`, `aes:` | 所有的敏感变量均经过高强度加密保护。推荐使用 **`aes:`** 方式加密  |
+| **⭐ 编码脱敏** | `NODEAUTH_LICENSE`, `JWT_SECRET` | `base64:`, `hex:` | 用于会话签名的核心锚点，支持基础的编码与十六进制脱敏。 |
+| **🛡️ 加密保护** | 其余所有敏感变量 | `base64:`, `hex:`, `aes:` | 包含数据库密码 (`DB_PASSWORD`, `DB_TOKEN`, `DB_URL`)、准入白名单 (`OAUTH_ALLOWED_USERS`)、穿透凭证 (`CLOUDFLARE_TUNNEL_TOKEN`) 以及各类第三方应用凭证 (`OAUTH_*`)，均可使用 **`aes:`** 进行高强度加密。 |
 
 ### 🛠️ 快速上手 (三步搞定)
 
