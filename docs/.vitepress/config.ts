@@ -1,105 +1,105 @@
 import { defineConfig } from 'vitepress'
 
-// 简体中文配置
+// 简体中文配置 (路径前置 /cn/)
 const zhThemeConfig = {
     logo: '/logo.svg',
     nav: [
-        { text: '🏠 首页', link: '/' },
-        { text: '🛠️ 部署教程', link: '/deploy' },
-        { text: '📱 PWA指南', link: '/pwa' },
-        { text: '📥 数据迁移', link: '/data/import' },
-        { text: '☁️ 云端备份', link: '/data/backup' },
-        { text: '🧩 浏览器扩展', link: '/extension/usage' }
+        { text: '🏠 首页', link: '/cn/' },
+        { text: '🛠️ 部署教程', link: '/cn/deploy' },
+        { text: '📱 PWA指南', link: '/cn/pwa' },
+        { text: '📥 数据迁移', link: '/cn/data/import' },
+        { text: '☁️ 云端备份', link: '/cn/data/backup' },
+        { text: '🧩 浏览器扩展', link: '/cn/extension/usage' }
     ],
 
     sidebar: [
         {
             text: '🚀 项目特色',
             items: [
-                { text: '项目介绍', link: '/features' },
-                { text: '极致安全', link: '/features/security' },
-                { text: '极致体验', link: '/features/experience' }
+                { text: '项目介绍', link: '/cn/features' },
+                { text: '极致安全', link: '/cn/features/security' },
+                { text: '极致体验', link: '/cn/features/experience' }
             ]
         },
         {
             text: '🛠️ 部署教程',
             items: [
-                { text: '部署方案（三选一）', link: '/deploy' },
-                { text: 'Cloudflare Worker 部署', link: '/deploy/cf-worker' },
-                { text: 'Docker 私有化部署', link: '/deploy/docker' },
-                { text: 'GitHub Action 自动化部署', link: '/deploy/github-action' },
-                { text: '环境变量配置指南', link: '/deploy/env' },
-                { text: '项目初始化教程', link: '/deploy/setup' },
-                { text: '更新与维护指南', link: '/deploy/update' }
+                { text: '部署方案（三选一）', link: '/cn/deploy' },
+                { text: 'Cloudflare Worker 部署', link: '/cn/deploy/cf-worker' },
+                { text: 'Docker 私有化部署', link: '/cn/deploy/docker' },
+                { text: 'GitHub Action 自动化部署', link: '/cn/deploy/github-action' },
+                { text: '环境变量配置指南', link: '/cn/deploy/env' },
+                { text: '项目初始化教程', link: '/cn/deploy/setup' },
+                { text: '更新与维护指南', link: '/cn/deploy/update' }
             ]
         },
         {
             text: '📱 PWA 安装指南',
-            link: '/pwa'
+            link: '/cn/pwa'
         },
         {
             text: '🧩 浏览器扩展',
             items: [
-                { text: '安装使用', link: '/extension/usage' },
-                { text: '安全架构', link: '/extension/architecture' },
-                { text: '隐私政策', link: '/extension/privacy' }
+                { text: '安装使用', link: '/cn/extension/usage' },
+                { text: '安全架构', link: '/cn/extension/architecture' },
+                { text: '隐私政策', link: '/cn/extension/privacy' }
             ]
         },
         {
             text: '📥 数据迁移',
             items: [
-                { text: '全平台数据导入', link: '/data/import' }
+                { text: '全平台数据导入', link: '/cn/data/import' }
             ]
         },
         {
             text: '📂 备份设置与管理',
             items: [
-                { text: '云端自动备份', link: '/data/backup' },
-                { text: '数据手动导出', link: '/data/export' }
+                { text: '云端自动备份', link: '/cn/data/backup' },
+                { text: '数据手动导出', link: '/cn/data/export' }
             ]
         },
         {
             text: '🚑 容灾自救中心',
             items: [
-                { text: '灾难恢复决策矩阵', link: '/recovery' }
+                { text: '灾难恢复决策矩阵', link: '/cn/recovery' }
             ]
         },
         {
             text: '👤 账号管理',
             items: [
-                { text: '基础操作 (增删改查)', link: '/vault' },
-                { text: '进阶管理 (排序搜索)', link: '/vault/efficiency' }
+                { text: '基础操作 (增删改查)', link: '/cn/vault' },
+                { text: '进阶管理 (排序搜索)', link: '/cn/vault/efficiency' }
             ]
         },
         {
             text: '🛡️ 安全访问控制',
             items: [
-                { text: '通行密钥', link: '/security/passkey' },
-                { text: '安全锁定', link: '/security/lock' },
-                { text: '离线模式', link: '/security/offline-mode' },
-                { text: '防窥模式', link: '/security/ghost-mode' },
-                { text: '设备管理', link: '/security/session' }
+                { text: '通行密钥', link: '/cn/security/passkey' },
+                { text: '安全锁定', link: '/cn/security/lock' },
+                { text: '离线模式', link: '/cn/security/offline-mode' },
+                { text: '防窥模式', link: '/cn/security/ghost-mode' },
+                { text: '设备管理', link: '/cn/security/session' }
             ]
         },
         {
             text: '🧰 实用工具',
             items: [
-                { text: 'TOTP 核心工具箱', link: '/tools' },
-                { text: '2FA APP 生态排行榜', link: '/tools/ranking' },
-                { text: '辅助小工具 (密码/QR)', link: '/tools/utils' }
+                { text: 'TOTP 核心工具箱', link: '/cn/tools' },
+                { text: '2FA APP 生态排行榜', link: '/cn/tools/ranking' },
+                { text: '辅助小工具 (密码/QR)', link: '/cn/tools/utils' }
             ]
         },
         {
             text: '🎨 个性化设置',
-            link: '/settings/appearance'
+            link: '/cn/settings/appearance'
         },
         {
             text: '💡 其他说明',
             items: [
-                { text: '零知识架构', link: '/misc/zero-knowledge' },
-                { text: '端对端加密', link: '/misc/e2ee' },
-                { text: '离线功能边界说明', link: '/misc/offline-limits' },
-                { text: '联系作者与路线图', link: '/misc/contacts' }
+                { text: '零知识架构', link: '/cn/misc/zero-knowledge' },
+                { text: '端对端加密', link: '/cn/misc/e2ee' },
+                { text: '离线功能边界说明', link: '/cn/misc/offline-limits' },
+                { text: '联系作者与路线图', link: '/cn/misc/contacts' }
             ]
         }
     ],
@@ -114,105 +114,105 @@ const zhThemeConfig = {
     }
 }
 
-// 英文配置 (初始框架)
+// 英文配置 (主语言，根路径 /)
 const enThemeConfig = {
     logo: '/logo.svg',
     nav: [
-        { text: '🏠 Home', link: '/en/' },
-        { text: '🛠️ Deployment', link: '/en/deploy' },
-        { text: '📱 PWA', link: '/en/pwa' },
-        { text: '📥 Migration', link: '/en/data/import' },
-        { text: '☁️ Backup', link: '/en/data/backup' },
-        { text: '🧩 Extension', link: '/en/extension/usage' }
+        { text: '🏠 Home', link: '/' },
+        { text: '🛠️ Deployment', link: '/deploy' },
+        { text: '📱 PWA', link: '/pwa' },
+        { text: '📥 Migration', link: '/data/import' },
+        { text: '☁️ Backup', link: '/data/backup' },
+        { text: '🧩 Extension', link: '/extension/usage' }
     ],
     sidebar: [
         {
             text: '🚀 Getting Started',
             items: [
-                { text: 'Introduction', link: '/en/features' },
-                { text: 'Security First', link: '/en/features/security' },
-                { text: 'Smooth Experience', link: '/en/features/experience' }
+                { text: 'Introduction', link: '/features' },
+                { text: 'Security First', link: '/features/security' },
+                { text: 'Smooth Experience', link: '/features/experience' }
             ]
         },
         {
             text: '🛠️ Deployment',
             items: [
-                { text: 'Choose your path', link: '/en/deploy' },
-                { text: 'Cloudflare Worker', link: '/en/deploy/cf-worker' },
-                { text: 'Docker On-premise', link: '/en/deploy/docker' },
-                { text: 'GitHub Action', link: '/en/deploy/github-action' },
-                { text: 'Environment Variables', link: '/en/deploy/env' },
-                { text: 'Initial Setup', link: '/en/deploy/setup' },
-                { text: 'Update Guide', link: '/en/deploy/update' }
+                { text: 'Choose your path', link: '/deploy' },
+                { text: 'Cloudflare Worker', link: '/deploy/cf-worker' },
+                { text: 'Docker On-premise', link: '/deploy/docker' },
+                { text: 'GitHub Action', link: '/deploy/github-action' },
+                { text: 'Environment Variables', link: '/deploy/env' },
+                { text: 'Initial Setup', link: '/deploy/setup' },
+                { text: 'Update Guide', link: '/deploy/update' }
             ]
         },
         {
             text: '📱 PWA Installation',
-            link: '/en/pwa'
+            link: '/pwa'
         },
         {
             text: '🧩 Browser Extension',
             items: [
-                { text: 'Installation & Usage', link: '/en/extension/usage' },
-                { text: 'Security Architecture', link: '/en/extension/architecture' },
-                { text: 'Privacy Policy', link: '/en/extension/privacy' }
+                { text: 'Installation & Usage', link: '/extension/usage' },
+                { text: 'Security Architecture', link: '/extension/architecture' },
+                { text: 'Privacy Policy', link: '/extension/privacy' }
             ]
         },
         {
             text: '📥 Migration',
             items: [
-                { text: 'Data Import Guide', link: '/en/data/import' }
+                { text: 'Data Import Guide', link: '/data/import' }
             ]
         },
         {
             text: '📂 Backup & Export',
             items: [
-                { text: 'Cloud Auto Backup', link: '/en/data/backup' },
-                { text: 'Manual Export', link: '/en/data/export' }
+                { text: 'Cloud Auto Backup', link: '/data/backup' },
+                { text: 'Manual Export', link: '/data/export' }
             ]
         },
         {
             text: '🚑 Disaster Recovery',
             items: [
-                { text: 'Recovery Matrix', link: '/en/recovery' }
+                { text: 'Recovery Matrix', link: '/recovery' }
             ]
         },
         {
             text: '👤 Vault Management',
             items: [
-                { text: 'Basic Operations', link: '/en/vault' },
-                { text: 'Sorting & Search', link: '/en/vault/efficiency' }
+                { text: 'Basic Operations', link: '/vault' },
+                { text: 'Sorting & Search', link: '/vault/efficiency' }
             ]
         },
         {
             text: '🛡️ Security Controls',
             items: [
-                { text: 'Passkeys', link: '/en/security/passkey' },
-                { text: 'App Lock', link: '/en/security/lock' },
-                { text: 'Offline Mode', link: '/en/security/offline-mode' },
-                { text: 'Ghost Mode', link: '/en/security/ghost-mode' },
-                { text: 'Device Management', link: '/en/security/session' }
+                { text: 'Passkeys', link: '/security/passkey' },
+                { text: 'App Lock', link: '/security/lock' },
+                { text: 'Offline Mode', link: '/security/offline-mode' },
+                { text: 'Ghost Mode', link: '/security/ghost-mode' },
+                { text: 'Device Management', link: '/security/session' }
             ]
         },
         {
             text: '🧰 Utility Toolbox',
             items: [
-                { text: 'TOTP Tools', link: '/en/tools' },
-                { text: '2FA App Ranking', link: '/en/tools/ranking' },
-                { text: 'Password & QR Tools', link: '/en/tools/utils' }
+                { text: 'TOTP Tools', link: '/tools' },
+                { text: '2FA App Ranking', link: '/tools/ranking' },
+                { text: 'Password & QR Tools', link: '/tools/utils' }
             ]
         },
         {
             text: '🎨 Customization',
-            link: '/en/settings/appearance'
+            link: '/settings/appearance'
         },
         {
             text: '💡 Others',
             items: [
-                { text: 'Zero-Knowledge', link: '/en/misc/zero-knowledge' },
-                { text: 'End-to-End Encryption', link: '/en/misc/e2ee' },
-                { text: 'Offline Limits', link: '/en/misc/offline-limits' },
-                { text: 'Roadmap & Contact', link: '/en/misc/contacts' }
+                { text: 'Zero-Knowledge', link: '/misc/zero-knowledge' },
+                { text: 'End-to-End Encryption', link: '/misc/e2ee' },
+                { text: 'Offline Limits', link: '/misc/offline-limits' },
+                { text: 'Roadmap & Contact', link: '/misc/contacts' }
             ]
         }
     ],
@@ -227,9 +227,9 @@ const enThemeConfig = {
 
 export default defineConfig({
     title: "NodeAuth Wiki",
-    description: "NodeAuth 官方文档 - 跨平台开源 2FA/TOTP 身份验证器，支持 Cloudflare Worker 部署、数据加密备份与多端同步。",
+    description: "NodeAuth Official Wiki - Open-source, cross-platform 2FA/TOTP authenticator. Supports Cloudflare Worker deployment, encrypted backups, and multi-device sync.",
     rewrites: {
-        'cn/(.*)': '(.*)'
+        'en/(.*)': '(.*)'
     },
     lastUpdated: true,
     cleanUrls: true,
@@ -246,21 +246,21 @@ export default defineConfig({
                 locales: {
                     root: {
                         translations: {
-                            button: { buttonText: '搜索文档', buttonAriaLabel: '搜索文档' },
-                            modal: {
-                                noResultsText: '无法找到相关结果',
-                                resetButtonTitle: '清除查询条件',
-                                footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' }
-                            }
-                        }
-                    },
-                    en: {
-                        translations: {
                             button: { buttonText: 'Search Docs', buttonAriaLabel: 'Search Docs' },
                             modal: {
                                 noResultsText: 'No results for',
                                 resetButtonTitle: 'Reset search',
                                 footer: { selectText: 'to select', navigateText: 'to navigate', closeText: 'to close' }
+                            }
+                        }
+                    },
+                    cn: {
+                        translations: {
+                            button: { buttonText: '搜索文档', buttonAriaLabel: '搜索文档' },
+                            modal: {
+                                noResultsText: '无法找到相关结果',
+                                resetButtonTitle: '清除查询条件',
+                                footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' }
                             }
                         }
                     }
@@ -270,17 +270,17 @@ export default defineConfig({
     },
     locales: {
         root: {
-            label: '简体中文',
-            lang: 'zh-CN',
-            title: 'NodeAuth Wiki',
-            themeConfig: zhThemeConfig
-        },
-        en: {
             label: 'English',
-            lang: 'en-US',
-            link: '/en/',
+            lang: 'en',
             title: 'NodeAuth Wiki',
             themeConfig: enThemeConfig
+        },
+        cn: {
+            label: '简体中文',
+            lang: 'zh-CN',
+            link: '/cn/',
+            title: 'NodeAuth Wiki',
+            themeConfig: zhThemeConfig
         }
     },
 
@@ -323,21 +323,46 @@ export default defineConfig({
         const head: any[] = []
         const hostname = 'https://wiki.nodeauth.io'
 
-        // 自动生成 hreflang 标签
         const cleanPath = relativePath.replace(/\.md$/, '').replace(/index$/, '')
 
+        let enPath: string, zhPath: string, canonicalPath: string;
+        
         if (relativePath.startsWith('en/')) {
-            const zhPath = cleanPath.slice(3)
-            head.push(['link', { rel: 'alternate', hreflang: 'zh-CN', href: `${hostname}/${zhPath}` }])
-            head.push(['link', { rel: 'alternate', hreflang: 'en', href: `${hostname}/${cleanPath}` }])
-            head.push(['link', { rel: 'alternate', hreflang: 'x-default', href: `${hostname}/${cleanPath}` }])
+            // 英文文档：已经被 rewrite 为根路径
+            enPath = cleanPath.slice(3); // 去掉 'en/'
+            zhPath = enPath ? `cn/${enPath}` : 'cn/';
+            canonicalPath = enPath;
         } else if (relativePath.startsWith('cn/')) {
-            const rootPath = cleanPath.slice(3) // 去除 'cn/'
-            const enPath = `en/${rootPath}`
-            head.push(['link', { rel: 'alternate', hreflang: 'en', href: `${hostname}/${enPath}` }])
-            head.push(['link', { rel: 'alternate', hreflang: 'zh-CN', href: `${hostname}/${rootPath}` }])
-            head.push(['link', { rel: 'alternate', hreflang: 'x-default', href: `${hostname}/${rootPath}` }])
+            // 中文文档：路径为 cn/xxx
+            zhPath = cleanPath;
+            const purePath = cleanPath.slice(3); // 去掉 'cn/'
+            enPath = purePath;
+            canonicalPath = zhPath;
+        } else {
+            enPath = cleanPath;
+            zhPath = cleanPath ? `cn/${cleanPath}` : 'cn/';
+            canonicalPath = cleanPath;
         }
+
+        // 添加 Canonical 标签
+        head.push(['link', { rel: 'canonical', href: `${hostname}/${canonicalPath}` }])
+        
+        // 添加 Hreflang 标签
+        head.push(['link', { rel: 'alternate', hreflang: 'en', href: `${hostname}/${enPath}` }])
+        head.push(['link', { rel: 'alternate', hreflang: 'zh-CN', href: `${hostname}/${zhPath}` }])
+        // x-default 统一指向英文根路径
+        head.push(['link', { rel: 'alternate', hreflang: 'x-default', href: `${hostname}/${enPath}` }])
+
+        // 添加 Open Graph 和 Twitter Cards (社交媒体分享优化)
+        head.push(['meta', { property: 'og:url', content: `${hostname}/${canonicalPath}` }])
+        head.push(['meta', { property: 'og:type', content: 'article' }])
+        head.push(['meta', { property: 'og:title', content: pageData.title || 'NodeAuth Wiki' }])
+        if (pageData.description) {
+            head.push(['meta', { property: 'og:description', content: pageData.description }])
+        }
+        head.push(['meta', { property: 'og:site_name', content: 'NodeAuth Wiki' }])
+        head.push(['meta', { property: 'og:image', content: `${hostname}/logo.svg` }])
+        head.push(['meta', { name: 'twitter:card', content: 'summary' }])
 
         return head
     }

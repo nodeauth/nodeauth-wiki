@@ -11,7 +11,7 @@ hero:
       link: https://demo.nodeauth.io
     - theme: alt
       text: Get Started
-      link: /en/deploy/index
+      link: /deploy
     - theme: alt
       text: GitHub Repo
       link: https://github.com/nodeauth/nodeauth-worker

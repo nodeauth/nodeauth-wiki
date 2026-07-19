@@ -11,6 +11,7 @@ dev-dist/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
 docs/.vitepress/ssr-cache/
+docs/.vitepress/.temp/
 
 # 2. Environment & Secrets (STRICT - DO NOT COMMIT)
 .env

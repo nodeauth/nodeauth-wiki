@@ -11,9 +11,9 @@ In extreme disaster scenarios (such as complete server failure, accidental datab
 
 | Available Resources | Recommended Path | Core Principle | Success Rate |
 | :--- | :--- | :--- | :--- |
-| **PDF (Recovery Kit) + License + Database File** | **Path A: Perfect Environment Revival** | Restore original `ENCRYPTION_KEY`, `NODEAUTH_LICENSE` and mount the old DB | 100% |
-| **Exported Backup File (.json / .csv)** | **Path B: Business-Level Data Import** | Perform "Data Import" in a new instance and verify password | 100% |
-| **Encrypted Backup + Offline Script** | **Path C: Extreme Manual Offline Read** | Use Node.js script to view plaintext JSON directly | 100% |
+| **PDF (Recovery Kit) + License + Database File** | **Path A: Perfect Environment Revival** | Restore original key and license to resurrect all data | 100% |
+| **Any Backup File (Manual Export / Auto Backup)** | **Path B: Business-Level Data Import** | Deploy a new instance and import backup data in bulk | 100% |
+| **Manually Exported Encrypted Backup + Offline Script** | **Path C: Manual Offline Read** | Use Node.js script to view plaintext JSON directly | 100% |
 
 ---
 
@@ -32,28 +32,32 @@ In extreme disaster scenarios (such as complete server failure, accidental datab
 ---
 
 ## 📂 Path B: Business-Level Recovery (Using Data Import)
-**Scenario**: You do not have the old database, but you have a habit of regular "Data Exports" or have enabled "Scheduled Cloud Backups."
+**Scenario**: You do not have the old database, but you have a manually exported backup file or have enabled "Scheduled Auto Backups."
 
 1.  **Prepare Environment**: Setup a completely new NodeAuth instance with new environment variables.
 2.  **Get Files**: Download the latest backup package from your USB drive, email, or Telegram/S3/Cloud Drive.
 3.  **Perform Import**:
     *   Go to "Data Management" -> "**Data Import**".
-    *   Upload your `.json` or `.csv` file.
-    *   For encrypted JSON, enter the **backup password** you set during backup (Note: this is usually different from the app PIN).
-4.  **Merge Success**: Your 2FA assets will be imported in bulk into the new instance.
+    *   Upload your `.json` backup package (whether it's an auto-backup or manually exported).
+    *   If it's an encrypted file, enter your **backup password** / export password.
+4.  **Merge Success**: Your assets will be imported in bulk into the new instance, and the system will automatically align the keys to restore code generation.
 
 ---
 
 ## 🛠️ Path C: Manual Offline Decryption (Using Script)
-**Scenario**: Extreme survival environment, unable to set up the NodeAuth service immediately, but urgent need to view a specific account's Secret or dynamic code.
+**Scenario**: Extreme survival environment, unable to set up the NodeAuth service immediately, but urgent need to view a specific account's plaintext secret offline.
 
-*   **Prerequisite**: Encrypted `.json` backup file + Backup password + [scripts/decrypt_backup.js](https://github.com/nodeauth/nodeauth-worker/blob/main/scripts/decrypt_backup.js).
+*   **Prerequisite**: **Manually exported frontend** encrypted `.json` backup file + Export password + [scripts/decrypt_backup.js](https://github.com/nodeauth/nodeauth-worker/blob/main/scripts/decrypt_backup.js).
 *   **Requirements**: [Node.js](https://nodejs.org/) installed.
 *   **Command**:
     ```bash
     node decrypt_backup.js <backup_file.json> <backup_password>
     ```
-*   **Result**: Decrypted plaintext data will be displayed directly in the console and saved as a JSON file.
+*   **Result**: Decrypted data will be displayed directly in the console and saved as a JSON file. Since you are using a manually exported package, you will see the plaintext secret in pure uppercase letters (e.g., `JBSWY3D...`) directly in the `secret` field, ready to be copied to other authenticator apps for emergency use.
+
+> [!NOTE] 
+> **What if you only have an "Auto Backup" file?**
+> Although the auto-backup file can also be decrypted with this script, the underlying security protection ensures the secrets inside remain in the encrypted `nodeauth:` format, which cannot be read visually. In this case, please proceed directly to **[Path B]** to import the file into the system, and it will be instantly unlocked.
 
 ---
 
