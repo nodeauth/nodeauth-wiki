@@ -237,7 +237,8 @@ export default defineConfig({
         hostname: 'https://wiki.nodeauth.io'
     },
     head: [
-        ['link', { rel: 'icon', href: '/favicon.svg' }]
+        ['link', { rel: 'icon', href: '/favicon.svg' }],
+        ['style', {}, `:root { --vp-c-brand-1: #3451B2; --vp-c-brand-2: #254099; --vp-c-brand-3: #3b82f6; --vp-c-brand-next: #3451B2; }`]
     ],
     themeConfig: {
         search: {
