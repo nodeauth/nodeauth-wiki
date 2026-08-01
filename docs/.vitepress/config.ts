@@ -106,12 +106,7 @@ const zhThemeConfig = {
 
     socialLinks: [
         { icon: 'github', link: 'https://github.com/nodeauth/nodeauth-worker' }
-    ],
-
-    footer: {
-        message: '基于 GNU AGPL v3 协议开源',
-        copyright: `Copyright © ${new Date().getFullYear()} NodeAuth`
-    }
+    ]
 }
 
 // 英文配置 (主语言，根路径 /)
@@ -218,11 +213,7 @@ const enThemeConfig = {
     ],
     socialLinks: [
         { icon: 'github', link: 'https://github.com/nodeauth/nodeauth-worker' }
-    ],
-    footer: {
-        message: 'Open sourced under GNU AGPL v3 License',
-        copyright: `Copyright © ${new Date().getFullYear()} NodeAuth`
-    }
+    ]
 }
 
 export default defineConfig({
@@ -238,7 +229,7 @@ export default defineConfig({
     },
     head: [
         ['link', { rel: 'icon', href: '/favicon.svg' }],
-        ['style', {}, `:root { --vp-c-brand-1: #3451B2; --vp-c-brand-2: #254099; --vp-c-brand-3: #3b82f6; --vp-c-brand-next: #3451B2; }`]
+        ['style', {}, `:root { --vp-c-brand-1: #3451B2; --vp-c-brand-2: #254099; --vp-c-brand-3: #3b82f6; --vp-c-brand-next: #3451B2; } .policy-links { font-size: 0.86rem; margin-bottom: 10px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 18px; } .policy-links a { color: var(--vp-c-text-2); text-decoration: none !important; white-space: nowrap; transition: color 0.2s ease; position: relative; } .policy-links a:not(:last-child)::after { content: "|"; position: absolute; right: -11px; top: 50%; transform: translateY(-55%); font-size: 0.72rem; color: var(--vp-c-text-3); opacity: 0.45; pointer-events: none; } .policy-links a:hover { color: var(--vp-c-brand-1, #3451B2); } .VPDoc .content { padding-bottom: 0 !important; }`]
     ],
     themeConfig: {
         search: {

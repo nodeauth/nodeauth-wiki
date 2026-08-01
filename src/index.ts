@@ -18,19 +18,24 @@ export default {
             return Response.redirect(redirectUrl.toString(), 301);
         }
 
-        const response = await env.ASSETS.fetch(request);
-
-        // 如果访问的是 xml 文件（如 sitemap.xml），确保响应头包含正确的 XML Content-Type
+        // 确保 xml 路径（如 sitemap.xml / sitemap-index.xml）隐式指向真实资产并附带正确 Content-Type
         if (url.pathname.endsWith('.xml')) {
-            const headers = new Headers(response.headers);
-            headers.set('Content-Type', 'application/xml; charset=utf-8');
-            return new Response(response.body, {
-                status: response.status,
-                statusText: response.statusText,
-                headers,
-            });
+            const targetPath = (url.pathname === '/sitemap-index.xml') ? '/sitemap.xml' : url.pathname;
+            const targetUrl = new URL(targetPath, request.url);
+            const xmlResp = await env.ASSETS.fetch(new Request(targetUrl, request));
+            
+            if (xmlResp.ok) {
+                const xmlText = await xmlResp.text();
+                return new Response(xmlText, {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'application/xml; charset=utf-8',
+                        'Cache-Control': 'public, max-age=3600'
+                    }
+                });
+            }
         }
 
-        return response;
+        return await env.ASSETS.fetch(request);
     },
 };
