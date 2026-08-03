@@ -1,0 +1,20 @@
+name: Notify Bot to Update Vectors
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**/*.md'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Bot Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          repository: ${{ secrets.BOT_TRIGGER_TARGET_REPO }}
+          token: ${{ secrets.BOT_TRIGGER_TOKEN }}
+          event-type: wiki-updated
