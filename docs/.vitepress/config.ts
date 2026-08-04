@@ -5,26 +5,27 @@ const zhThemeConfig = {
     logo: '/logo.svg',
     nav: [
         { text: '🏠 首页', link: '/cn/' },
-        { text: '🛠️ 部署教程', link: '/cn/deploy' },
-        { text: '📱 PWA指南', link: '/cn/pwa' },
+        { text: '🛠️ 部署教程', link: '/cn/deploy/' },
         { text: '📥 数据迁移', link: '/cn/data/import' },
         { text: '☁️ 云端备份', link: '/cn/data/backup' },
-        { text: '🧩 浏览器扩展', link: '/cn/extension/usage' }
+        { text: '🧩 浏览器扩展', link: '/cn/extension/usage' },
+        { text: '🎯 进阶使用', link: '/cn/features/scenarios' }
     ],
 
     sidebar: [
         {
             text: '🚀 项目特色',
             items: [
-                { text: '项目介绍', link: '/cn/features' },
+                { text: '项目介绍', link: '/cn/features/' },
                 { text: '极致安全', link: '/cn/features/security' },
-                { text: '极致体验', link: '/cn/features/experience' }
+                { text: '极致体验', link: '/cn/features/experience' },
+                { text: '进阶使用', link: '/cn/features/scenarios' }
             ]
         },
         {
             text: '🛠️ 部署教程',
             items: [
-                { text: '部署方案（三选一）', link: '/cn/deploy' },
+                { text: '部署方案（三选一）', link: '/cn/deploy/' },
                 { text: 'Cloudflare Worker 部署', link: '/cn/deploy/cf-worker' },
                 { text: 'Docker 私有化部署', link: '/cn/deploy/docker' },
                 { text: 'GitHub Action 自动化部署', link: '/cn/deploy/github-action' },
@@ -32,10 +33,6 @@ const zhThemeConfig = {
                 { text: '项目初始化教程', link: '/cn/deploy/setup' },
                 { text: '更新与维护指南', link: '/cn/deploy/update' }
             ]
-        },
-        {
-            text: '📱 PWA 安装指南',
-            link: '/cn/pwa'
         },
         {
             text: '🧩 浏览器扩展',
@@ -61,40 +58,32 @@ const zhThemeConfig = {
         {
             text: '🚑 容灾自救中心',
             items: [
-                { text: '灾难恢复决策矩阵', link: '/cn/recovery' }
+                { text: '灾难恢复决策矩阵', link: '/cn/recovery/' }
             ]
         },
         {
-            text: '👤 账号管理',
+            text: '⚙️ 功能设置',
             items: [
-                { text: '基础操作 (增删改查)', link: '/cn/vault' },
-                { text: '进阶管理 (排序搜索)', link: '/cn/vault/efficiency' }
-            ]
-        },
-        {
-            text: '🛡️ 安全访问控制',
-            items: [
+                { text: '账号管理', link: '/cn/vault/' },
                 { text: '通行密钥', link: '/cn/security/passkey' },
                 { text: '安全锁定', link: '/cn/security/lock' },
                 { text: '离线模式', link: '/cn/security/offline-mode' },
                 { text: '防窥模式', link: '/cn/security/ghost-mode' },
-                { text: '设备管理', link: '/cn/security/session' }
+                { text: '设备管理', link: '/cn/security/session' },
+                { text: 'PWA安装', link: '/cn/settings/pwa' },
+                { text: '个性化外观', link: '/cn/settings/appearance' }
             ]
         },
         {
             text: '🧰 实用工具',
             items: [
-                { text: 'TOTP 核心工具箱', link: '/cn/tools' },
+                { text: 'TOTP 核心工具箱', link: '/cn/tools/' },
                 { text: '2FA APP 生态排行榜', link: '/cn/tools/ranking' },
                 { text: '辅助小工具 (密码/QR)', link: '/cn/tools/utils' }
             ]
         },
         {
-            text: '🎨 个性化设置',
-            link: '/cn/settings/appearance'
-        },
-        {
-            text: '💡 其他说明',
+            text: '📚 其他说明',
             items: [
                 { text: '零知识架构', link: '/cn/misc/zero-knowledge' },
                 { text: '端对端加密', link: '/cn/misc/e2ee' },
@@ -114,25 +103,26 @@ const enThemeConfig = {
     logo: '/logo.svg',
     nav: [
         { text: '🏠 Home', link: '/' },
-        { text: '🛠️ Deployment', link: '/deploy' },
-        { text: '📱 PWA', link: '/pwa' },
+        { text: '🛠️ Deployment', link: '/deploy/' },
         { text: '📥 Migration', link: '/data/import' },
         { text: '☁️ Backup', link: '/data/backup' },
-        { text: '🧩 Extension', link: '/extension/usage' }
+        { text: '🧩 Extension', link: '/extension/usage' },
+        { text: '🎯 Advanced Usage', link: '/features/scenarios' }
     ],
     sidebar: [
         {
             text: '🚀 Getting Started',
             items: [
-                { text: 'Introduction', link: '/features' },
+                { text: 'Introduction', link: '/features/' },
                 { text: 'Security First', link: '/features/security' },
-                { text: 'Smooth Experience', link: '/features/experience' }
+                { text: 'Smooth Experience', link: '/features/experience' },
+                { text: 'Advanced Usage', link: '/features/scenarios' }
             ]
         },
         {
             text: '🛠️ Deployment',
             items: [
-                { text: 'Choose your path', link: '/deploy' },
+                { text: 'Choose your path', link: '/deploy/' },
                 { text: 'Cloudflare Worker', link: '/deploy/cf-worker' },
                 { text: 'Docker On-premise', link: '/deploy/docker' },
                 { text: 'GitHub Action', link: '/deploy/github-action' },
@@ -140,10 +130,6 @@ const enThemeConfig = {
                 { text: 'Initial Setup', link: '/deploy/setup' },
                 { text: 'Update Guide', link: '/deploy/update' }
             ]
-        },
-        {
-            text: '📱 PWA Installation',
-            link: '/pwa'
         },
         {
             text: '🧩 Browser Extension',
@@ -169,40 +155,32 @@ const enThemeConfig = {
         {
             text: '🚑 Disaster Recovery',
             items: [
-                { text: 'Recovery Matrix', link: '/recovery' }
+                { text: 'Recovery Matrix', link: '/recovery/' }
             ]
         },
         {
-            text: '👤 Vault Management',
+            text: '⚙️ Feature Settings',
             items: [
-                { text: 'Basic Operations', link: '/vault' },
-                { text: 'Sorting & Search', link: '/vault/efficiency' }
-            ]
-        },
-        {
-            text: '🛡️ Security Controls',
-            items: [
+                { text: 'Vault Management', link: '/vault/' },
                 { text: 'Passkeys', link: '/security/passkey' },
                 { text: 'App Lock', link: '/security/lock' },
                 { text: 'Offline Mode', link: '/security/offline-mode' },
                 { text: 'Ghost Mode', link: '/security/ghost-mode' },
-                { text: 'Device Management', link: '/security/session' }
+                { text: 'Device Management', link: '/security/session' },
+                { text: 'PWA Installation', link: '/settings/pwa' },
+                { text: 'Appearance', link: '/settings/appearance' }
             ]
         },
         {
             text: '🧰 Utility Toolbox',
             items: [
-                { text: 'TOTP Tools', link: '/tools' },
+                { text: 'TOTP Tools', link: '/tools/' },
                 { text: '2FA App Ranking', link: '/tools/ranking' },
                 { text: 'Password & QR Tools', link: '/tools/utils' }
             ]
         },
         {
-            text: '🎨 Customization',
-            link: '/settings/appearance'
-        },
-        {
-            text: '💡 Others',
+            text: '📚 Others',
             items: [
                 { text: 'Zero-Knowledge', link: '/misc/zero-knowledge' },
                 { text: 'End-to-End Encryption', link: '/misc/e2ee' },
@@ -318,7 +296,7 @@ export default defineConfig({
         const cleanPath = relativePath.replace(/\.md$/, '').replace(/index$/, '')
 
         let enPath: string, zhPath: string, canonicalPath: string;
-        
+
         if (relativePath.startsWith('en/')) {
             // 英文文档：已经被 rewrite 为根路径
             enPath = cleanPath.slice(3); // 去掉 'en/'
@@ -338,7 +316,7 @@ export default defineConfig({
 
         // 添加 Canonical 标签
         head.push(['link', { rel: 'canonical', href: `${hostname}/${canonicalPath}` }])
-        
+
         // 添加 Hreflang 标签
         head.push(['link', { rel: 'alternate', hreflang: 'en', href: `${hostname}/${enPath}` }])
         head.push(['link', { rel: 'alternate', hreflang: 'zh-CN', href: `${hostname}/${zhPath}` }])

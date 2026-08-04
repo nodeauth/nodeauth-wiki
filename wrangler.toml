@@ -14,14 +14,10 @@ directory = "docs/.vitepress/dist"
 binding = "ASSETS"
 
 [observability]
-enabled = false
+enabled = true
 
 [observability.logs]
 enabled = true
 head_sampling_rate = 1
 persist = true
 invocation_logs = true
-
-[observability.traces]
-enabled = false
-
