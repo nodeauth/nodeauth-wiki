@@ -1,58 +1,62 @@
 ---
-description: "NodeAuth Browser Extension Security Architecture In-depth Analysis. Uncovers the \"Zero-Knowledge Encrypted Handshake\" and \"Physically Isolated Authorization\" mechanisms, detailing how the extension communicates asymmetrically with the PWA side. This ensures that the core 2FA keys remain under controlled, encrypted sandbox protection even within the browser environment."
+description: "NodeAuth browser extension security architecture in-depth. Uncover the 'Zero-Knowledge Crypto Handshake' and 'Physical Isolation Authorization' mechanisms, detailing how the extension communicates with the PWA using asymmetric encryption to ensure 2FA Master Keys remain in a protected sandbox, even within the browser environment."
 ---
 # 🧩 Security Architecture
 
-The NodeAuth browser extension is more than just an add-on; it is a **standalone, physically isolated security device**. It uses a mechanism called "DOM Pre-emption & Encrypted Tunnel Routing" to ensure that your Master Key is never exposed during transmission.
+The NodeAuth browser extension is not just a tool; it acts as an **independent, physically isolated** "digital safe".
+Even if the web environment is compromised, your Master Key will never be exposed to malicious scripts.
 
-## 1. Core Philosophy
+## 1. Our Security Commitment (Core Design Philosophy)
 
-*   **Delegated Authentication**: The extension does not handle your passwords directly. It delegates authentication to your trusted NodeAuth PWA instance.
-*   **Zero-Trust IPC**: We assume the browser DOM environment may be hostile. All core data is transmitted through a secure, encrypted tunnel.
-*   **Device Isolation**: Every instance of the extension acts as an independent "vault." You can revoke access for any specific extension at any time from the central device management dashboard.
+To ensure absolute security for your data, we adhere to three ironclad rules:
+*   **Delegated Authentication**: The extension itself never handles your account login (e.g., passwords, Passkeys). This responsibility is delegated to the NodeAuth PWA you fully trust.
+*   **Zero-Trust Communication**: We assume the browser environment could be hijacked by malicious scripts (e.g., XSS injection) at any time. Therefore, all data exchange between the extension and the web page occurs through an "encrypted tunnel", leaving interceptors with nothing but gibberish.
+*   **Device Isolation**: Every extension you install on a computer has a unique "fingerprint". If a device is lost, you can use your phone or another computer to remotely revoke that specific device's access with one click from the PWA.
 
-## 2. Secure Handshake (Sequence Diagram)
+## 2. Secure Handshake Flow (Diagram)
+
+Here is the behind-the-scenes flow of how the extension securely obtains your authorized data:
 
 ```mermaid
 sequenceDiagram
     participant User
-    participant Ext as Extension
-    participant PWA as NodeAuth PWA
+    participant Ext as Browser Extension
+    participant PWA as NodeAuth PWA (Web)
     participant Server as Backend Server
 
-    Note over Ext: Phase 1: Pre-emption
-    Ext->>PWA: Inject Script (document_start)
-    Ext->>PWA: Generate ECDH pair & lock Public Key
+    Note over Ext: Step 1: Establish Outpost
+    Ext->>PWA: Inject security script (before page load)
+    Ext->>PWA: Generate temporary public key and "freeze" it in the DOM
     
-    Note over User, PWA: Phase 2: User Authentication
-    User->>PWA: Login via Passkey/OAuth
-    PWA->>Server: Verify Identity
-    Server-->>PWA: Return Encrypted Vault
+    Note over User, PWA: Step 2: Secure Login
+    User->>PWA: Login to PWA
+    PWA->>Server: Verify identity, retrieve encrypted vault
     
-    Note over PWA, Ext: Phase 3: Encrypted IPC
-    PWA->>Ext: Read locked PubKey & derive Shared Secret
-    PWA->>Ext: AES-GCM Encrypt Master Key
-    PWA->>Ext: Broadcast Ciphertext via postMessage
+    Note over PWA, Ext: Step 3: Establish Encrypted Tunnel
+    PWA->>Ext: Read frozen public key, derive shared secret
+    PWA->>Ext: Encrypt Master Key using high-strength AES-GCM
+    PWA->>Ext: Send ciphertext to extension
     
-    Note over Ext: Phase 4: Local Decryption & Lock
-    Ext->>User: Prompt for local PIN
-    Ext->>Ext: Encrypt Master Key using PBKDF2 + PIN
-    Ext->>Ext: Save to storage.local
+    Note over Ext: Step 4: Receive & Local Lock
+    Ext->>Ext: Decrypt Master Key in secure memory
+    Ext->>User: Prompt to set a 6-digit PIN code
+    Ext->>Ext: Encrypt again with PIN, store in local storage
 ```
 
-## 3. Deep Security Mechanisms
+## 3. Bulletproof Security Mechanisms
 
-### DOM "Freezing" Technology
-Before any webpage scripts execute, the extension uses `Object.defineProperty` to write its public key to the `window` object with `writable: false`. This "freezes" the public key, preventing any malicious scripts (XSS) from tampering with the starting point of our encrypted tunnel.
+### "DOM Freezing" Technology (Anti-Tamper)
+At the earliest stage of webpage execution, the extension "locks" its public key into the webpage object. This means even if the page is later infected by malicious scripts, this public key used to establish the tunnel cannot be replaced.
 
-### Memory-Only Volatile Storage
-*   **Sensitive Keys**: The ECDH private key used for handshakes exists only in the background process's memory and is destroyed immediately after the handshake.
-*   **Diskless Transmission**: Your Master Key is never written to the physical disk until it is re-encrypted with your local PIN.
+### Burn After Reading (Memory Level)
+*   **Disposable**: The temporary "private key" used to establish the tunnel exists only in background memory and is destroyed immediately after the handshake completes.
+*   **Never Touches Disk**: Your Master Key is never written to disk before being decrypted, completely eliminating the possibility of hackers stealing the key via disk forensics.
 
-## 4. Security Q&A
+## 4. Common Risk FAQ
 
-### What if the PWA has an XSS vulnerability?
-Since the "Freezing" happens at `document_start`, the encrypted tunnel is established before any XSS scripts can run. An attacker would only intercept high-strength AES-GCM ciphertext, which is impossible to decrypt without the private key.
+### ❓ What if the page I visit has malicious scripts (XSS vulnerability)?
+No need to worry. Because the extension's "freezing" action occurs at the very beginning of the page load, by the time malicious scripts wake up, the encrypted channel is already established. Hackers can only intercept a string of high-strength ciphertext. Without the private key, cracking it is equivalent to brute-forcing a modern banking system.
 
-### Can I recover a forgotten PIN?
-**No.** The PIN is the only key to your local vault. NodeAuth does not store your PIN or Master Key on its servers. If you forget your PIN, you must uninstall and reinstall the extension. While this may be less convenient, it ensures that your data remains safe even if the NodeAuth servers are compromised.
+### ❓ Can I recover a forgotten extension PIN?
+**Absolutely not.**
+The PIN is the only key to unlock your local vault. The NodeAuth server will never store your PIN or Master Key. If you forget it, the only way is to remove and reinstall the extension. While this sacrifices a bit of convenience, it guarantees that **even if our servers are compromised, your data remains impregnable**.
