@@ -67,8 +67,8 @@ description: "NodeAuth 云端自动备份设置指南。详细解析如何配置
     4. 获取 `客户端ID`、`客户端密钥`
     5. 在 “目标对象”  -> "发布应用"
     6. **配置环境变量**：填入您部署平台的“环境变量”或“机密变量”配置项中（详见 [环境变量指南](/deploy/env)）：
-        *   `OAUTH_GOOGLE_CLIENT_ID`
-        *   `OAUTH_GOOGLE_CLIENT_SECRET`
+        *   `OAUTH_GOOGLE_BACKUP_CLIENT_ID`
+        *   `OAUTH_GOOGLE_BACKUP_CLIENT_SECRET`
         *   `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` : `https://您的域名/api/backups/oauth/google/callback`
 
     <details>
@@ -94,13 +94,18 @@ description: "NodeAuth 云端自动备份设置指南。详细解析如何配置
 ## 🔼 配置 Microsoft OneDrive
 *   **极高稳定性**：利用 Microsoft Graph API 分片上传，支持大容量备份。
 *   **🛠️ 配置指南**：
-    1. 访问 [Azure 应用注册](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 注册应用（不支持个人账户，需要加入M365开发人员计划或Azure）。
+    1. 访问 [Azure 应用注册](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 注册应用。
+       ::: warning 注意：微软已弃用“在目录外创建应用程序”的功能。
+       纯个人账户 (如 outlook.com) 无法直接创建应用。您需要先 [注册 Azure](https://azure.microsoft.com/)（免费获取一个默认目录）或加入 [M365 开发人员计划](https://developer.microsoft.com/en-us/microsoft-365/dev-program) 以获取租户目录。
+       
+       在拥有目录后创建应用时，**受支持的帐户类型** 请务必选择 **“任何组织目录中的帐户和个人 Microsoft 帐户”**，这样您的个人 OneDrive 才能正常授权使用。
+       :::
     2. “重定向 URI” 选 Web 并填入：`https://您的域名/api/backups/oauth/microsoft/callback`。
     3. 获取 `客户端密码`
     4. 添加“API 权限” `Files.ReadWrite.AppFolder` 和 `offline_access` 并授予确认。
     5. **配置环境变量**：填入您部署平台的“环境变量”或“机密变量”配置项中（详见 [环境变量指南](/deploy/env)）：
-        *   `OAUTH_MICROSOFT_CLIENT_ID`
-        *   `OAUTH_MICROSOFT_CLIENT_SECRET`
+        *   `OAUTH_MICROSOFT_BACKUP_CLIENT_ID`
+        *   `OAUTH_MICROSOFT_BACKUP_CLIENT_SECRET`
         *   `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` : `https://您的域名/api/backups/oauth/microsoft/callback`
 
     <details>
@@ -122,8 +127,8 @@ description: "NodeAuth 云端自动备份设置指南。详细解析如何配置
     2. 在 `Redirect URIs` 填入：`https://您的域名/api/backups/oauth/dropbox/callback`。
     3. `Permissions` 勾选 `files.content.write`, `files.content.read`, `files.metadata.read`。
     4. **配置环境变量**：填入您部署平台的“环境变量”或“机密变量”配置项中（详见 [环境变量指南](/deploy/env)）：
-        *   `OAUTH_DROPBOX_CLIENT_ID`
-        *   `OAUTH_DROPBOX_CLIENT_SECRET`
+        *   `OAUTH_DROPBOX_BACKUP_CLIENT_ID`
+        *   `OAUTH_DROPBOX_BACKUP_CLIENT_SECRET`
         *   `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` : `https://您的域名/api/backups/oauth/dropbox/callback`
 
     <details>
@@ -141,8 +146,8 @@ description: "NodeAuth 云端自动备份设置指南。详细解析如何配置
     2. “安全设置”中填入回调地址：`https://您的域名/api/backups/oauth/baidu/callback`。
     3. 开通“网盘基础服务”权限。
     4. **配置环境变量**：填入您部署平台的“环境变量”或“机密变量”配置项中（详见 [环境变量指南](/deploy/env)）：
-        *   `OAUTH_BAIDU_CLIENT_ID`
-        *   `OAUTH_BAIDU_CLIENT_SECRET`
+        *   `OAUTH_BAIDU_BACKUP_CLIENT_ID`
+        *   `OAUTH_BAIDU_BACKUP_CLIENT_SECRET`
         *   `OAUTH_BAIDU_BACKUP_REDIRECT_URI` : `https://您的域名/api/backups/oauth/baidu/callback`
 
 ---

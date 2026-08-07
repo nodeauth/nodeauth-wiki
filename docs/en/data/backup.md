@@ -67,8 +67,8 @@ Suitable for Synology, QNAP, Nutstore, or Alist users:
     4. Get your `Client ID` and `Client Secret`.
     5. In "OAuth consent screen" -> "Publish App".
     6. **Configure Environment Variables**: Fill them into your deployment platform's "Environment Variables" or "Secrets" (refer to the [Env Guide](/deploy/env) for details):
-        *   `OAUTH_GOOGLE_CLIENT_ID`
-        *   `OAUTH_GOOGLE_CLIENT_SECRET`
+        *   `OAUTH_GOOGLE_BACKUP_CLIENT_ID`
+        *   `OAUTH_GOOGLE_BACKUP_CLIENT_SECRET`
         *   `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` : `https://your-domain.com/api/backups/oauth/google/callback`
 
     <details>
@@ -94,13 +94,18 @@ Suitable for Synology, QNAP, Nutstore, or Alist users:
 ## 🔼 Configure Microsoft OneDrive
 *   **High Stability**: Uses Microsoft Graph API chunked uploading, supporting large capacity backups.
 *   **🛠️ Configuration Guide**:
-    1. Visit [Azure App Registration](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) to register an app (Note: Personal accounts are not supported; requires M365 Developer Program or Azure).
+    1. Visit [Azure App Registration](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) to register an app.
+       ::: warning Note: Microsoft has deprecated the ability to create applications outside of a directory.
+       Pure personal accounts (e.g., outlook.com) cannot create apps directly anymore. You must first [Sign up for Azure](https://azure.microsoft.com/) (to get a default directory) or join the [M365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program) to get a tenant.
+       
+       Once you have a directory and create an app, you MUST select **"Accounts in any organizational directory and personal Microsoft accounts"** for the **Supported account types**. This ensures your personal OneDrive can be authorized successfully.
+       :::
     2. Select Web for "Redirect URI" and enter: `https://your-domain.com/api/backups/oauth/microsoft/callback`.
     3. Get your `Client Secret`.
     4. Add "API Permissions" `Files.ReadWrite.AppFolder` and `offline_access` and grant consent.
     5. **Configure Environment Variables**: Fill them into your deployment platform's "Environment Variables" or "Secrets" (refer to the [Env Guide](/deploy/env) for details):
-        *   `OAUTH_MICROSOFT_CLIENT_ID`
-        *   `OAUTH_MICROSOFT_CLIENT_SECRET`
+        *   `OAUTH_MICROSOFT_BACKUP_CLIENT_ID`
+        *   `OAUTH_MICROSOFT_BACKUP_CLIENT_SECRET`
         *   `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` : `https://your-domain.com/api/backups/oauth/microsoft/callback`
 
     <details>
@@ -122,8 +127,8 @@ Suitable for Synology, QNAP, Nutstore, or Alist users:
     2. Enter in `Redirect URIs`: `https://your-domain.com/api/backups/oauth/dropbox/callback`.
     3. Under `Permissions`, check `files.content.write`, `files.content.read`, and `files.metadata.read`.
     4. **Configure Environment Variables**: Fill them into your deployment platform's "Environment Variables" or "Secrets" (refer to the [Env Guide](/deploy/env) for details):
-        *   `OAUTH_DROPBOX_CLIENT_ID`
-        *   `OAUTH_DROPBOX_CLIENT_SECRET`
+        *   `OAUTH_DROPBOX_BACKUP_CLIENT_ID`
+        *   `OAUTH_DROPBOX_BACKUP_CLIENT_SECRET`
         *   `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` : `https://your-domain.com/api/backups/oauth/dropbox/callback`
 
     <details>
@@ -141,8 +146,8 @@ Suitable for Synology, QNAP, Nutstore, or Alist users:
     2. Enter the callback address in "Security Settings": `https://your-domain.com/api/backups/oauth/baidu/callback`.
     3. Enable "Netdisk Basic Service" permissions.
     4. **Configure Environment Variables**: Fill them into your deployment platform's "Environment Variables" or "Secrets" (refer to the [Env Guide](/deploy/env) for details):
-        *   `OAUTH_BAIDU_CLIENT_ID`
-        *   `OAUTH_BAIDU_CLIENT_SECRET`
+        *   `OAUTH_BAIDU_BACKUP_CLIENT_ID`
+        *   `OAUTH_BAIDU_BACKUP_CLIENT_SECRET`
         *   `OAUTH_BAIDU_BACKUP_REDIRECT_URI` : `https://your-domain.com/api/backups/oauth/baidu/callback`
 
 ---

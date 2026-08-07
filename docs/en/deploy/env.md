@@ -22,11 +22,17 @@ These variables are the foundation of the system's operation and **must** be set
 
 ## 🛡️ Admission Allowlist (Must Configure)
 
+> [!IMPORTANT]
+> **🚀 Security Architecture Upgrade (Breaking Change)**
+> To prevent cross-platform numeric ID collision attacks (e.g., a Twitter ID spoofing a DingTalk mobile number), NodeAuth now enforces **Strict Namespace Isolation**.
+> **For platforms verified by `id` (Telegram and Twitter):**
+> Your whitelist entries must be prefixed with the platform name, such as `telegram:12345678` or `twitter:87654321`. Raw numbers are no longer allowed and will be rejected! Logins based on `email` and `mobile` are unaffected.
+
 NodeAuth refuses public registration; you must preset the users allowed to enter.
 
 | Variable | Required | Examples & Description |
 | :--- | :--- | :--- |
-| `OAUTH_ALLOWED_USERS` | ✅ | Emails, Telegram IDs, or Web3 wallet addresses allowed to login. Separate multiple users with **commas** `,`. E.g.: `admin@example.com,12345678,0xe0a156ce36****6a98` |
+| `OAUTH_ALLOWED_USERS` | ✅ | Emails, prefixed Telegram/X (Twitter) IDs, or Web3 wallet addresses allowed to login. Separate multiple users with **commas** `,`. E.g.: `admin@example.com,telegram:12345678,twitter:1729837492,0xe0a156ce36****6a98` |
 
 ---
 
@@ -40,8 +46,8 @@ You must configure at least one third-party login method; otherwise, you will no
 3. **Authorization callback URL**: `https://your-domain.com/oauth/callback`
 4. Record the `Client ID` and `Client Secret` after registration.
 5. **Fill in Environment Variables**:
-   *   `OAUTH_GITHUB_CLIENT_ID`
-   *   `OAUTH_GITHUB_CLIENT_SECRET`
+   *   `OAUTH_GITHUB_CLIENT_ID` (Corresponds to GitHub's Client ID)
+   *   `OAUTH_GITHUB_CLIENT_SECRET` (Corresponds to GitHub's Client Secret)
    *   `OAUTH_GITHUB_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
 
 <details>
@@ -57,8 +63,8 @@ You must configure at least one third-party login method; otherwise, you will no
 5. **Redirect URL**: `https://your-domain.com/oauth/callback`
 6. Get the `Client ID` and `Client Secret` from the configuration page.
 7. **Fill in Environment Variables**:
-   *   `OAUTH_CLOUDFLARE_CLIENT_ID`
-   *   `OAUTH_CLOUDFLARE_CLIENT_SECRET`
+   *   `OAUTH_CLOUDFLARE_CLIENT_ID` (Corresponds to Cloudflare's Client ID)
+   *   `OAUTH_CLOUDFLARE_CLIENT_SECRET` (Corresponds to Cloudflare's Client Secret)
    *   `OAUTH_CLOUDFLARE_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
    *   `OAUTH_CLOUDFLARE_ORG_DOMAIN`: Your team domain (e.g., `example.cloudflareaccess.com`)
 
@@ -78,8 +84,8 @@ You must configure at least one third-party login method; otherwise, you will no
 4. Choose application type: **Web application**.
 5. **Authorized redirect URIs**: `https://your-domain.com/oauth/callback`
 6. **Fill in Environment Variables**:
-   *   `OAUTH_GOOGLE_CLIENT_ID`
-   *   `OAUTH_GOOGLE_CLIENT_SECRET`
+   *   `OAUTH_GOOGLE_CLIENT_ID` (Corresponds to Google's Client ID)
+   *   `OAUTH_GOOGLE_CLIENT_SECRET` (Corresponds to Google's Client Secret)
    *   `OAUTH_GOOGLE_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
 
 ### 4. Telegram
@@ -91,8 +97,8 @@ While Telegram doesn't require a `REDIRECT_URI` variable, you need to bind the d
    Replace `<Token>`, `<domain>`, and `<Secret>` (at least 32 characters) in the following link and visit it once in your browser:
    `https://api.telegram.org/bot<Token>/setWebhook?url=https://<domain>/api/telegram/webhook&secret_token=<Secret>`
 5. **Fill in Environment Variables**:
-   *   `OAUTH_TELEGRAM_BOT_NAME`
-   *   `OAUTH_TELEGRAM_BOT_TOKEN`
+   *   `OAUTH_TELEGRAM_BOT_NAME` (Corresponds to Telegram Bot's Username)
+   *   `OAUTH_TELEGRAM_BOT_TOKEN` (Corresponds to Telegram Bot's Token)
    *   `OAUTH_TELEGRAM_WEBHOOK_SECRET`: The `<Secret>` string you set above. [Get a high-strength random string](https://tools.nodeauth.io)
 
 ### 5. Gitee
@@ -100,36 +106,113 @@ While Telegram doesn't require a `REDIRECT_URI` variable, you need to bind the d
 2. **Application Callback Address**: `https://your-domain.com/oauth/callback`
 3. Check permission: `user_info`.
 4. **Fill in Environment Variables**:
-   *   `OAUTH_GITEE_CLIENT_ID`
-   *   `OAUTH_GITEE_CLIENT_SECRET`
+   *   `OAUTH_GITEE_CLIENT_ID` (Corresponds to Gitee's Client ID)
+   *   `OAUTH_GITEE_CLIENT_SECRET` (Corresponds to Gitee's Client Secret)
    *   `OAUTH_GITEE_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
 
 ### 6. NodeLoc Community
 1. Visit [NodeLoc OAuth Settings](https://www.nodeloc.com/oauth-provider/applications) and create an application.
 2. **Redirect URI**: `https://your-domain.com/oauth/callback`
 3. **Fill in Environment Variables**:
-   *   `OAUTH_NODELOC_CLIENT_ID`
-   *   `OAUTH_NODELOC_CLIENT_SECRET`
+   *   `OAUTH_NODELOC_CLIENT_ID` (Corresponds to NodeLoc's Client ID)
+   *   `OAUTH_NODELOC_CLIENT_SECRET` (Corresponds to NodeLoc's Client Secret)
    *   `OAUTH_NODELOC_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
 
 ### 7. Web3 Wallet Login (WalletConnect)
 1. Register and create a new project at [WalletConnect Cloud](https://cloud.walletconnect.com/).
-2. Fill in: `OAUTH_WALLETCONNECT_PROJECT_ID`.
+2. **Fill in Environment Variables**:
+   *   `OAUTH_WALLETCONNECT_PROJECT_ID` (Corresponds to WalletConnect's Project ID)
 3. (Optional) `OAUTH_WALLETCONNECT_SELF_PROXY=true` to enable built-in proxy.
+
+### 8. X (Twitter)
+Provides the smoothest login experience specifically for Crypto / Web3 users:
+1. Visit and log into the [Twitter Developer Portal](https://developer.twitter.com/en/portal/dashboard).
+2. Create or select your app under **Projects & Apps**.
+3. Navigate to **User authentication set up** and click `Set up`.
+4. **App permissions**: Check `Read`.
+5. **Type of App**: Select `Web App, Automated App or Bot`.
+6. **Callback URI / Redirect URL**: `https://your-domain.com/oauth/callback`
+7. **Website URL**: `https://www.nodeauth.io` or `https://your-domain.com`
+8. Save and record the generated **Client ID** and **Client Secret** (only shown once).
+9. **Fill in Environment Variables**:
+   *   `OAUTH_TWITTER_CLIENT_ID` (Corresponds to Twitter's Client ID)
+   *   `OAUTH_TWITTER_CLIENT_SECRET` (Corresponds to Twitter's Client Secret)
+   *   `OAUTH_TWITTER_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
+
+::: tip How to get your X account's numeric ID (for whitelisting)?
+X (Twitter) login does not support email whitelisting; you must use your unique numeric ID. After logging into the X Developer Console, you can find it directly in your browser's address bar. 
+
+For example, if the current URL is `https://console.x.com/accounts/2085375101801844736`, then **`2085375101801844736`** is your numeric ID.
+
+Simply enter `twitter:2085375101801844736` into your `OAUTH_ALLOWED_USERS` environment variable to allow access for this account.
+:::
+
+### 9. Lark (Global) / Feishu (China)
+The configuration process for both is identical, differing only in the portal domains and environment variable prefixes.
+1. Visit and log into the open platform: [open.larksuite.com](https://open.larksuite.com/) for Lark Global, or [open.feishu.cn](https://open.feishu.cn/) for Feishu China.
+2. Enter the "Developer Console" and click **Create Custom App**.
+3. In the left navigation bar, find **Security Settings**, and add to "Redirect URLs": `https://your-domain.com/oauth/callback`.
+4. In the left navigation bar, find **Permissions & Scopes**, search at the top and check **Obtain user email information** (Permission ID is `contact:user.email:readonly`). Be sure to check this to ensure NodeAuth can obtain the email for whitelist verification.
+5. In the left navigation bar, find **Version Management & Release**, create a new version, configure the availability (e.g., "Specific Members" or "All Members"), and then **Submit for Release**. Otherwise, the permission and availability changes will not take effect.
+6. In the left navigation bar, find **Credentials & Basic Info**, and obtain the App ID and App Secret.
+7. **Fill in Environment Variables**:
+   Depending on the version you are integrating, fill in the corresponding variables (you can configure both sets if your team uses both; two buttons will appear):
+   
+   **For Lark (Global):**
+   *   `OAUTH_LARK_CLIENT_ID` (Corresponds to Lark's App ID)
+   *   `OAUTH_LARK_CLIENT_SECRET` (Corresponds to Lark's App Secret)
+   *   `OAUTH_LARK_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
+   
+   **For Feishu (China):**
+   *   `OAUTH_FEISHU_CLIENT_ID` (Corresponds to Feishu's App ID)
+   *   `OAUTH_FEISHU_CLIENT_SECRET` (Corresponds to Feishu's App Secret)
+   *   `OAUTH_FEISHU_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
+
+### 10. DingTalk
+Supports SSO via DingTalk QR code or password. Since enterprise emails are often not enforced, NodeAuth supports using **email** or **mobile number** for whitelist verification.
+1. Visit and log into the [DingTalk Open Platform](https://open-dev.dingtalk.com/).
+2. Go to "App Development - Custom App", and click **Create App**.
+3. In the left navigation bar, find **Share Settings**, and add to "Redirect URI": `https://your-domain.com/oauth/callback`.
+4. In the left navigation bar, find **Permissions**, and apply for:
+   - **Personal mobile phone information** (used for whitelist verification)
+   - **Contact personal information read permission** (used to obtain email and basic info)
+5. In the left navigation bar, find **Version Management & Release**, create a new version, set the availability range (e.g., "Some Members" or "All Members"), and **Submit for Release**, otherwise permission changes will not take effect.
+6. In the left navigation bar, find **Basic Info**, and obtain the AppKey and AppSecret.
+7. **Fill in Environment Variables**:
+   *   `OAUTH_DINGTALK_CLIENT_ID` (corresponds to DingTalk AppKey)
+   *   `OAUTH_DINGTALK_CLIENT_SECRET` (corresponds to DingTalk AppSecret)
+   *   `OAUTH_DINGTALK_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
+   *   `OAUTH_DINGTALK_CORP_ID` (Optional, skips organization selection during login if specified)
+
+### 11. Microsoft (Azure AD)
+Supports Microsoft Personal accounts and Work or School accounts.
+1. Visit and log into [Azure Portal - App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
+2. Click **New registration**.
+3. **Name**: `NodeAuth`
+4. **Supported account types**: Recommended to choose `Accounts in any organizational directory and personal Microsoft accounts (e.g. Skype, Xbox)` (Multi-tenant mode).
+5. **Redirect URI**: Select `Web`, and fill in `https://your-domain.com/oauth/callback`.
+6. After registration, record the `Application (client) ID` on the **Overview** page.
+7. In the left navigation bar, find **Certificates & secrets**, create a `New client secret`, and record its Value.
+8. **Fill in Environment Variables**:
+   *   `OAUTH_MICROSOFT_CLIENT_ID` (Corresponds to Microsoft's Application (client) ID)
+   *   `OAUTH_MICROSOFT_CLIENT_SECRET` (Corresponds to Microsoft's Client Secret Value)
+   *   `OAUTH_MICROSOFT_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
+   *   *(Optional)* `OAUTH_MICROSOFT_TENANT_ID`: Defaults to `common` (Multi-tenant). If you chose single tenant in step 4, fill in your Tenant ID here for stricter isolation.
 
 ---
 
 ## 📦 Automatic Cloud Backup Configuration (Optional)
 For detailed configuration steps, please refer to the [Cloud Backup Guide](../data/backup).
 
-If you have already configured Google login, some variables can be reused, but the **Redirect URI** must use a backup-specific path.
+> [!WARNING]
+> For security isolation and to avoid triggering the "Unverified App" warning, **backup configurations are now completely decoupled from login configurations**. Please create a dedicated OAuth application for the cloud drive you intend to use (do not share it with the login app).
 
-| Cloud Drive | Client ID Variable | Client Secret Variable | Backup Redirect URI Variable |
-| :--- | :--- | :--- | :--- |
-| **Google** | `OAUTH_GOOGLE_CLIENT_ID` | `OAUTH_GOOGLE_CLIENT_SECRET` | `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` |
-| **OneDrive** | `OAUTH_MICROSOFT_CLIENT_ID` | `OAUTH_MICROSOFT_CLIENT_SECRET` | `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` |
-| **Dropbox** | `OAUTH_DROPBOX_CLIENT_ID` | `OAUTH_DROPBOX_CLIENT_SECRET` | `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` |
-| **Baidu** | `OAUTH_BAIDU_CLIENT_ID` | `OAUTH_BAIDU_CLIENT_SECRET` | `OAUTH_BAIDU_BACKUP_REDIRECT_URI` |
+| Cloud Drive | Client ID Variable | Client Secret Variable | Backup Redirect URI Variable | Other Specific Variables |
+| :--- | :--- | :--- | :--- | :--- |
+| **Google** | `OAUTH_GOOGLE_BACKUP_CLIENT_ID` | `OAUTH_GOOGLE_BACKUP_CLIENT_SECRET` | `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` | - |
+| **OneDrive** | `OAUTH_MICROSOFT_BACKUP_CLIENT_ID` | `OAUTH_MICROSOFT_BACKUP_CLIENT_SECRET` | `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` | `OAUTH_MICROSOFT_BACKUP_TENANT_ID` |
+| **Dropbox** | `OAUTH_DROPBOX_BACKUP_CLIENT_ID` | `OAUTH_DROPBOX_BACKUP_CLIENT_SECRET` | `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` | - |
+| **Baidu** | `OAUTH_BAIDU_BACKUP_CLIENT_ID` | `OAUTH_BAIDU_BACKUP_CLIENT_SECRET` | `OAUTH_BAIDU_BACKUP_REDIRECT_URI` | - |
 
 *Note: Backup Redirect URIs follow the format `https://your-domain.com/api/backups/oauth/[platform]/callback`*
 

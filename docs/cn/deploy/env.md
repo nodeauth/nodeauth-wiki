@@ -22,11 +22,17 @@ description: "NodeAuth 环境变量配置深度指南。详细解析系统运行
 
 ## 🛡️ 准入白名单 (必须配置)
 
+> [!IMPORTANT]
+> **🚀 安全架构升级提示 (Breaking Change)**
+> 为防止跨平台的底层数字 ID 发生“撞库”越权攻击（例如推特数字 ID 伪装为钉钉手机号），NodeAuth 现已启动**强安全命名空间隔离**。
+> **针对基于 `id` 验证的平台（Telegram 和 Twitter）：**
+> 您的白名单必须强制带有平台前缀，例如 `telegram:12345678` 或 `twitter:87654321`，不再允许填写纯数字，否则将被系统拒绝登录！基于 `email` 和 `mobile` 的登录不受影响。
+
 NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 
 | 变量名 | 必填 | 示例与说明 |
 | :--- | :--- | :--- |
-| `OAUTH_ALLOWED_USERS` | ✅ | 允许登录的邮箱、Telegram ID、Web3 钱包地址。多个用户请用**半角逗号** `,` 分开。如：`admin@example.com,12345678,0xe0a156ce36****6a98` |
+| `OAUTH_ALLOWED_USERS` | ✅ | 允许登录的邮箱、带前缀的 Telegram/Twitter ID、Web3 钱包地址。多个用户请用**半角逗号** `,` 分开。如：`admin@example.com,telegram:12345678,twitter:1729837492,0xe0a156ce36****6a98` |
 
 ---
 
@@ -40,8 +46,8 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 3. **Authorization callback URL**: `https://您的域名/oauth/callback`
 4. 注册后记录 `Client ID` 和 `Client Secret`。
 5. **填入环境变量**：
-   *   `OAUTH_GITHUB_CLIENT_ID`
-   *   `OAUTH_GITHUB_CLIENT_SECRET`
+   *   `OAUTH_GITHUB_CLIENT_ID` (对应 GitHub 的 Client ID)
+   *   `OAUTH_GITHUB_CLIENT_SECRET` (对应 GitHub 的 Client Secret)
    *   `OAUTH_GITHUB_REDIRECT_URI`: `https://您的域名/oauth/callback`
 
 <details>
@@ -57,8 +63,8 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 5. **Redirect URL**: `https://您的域名/oauth/callback`
 6. 在配置页获取 `Client ID` 和 `Client Secret`。
 7. **填入环境变量**：
-   *   `OAUTH_CLOUDFLARE_CLIENT_ID`
-   *   `OAUTH_CLOUDFLARE_CLIENT_SECRET`
+   *   `OAUTH_CLOUDFLARE_CLIENT_ID` (对应 Cloudflare 的 Client ID)
+   *   `OAUTH_CLOUDFLARE_CLIENT_SECRET` (对应 Cloudflare 的 Client Secret)
    *   `OAUTH_CLOUDFLARE_REDIRECT_URI`: `https://您的域名/oauth/callback`
    *   `OAUTH_CLOUDFLARE_ORG_DOMAIN`: 您的团队域名（如 `example.cloudflareaccess.com`）
 
@@ -78,8 +84,8 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 4. 应用类型选择：**Web application**。
 5. **Authorized redirect URIs**: `https://您的域名/oauth/callback`
 6. **填入环境变量**：
-   *   `OAUTH_GOOGLE_CLIENT_ID`
-   *   `OAUTH_GOOGLE_CLIENT_SECRET`
+   *   `OAUTH_GOOGLE_CLIENT_ID` (对应 Google 的 Client ID)
+   *   `OAUTH_GOOGLE_CLIENT_SECRET` (对应 Google 的 Client Secret)
    *   `OAUTH_GOOGLE_REDIRECT_URI`: `https://您的域名/oauth/callback`
 
 ### 4. Telegram
@@ -91,8 +97,8 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
    将下方链接中的 `<Token>`、`<域名>` 和 `<Secret>`（32位以上随机字符串）替换后，在浏览器中访问一次：
    `https://api.telegram.org/bot<Token>/setWebhook?url=https://<域名>/api/telegram/webhook&secret_token=<Secret>`
 5. **填入环境变量**：
-   *   `OAUTH_TELEGRAM_BOT_NAME`
-   *   `OAUTH_TELEGRAM_BOT_TOKEN`
+   *   `OAUTH_TELEGRAM_BOT_NAME` (对应 Telegram Bot 的 Username)
+   *   `OAUTH_TELEGRAM_BOT_TOKEN` (对应 Telegram Bot 的 Token)
    *   `OAUTH_TELEGRAM_WEBHOOK_SECRET`: 您在上面设置的 `<Secret>` 字符串。[获取高强度随机字符串](https://tools.nodeauth.io)
 
 ### 5. Gitee
@@ -100,26 +106,103 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 2. **应用回调地址**: `https://您的域名/oauth/callback`
 3. 勾选权限：`user_info`。
 4. **填入环境变量**：
-   *   `OAUTH_GITEE_CLIENT_ID`
-   *   `OAUTH_GITEE_CLIENT_SECRET`
+   *   `OAUTH_GITEE_CLIENT_ID` (对应 Gitee 的 Client ID)
+   *   `OAUTH_GITEE_CLIENT_SECRET` (对应 Gitee 的 Client Secret)
    *   `OAUTH_GITEE_REDIRECT_URI`: `https://您的域名/oauth/callback`
 
 ### 6. NodeLoc 社区
 1. 访问 [NodeLoc OAuth 设置](https://www.nodeloc.com/oauth-provider/applications) 创建应用。
 2. **Redirect URI**: `https://您的域名/oauth/callback`
 3. **填入环境变量**：
-   *   `OAUTH_NODELOC_CLIENT_ID`
-   *   `OAUTH_NODELOC_CLIENT_SECRET`
+   *   `OAUTH_NODELOC_CLIENT_ID` (对应 NodeLoc 的 Client ID)
+   *   `OAUTH_NODELOC_CLIENT_SECRET` (对应 NodeLoc 的 Client Secret)
    *   `OAUTH_NODELOC_REDIRECT_URI`: `https://您的域名/oauth/callback`
 
 ### 7. Web3 钱包登录 (WalletConnect)
 1. 在 [WalletConnect Cloud](https://cloud.walletconnect.com/) 注册并创建一个新项目。
-2. 填入：`OAUTH_WALLETCONNECT_PROJECT_ID`。
+2. **填入环境变量**：
+   *   `OAUTH_WALLETCONNECT_PROJECT_ID` (对应 WalletConnect 的 Project ID)
 3. (可选) `OAUTH_WALLETCONNECT_SELF_PROXY=true` 可开启内置代理。
+
+### 8. X (Twitter)
+1. 访问并登录 [Twitter Developer Portal](https://developer.twitter.com/en/portal/dashboard)。
+2. 在 **Projects & Apps** 下创建或选择你的应用。
+3. 导航至 **User authentication set up**，点击 `Set up`。
+4. **App permissions**: 勾选 `Read`。
+5. **Type of App**: 选择 `Web App, Automated App or Bot`。
+6. **Callback URI / Redirect URL**: `https://您的域名/oauth/callback`
+7. **Website URL**: `https://www.nodeauth.io` 或 `https://您的域名`
+8. 保存后记录弹出的 **Client ID** 和 **Client Secret** (仅显示一次)。
+9. **填入环境变量**：
+   *   `OAUTH_TWITTER_CLIENT_ID` (对应 Twitter 的 Client ID)
+   *   `OAUTH_TWITTER_CLIENT_SECRET` (对应 Twitter 的 Client Secret)
+   *   `OAUTH_TWITTER_REDIRECT_URI`: `https://您的域名/oauth/callback`
+
+::: tip 如何获取您的 X 账号数字 ID（用于设置白名单）？
+X (Twitter) 登录不支持邮箱白名单，必须使用您的专属数字 ID。登录 X Developer 开放平台控制台后，您可以直接在浏览器地址栏的 URL 中找到它。
+
+例如，如果当前网址为 `https://console.x.com/accounts/2085375101801844736`，那么其中的 **`2085375101801844736`** 就是您的底层数字 ID。
+
+您只需在环境变量 `OAUTH_ALLOWED_USERS` 中填入 `twitter:2085375101801844736` 即可为该账号放行。
+:::
+
+### 9. Lark (海外版) / Feishu (国内版)
+专为企业内部团队打造的 SSO 登录方式，支持通过飞书扫码或一键授权登录 NodeAuth。
+两者配置流程完全一致，仅在域名入口和环境变量前缀上有所区分。
+1. 访问并登录开放平台：Lark 海外版为 [open.larksuite.com](https://open.larksuite.com/)，Feishu 国内版为 [open.feishu.cn](https://open.feishu.cn/)。
+2. 进入“开发者后台”，点击 **创建企业自建应用**。
+3. 在左侧导航栏找到 **安全设置**，在“重定向 URL”中添加：`https://您的域名/oauth/callback`。
+4. 在左侧导航栏找到 **权限管理**，在上方搜索并勾选 **获取用户邮箱信息** (权限 ID 为 `contact:user.email:readonly`)。请务必勾选此项，以确保 NodeAuth 能获取到邮箱用于白名单验证。
+5. 在左侧导航栏找到 **版本管理与发布**，创建一个新版本，并设置可用范围（如“部分成员”或“全部成员”），然后**提交发布**，否则权限与范围修改不会生效。
+6. 在左侧导航栏找到 **凭证与基础信息**，获取 App ID 和 App Secret。
+7. **填入环境变量**：
+   根据你需要接入的版本填入对应的变量（如果团队同时使用国内版和海外版，可以同时配置这两组变量，登录页将同时出现两个入口）：
+   
+   **对于 Lark (海外版)：**
+   *   `OAUTH_LARK_CLIENT_ID` (对应 Lark 的 App ID)
+   *   `OAUTH_LARK_CLIENT_SECRET` (对应 Lark 的 App Secret)
+   *   `OAUTH_LARK_REDIRECT_URI`: `https://您的域名/oauth/callback`
+
+   **对于 Feishu (国内版)：**
+   *   `OAUTH_FEISHU_CLIENT_ID` (对应飞书的 App ID)
+   *   `OAUTH_FEISHU_CLIENT_SECRET` (对应飞书的 App Secret)
+   *   `OAUTH_FEISHU_REDIRECT_URI`: `https://您的域名/oauth/callback`
+
+### 10. 钉钉 (DingTalk)
+支持通过钉钉扫码或账号密码授权登录 NodeAuth。由于国内企业不常强制绑定邮箱，NodeAuth 支持使用**邮箱**或**手机号**进行白名单放行。
+1. 访问并登录 [钉钉开放平台](https://open-dev.dingtalk.com/)。
+2. 进入“应用开发 - 企业内部开发”，点击 **创建应用**。
+3. 在左侧导航栏找到 **分享设置**，在“回调域名”中添加：`https://您的域名/oauth/callback`。
+4. 在左侧导航栏找到 **权限管理**，申请开通以下权限：
+   - **个人手机号信息** (用于将手机号作为白名单验证依据)
+   - **通讯录个人信息读权限** (用于获取邮箱等基本信息)
+5. 在左侧导航栏找到 **版本管理与发布**，创建一个新版本，设置可用范围（如“部分成员”或“全部成员”）并**提交发布**，否则权限修改不会生效。
+6. 在左侧导航栏找到 **基础信息**，获取 AppKey 和 AppSecret。
+7. **填入环境变量**：
+   *   `OAUTH_DINGTALK_CLIENT_ID` (对应钉钉的 AppKey)
+   *   `OAUTH_DINGTALK_CLIENT_SECRET` (对应钉钉的 AppSecret)
+   *   `OAUTH_DINGTALK_REDIRECT_URI`: `https://您的域名/oauth/callback`
+   *   `OAUTH_DINGTALK_CORP_ID` (可选参数，指定后登录时可跳过组织选择界面，直接登入该组织)
+
+### 11. Microsoft (Azure AD)
+支持微软个人账号 (Personal) 及企业/学校组织账号 (Work or School) 登录。
+1. 访问并登录 [Azure Portal - App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。
+2. 点击 **新注册** (New registration)。
+3. **名称** (Name): `NodeAuth`
+4. **受支持的帐户类型**: 建议选择 `任何 Entra ID 租户 + 个人 Microsoft 帐户` (即多租户模式)。
+5. **重定向 URI**: 平台选择 `Web`，并填入 `https://您的域名/oauth/callback`。
+6. 注册完成后，在 **概览** 页面记录下 `应用程序(客户端) ID`。
+7. 在左侧导航栏找到 **证书和密码**，在“客户端密码”选项卡点击 **新客户端密码**，添加后记录下密码的 **值** (Value)。
+8. **填入环境变量**：
+   *   `OAUTH_MICROSOFT_CLIENT_ID` (对应 应用程序(客户端) ID)
+   *   `OAUTH_MICROSOFT_CLIENT_SECRET` (对应 客户端密码的值)
+   *   `OAUTH_MICROSOFT_REDIRECT_URI`: `https://您的域名/oauth/callback`
+   *   *(可选)* `OAUTH_MICROSOFT_TENANT_ID`: 默认使用 `common` (多租户)。若您在第4步选择了仅限单一租户，请填入对应的 Tenant ID (即概览页面的`目录(租户) ID`) 以进行更严格的隔离拦截。
 
 ---
 
 ## 🗄️ 数据库引擎配置 (仅限 Docker 方式部署)
+
 
 如果您使用 Cloudflare Workers 部署，系统会自动使用 D1 数据库，**无需配置**以下变量。
 
@@ -158,14 +241,15 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 ## 📦 云端自动备份配置 (可选)
 详细配置流程请参考 [云端备份设置指南](../data/backup)。
 
-如果您已配置了 Google 登录，部分变量可以通用，但**回调地址 (Redirect URI)** 必须使用备份专用路径。
+> [!WARNING]
+> 为了安全隔离并避免触发“未验证应用”警告，**备份配置与登录配置已经彻底解耦**。请为您要使用的云盘创建一个专属的 OAuth 应用（不与登录共用）。
 
-| 网盘平台 | 客户端 ID 变量 | 客户端密钥 变量 | 备份专用回调地址变量 |
-| :--- | :--- | :--- | :--- |
-| **Google** | `OAUTH_GOOGLE_CLIENT_ID` | `OAUTH_GOOGLE_CLIENT_SECRET` | `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` |
-| **OneDrive** | `OAUTH_MICROSOFT_CLIENT_ID` | `OAUTH_MICROSOFT_CLIENT_SECRET` | `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` |
-| **Dropbox** | `OAUTH_DROPBOX_CLIENT_ID` | `OAUTH_DROPBOX_CLIENT_SECRET` | `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` |
-| **Baidu** | `OAUTH_BAIDU_CLIENT_ID` | `OAUTH_BAIDU_CLIENT_SECRET` | `OAUTH_BAIDU_BACKUP_REDIRECT_URI` |
+| 网盘平台 | 客户端 ID 变量 | 客户端密钥 变量 | 备份专用回调地址变量 | 其他专属变量 |
+| :--- | :--- | :--- | :--- | :--- |
+| **Google** | `OAUTH_GOOGLE_BACKUP_CLIENT_ID` | `OAUTH_GOOGLE_BACKUP_CLIENT_SECRET` | `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` | - |
+| **OneDrive** | `OAUTH_MICROSOFT_BACKUP_CLIENT_ID` | `OAUTH_MICROSOFT_BACKUP_CLIENT_SECRET` | `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` | `OAUTH_MICROSOFT_BACKUP_TENANT_ID` |
+| **Dropbox** | `OAUTH_DROPBOX_BACKUP_CLIENT_ID` | `OAUTH_DROPBOX_BACKUP_CLIENT_SECRET` | `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` | - |
+| **Baidu** | `OAUTH_BAIDU_BACKUP_CLIENT_ID` | `OAUTH_BAIDU_BACKUP_CLIENT_SECRET` | `OAUTH_BAIDU_BACKUP_REDIRECT_URI` | - |
 
 *注：回调地址统一格式为 `https://您的域名/api/backups/oauth/[平台名]/callback`*
 
