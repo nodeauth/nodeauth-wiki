@@ -203,7 +203,15 @@ export default defineConfig({
     lastUpdated: true,
     cleanUrls: true,
     sitemap: {
-        hostname: 'https://wiki.nodeauth.io'
+        hostname: 'https://wiki.nodeauth.io',
+        transformItems: (items) => {
+            // 移除 VitePress 自动生成的多语言 xhtml:link 节点
+            // 避免与 transformHead 钩子中更完善的 Hreflang 声明（包含 x-default）发生冲突和冗余
+            return items.map(item => {
+                delete item.links;
+                return item;
+            });
+        }
     },
     head: [
         ['link', { rel: 'icon', href: '/favicon.svg' }],
