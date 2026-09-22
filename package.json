@@ -12,12 +12,16 @@
   "license": "AGPL-3.0",
   "type": "module",
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20260411.1",
-    "@types/node": "^26.1.1",
-    "vitepress": "^1.6.4",
-    "wrangler": "^4.75.0"
+    "@cloudflare/workers-types": "5.20260923.1",
+    "@types/node": "26.1.1",
+    "vitepress": "1.6.4",
+    "wrangler": "4.136.3"
   },
   "overrides": {
-    "esbuild": "0.27.5"
+    "esbuild": "0.28.1"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260921.1": true
   }
 }

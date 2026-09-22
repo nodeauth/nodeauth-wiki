@@ -26,6 +26,7 @@ To ensure the proper functioning of the extension and provide a secure, seamless
 *   **`scripting`**: Used to dynamically inject the security public key early in the webpage lifecycle to establish the end-to-end encrypted tunnel; also used to dynamically mount an isolated autofill floating icon layer next to matching 2FA input fields without being affected by external styles.
 *   **`alarms`**: Used to register reliable background timing tasks. This is a crucial dependency for implementing the "auto-lock" and memory clearing mechanisms when the extension is idle for a specified time.
 *   **`notifications`**: Used to send system-level notifications to guide you to set a local unlock password after successfully completing the encrypted handshake pairing with the PWA.
+*   **`identity`**: Used to securely invoke the browser's native OAuth authorization flow, specifically designed to connect your own third-party cloud storage services (such as Google Drive, OneDrive, etc.) in "Cloud Sync Mode".
 *   **`Host Permissions: <all_urls>`**: This is an **optional permission**. The extension will only request content script registration across all web pages to detect OTP input fields if the user actively enables the "One-Click Autofill" advanced feature in the settings. If the user does not enable this feature, the extension will not request any global host permissions.
 
 ### 5. Third-Party Interactions and Data Sharing
@@ -34,6 +35,9 @@ We promise never to sell, trade, or indiscriminately share your data with any th
 *   **Service Icon Fetching (Optional Feature)**: If you actively enable the "Show Service Icons" feature in settings, the extension will request icon resources for the corresponding account domains from public icon libraries (like Google, Bitwarden, etc.).
     *   **Privacy Disclosure**: Enabling this feature means your account domain (e.g., `github.com`) will be sent to the aforementioned third-party service providers during the request.
     *   **Default Configuration**: To ensure maximum privacy, **this feature is turned off by default**. Under the default configuration, your account list remains physically isolated from any third parties.
+*   **Cloud Drive & Private Node Sync (Optional Feature)**: This extension supports backing up your encrypted data to your personal third-party cloud storage (such as Google Drive, Dropbox, etc.) or a self-hosted S3/WebDAV node.
+    *   **Privacy Disclosure**: Only when you actively authorize and configure the connection will the extension communicate over the network with these designated third-party storage services. During this process, only the ciphertext files, strongly encrypted locally using AES-GCM, are transmitted. Third-party cloud providers absolutely cannot decrypt or snoop on your real data.
+    *   **Default Configuration**: By default, this feature is turned off, and data exists only locally.
 
 ### 6. Contact Us
 If you have any questions regarding this privacy policy, permission declarations, or data security handling mechanisms, please feel free to contact our compliance and security team at: **support@nodeauth.io**
