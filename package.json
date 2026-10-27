@@ -12,16 +12,21 @@
   "license": "AGPL-3.0",
   "type": "module",
   "devDependencies": {
-    "@cloudflare/workers-types": "5.20260923.1",
+    "@cloudflare/workers-types": "5.20261023.1",
     "@types/node": "26.1.1",
     "vitepress": "1.6.4",
-    "wrangler": "4.136.3"
+    "wrangler": "4.153.0"
   },
   "overrides": {
-    "esbuild": "0.28.1"
+    "esbuild": "0.28.2",
+    "sharp": "0.35.5",
+    "source-map-js": "1.2.2",
+    "vite": "6.4.5",
+    "vue": "^3.5.44",
+    "@vue/server-renderer": "^3.5.44"
   },
   "allowScripts": {
-    "esbuild@0.28.1": true,
-    "workerd@1.20260921.1": true
+    "esbuild@0.28.2": true,
+    "workerd@1.20261023.1": true
   }
 }

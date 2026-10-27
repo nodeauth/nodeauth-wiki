@@ -197,6 +197,11 @@ const enThemeConfig = {
 export default defineConfig({
     title: "NodeAuth Wiki",
     description: "NodeAuth Official Wiki - Open-source, cross-platform 2FA/TOTP authenticator. Supports Cloudflare Worker deployment, encrypted backups, and multi-device sync.",
+    vite: {
+        build: {
+            target: 'es2022'
+        }
+    },
     rewrites: {
         'en/(.*)': '(.*)'
     },
